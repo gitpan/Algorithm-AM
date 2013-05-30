@@ -1,4 +1,4 @@
-package Algorithm::AM;
+package Algorithm::AM::algorithm;
 use strict;
 use warnings;
 # ABSTRACT: How the Analogical Modeling algorithm works
@@ -12,11 +12,11 @@ __END__
 
 =head1 NAME
 
-Algorithm::AM - How the Analogical Modeling algorithm works
+Algorithm::AM::algorithm - How the Analogical Modeling algorithm works
 
 =head1 VERSION
 
-version 2.31
+version 2.32
 
 =head1 DESCRIPTION
 

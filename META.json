@@ -65,8 +65,16 @@
    },
    "provides" : {
       "Algorithm::AM" : {
+         "file" : "lib/Algorithm/AM.pm",
+         "version" : "2.32"
+      },
+      "Algorithm::AM::algorithm" : {
+         "file" : "lib/Algorithm/AM/algorithm.pod",
+         "version" : "2.32"
+      },
+      "Algorithm::AM::lattice" : {
          "file" : "lib/Algorithm/AM/lattice.pod",
-         "version" : "2.31"
+         "version" : "2.32"
       }
    },
    "release_status" : "stable",
@@ -85,7 +93,7 @@
          "web" : "https://github.com/garfieldnate/Algorithm-AM"
       }
    },
-   "version" : "2.31",
+   "version" : "2.32",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.26",

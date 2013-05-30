@@ -13,7 +13,7 @@ use strict;
 use warnings;
 use feature 'switch';
 
-our $VERSION = '2.31'; # VERSION;
+our $VERSION = '2.32'; # VERSION;
 
 require XSLoader;
 XSLoader::load();
@@ -555,7 +555,7 @@ Algorithm::AM - Perl extension for Analogical Modeling using a parallel algorith
 
 =head1 VERSION
 
-version 2.31
+version 2.32
 
 =head1 AUTHOR
 

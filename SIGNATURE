@@ -15,19 +15,19 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 1ddc3926bb303267f44df6f3a290b2ccff303980 AM.xs
-SHA1 9b0ebbfccce56bc68f9fece1a7ce4b5b13694a09 Changes
+SHA1 64381be87de18fd06760642d3494e8f0b386ddae Changes
 SHA1 d6c57d8b2f151c8ba9b5ac0c69c825659742e4c8 INSTALL
 SHA1 64da5f3324e02adf720d82dff6e8b1802ef3dcc8 LICENSE
 SHA1 395fbcb2fb29ea2f1df3a8bbaef1a8e4922cb644 MANIFEST
 SHA1 c7ec3399baf5029755e947427ea1d14b4937c14f MANIFEST.SKIP
-SHA1 b355d0d7e1991d191c3984f318f0a5185ae4c66f META.json
-SHA1 9b42a5c06f923730eb6060636bb8bb84fb69b55c META.yml
-SHA1 e456bd5b0b749850cd5ec569c538a03b539207fe Makefile.PL
-SHA1 8f4171fbde9a4a8c14997b1aff821789c5d7fa41 README
+SHA1 2dbcc041d099199bac7eae2ccd1a2219d4119eae META.json
+SHA1 e2acb63a9c84b9f98764223ce09407a147d6dc5f META.yml
+SHA1 1ecc459ca6fc2d5534a9159e4cfcbefbba8f5d5c Makefile.PL
+SHA1 4f2df27165950fa0a527b181e91acc09e6dcf654 README
 SHA1 e728bee7cae5575013daa9eb4e058dfe40769a1a dist.ini
-SHA1 108c64fe148f77d385c12e6f15e676730d1812e8 lib/Algorithm/AM.pm
-SHA1 6bdc7c939854d90761f5db3c57037b9cf5b5fd0c lib/Algorithm/AM/algorithm.pod
-SHA1 df78c9efab64aaf122e97572bfa82221fe36dcdd lib/Algorithm/AM/lattice.pod
+SHA1 60723dd41541bcc5f1d9b30f95a7dad17dcbeade lib/Algorithm/AM.pm
+SHA1 4a1abc216bbb86eae410adb78ed4a3405693e0a6 lib/Algorithm/AM/algorithm.pod
+SHA1 2145a5b4748a5af8e5984338bca02fbffb703021 lib/Algorithm/AM/lattice.pod
 SHA1 c054a2091499b95ffe8d55ac21f6d9637c2ca8e5 ppport.h
 SHA1 0365fd20ade4e407ba91d5c1f594a66bb2ef37e7 t/0-use.t
 SHA1 a545ea6ef78625543db191a7ec3eab387aa08e22 t/00-compile.t
@@ -55,7 +55,7 @@ SHA1 6bc23a7c84596494d3e87183e536baf9e9fb4704 t/data/chapter3_multi_test/test
 SHA1 eca0b6f6abfe4af6d33c039268c86da6ffbcc030 t/data/chapter3_null_feat/data
 SHA1 dc4ce6650b094a49e86ce22a51fa1c6ad11f6c9c t/data/chapter3_null_feat/test
 SHA1 6a3736551f10bee6a853c00a1a71dd6695c5e836 t/data/finnverb.pl
-SHA1 3376c50000f046c3c987abe1e5e3749a314de683 t/data/finnverb/amcpresults
+SHA1 73b27b78a7ea02e07c1b066b20d8e475306e1bcf t/data/finnverb/amcpresults
 SHA1 c715612630d22da8152e2996304db433d504c34a t/data/finnverb/data
 SHA1 c715612630d22da8152e2996304db433d504c34a t/data/finnverb/test
 SHA1 fd6f73b19c082d7405817f174c1961924788b1be t/perlcriticrc
@@ -77,11 +77,11 @@ SHA1 908006d84644bf6b035ae951f4c187aef141e375 xt/release/unused-vars.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2.0.17 (MingW32)
 
-iQEcBAEBAgAGBQJRlArNAAoJEF8b+BZrlpb0dxMH/1ASR8ggHTN8O+hfIgae5i9j
-5vbC4dxoU8FO52zljdHCIJzRg4JlWgC+NE1BVZE3gsLL6KNIs8lG6hfGq/flyvw3
-YlbSEqplOodEdIzsGIDS4yYCbC5hrdVYPRz0gpYx7iYyxtyu21i10yGbFzz+pDIY
-krTl8JursCsuysJymj9/xsE+sisfVLRYcww9gXDRg69Xa+tKV+6cjp/YdzsZLS/a
-isEZXM893fXo+B1AEz+mP+o5P935Kw4EPs4EuNcFOUF7xW6tNbEytP0kmyQODw23
-W9mCPuJrSzdXgJU7xOPpHPoXErSrVV+fSWm7Rd1GjrdW/A6nRp8iSfXR1tU/DRg=
-=7FyE
+iQEcBAEBAgAGBQJRp8aUAAoJEF8b+BZrlpb0V4AH/Rc5gM26bHMEiRL2x290GXMv
+ojOZjp7MyDdqVV0akohRK+As8mWJA48YNFHgQXAbIsOHWfj5qhLYpo08Iyo0lB8u
+jOoJnzDcojmcZAJ0xh2xDBexB2TW9Yw6Hv+o6zr7gx5A0ARdYrl3kwDhu/ln0R0P
+q9Jyf2+rl5T5xJqQxE8yAoNwl88LKgQruGhINSfN9f8KLYQrm9Sm5eF5Ruw7TLmH
+Ir91VhuUze9IONDCdkL4OlfyFkFHLYYrS4O+dBir+O+QaJJZ3sf+RAepvsp/DJNq
+ddJLFmX+b35N62drh5WtZQo2+l6y5HrBsvvzEnAP0nyVmsoH9edCfJ1fIAluoYc=
+=hG0u
 -----END PGP SIGNATURE-----

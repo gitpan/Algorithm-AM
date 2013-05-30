@@ -26,8 +26,14 @@ no_index:
     - 'inc t xt examples share eg mylib'
 provides:
   Algorithm::AM:
+    file: lib/Algorithm/AM.pm
+    version: 2.32
+  Algorithm::AM::algorithm:
+    file: lib/Algorithm/AM/algorithm.pod
+    version: 2.32
+  Algorithm::AM::lattice:
     file: lib/Algorithm/AM/lattice.pod
-    version: 2.31
+    version: 2.32
 requires:
   Carp: 0
   Data::Dumper: 0
@@ -46,7 +52,7 @@ resources:
   homepage: https://github.com/garfieldnate/Algorithm-AM
   license: http://dev.perl.org/licenses/
   repository: https://github.com/garfieldnate/Algorithm-AM.git
-version: 2.31
+version: 2.32
 x_BuiltWith:
   modules:
     Carp: 1.26
