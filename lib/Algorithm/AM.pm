@@ -1,7 +1,7 @@
 #
 # This file is part of Algorithm-AM
 #
-# This software is copyright (c) 2013 by Royall Skousen.
+# This software is copyright (c) 2013 by Royal Skousen.
 #
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
@@ -13,7 +13,7 @@ use strict;
 use warnings;
 use feature 'switch';
 
-our $VERSION = '2.32'; # VERSION;
+our $VERSION = '2.33'; # TRIAL VERSION;
 
 require XSLoader;
 XSLoader::load();
@@ -216,9 +216,9 @@ sub new {
 
     #TODO: create a subroutine for this
     open my $dataset_fh, '<', "$project/data" ## no critic (RequireBriefOpen)
-      or carp "Couldn't open $project/data" and return sub { };
+      or carp "Couldn't open $project/data" and return { };
     while (<$dataset_fh>) {
-        chomp;
+        s/[\n\r]+$//;#cross-platform chomp
         my ( $outcome, $data, $spec ) = split /$bigsep/, $_, 3;
         $spec ||= $data;
         my $l;
@@ -258,7 +258,7 @@ sub new {
     if ( -e "$project/outcome" ) {
         open my $outcome_fh, '<', "$project/outcome";
         while (<$outcome_fh>) {
-            chomp;
+            s/[\n\r]+$//;#cross-platform chomp
             my ( $oc, $outcome ) = split /\s+/, $_, 2;
             $octonum{$oc}           = ++$outcomecounter;
             $outcometonum{$outcome} = $outcomecounter;
@@ -310,7 +310,13 @@ sub new {
       and open $test_fh, '<', "$project/data";
     my (@testItems) = <$test_fh>;
     close $test_fh;
-    chomp(@testItems);
+    #cross-platform chomp
+    @testItems = map
+    {
+         my $item = $_;
+         $item =~ s/[\n\r]+$//;
+         $item;
+    } @testItems;
     my $item;
     ( undef, $item ) = split /$bigsep/, $testItems[0];
 
@@ -555,7 +561,7 @@ Algorithm::AM - Perl extension for Analogical Modeling using a parallel algorith
 
 =head1 VERSION
 
-version 2.32
+version 2.33
 
 =head1 AUTHOR
 
@@ -563,7 +569,7 @@ Theron Stanford <shixilun@yahoo.com>, Nathan Glenn <garfieldnate@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Royall Skousen.
+This software is copyright (c) 2013 by Royal Skousen.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

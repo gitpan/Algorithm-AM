@@ -15,22 +15,22 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 1ddc3926bb303267f44df6f3a290b2ccff303980 AM.xs
-SHA1 64381be87de18fd06760642d3494e8f0b386ddae Changes
+SHA1 c44c2995044fccf20937af43a0c056e398269d89 Changes
 SHA1 d6c57d8b2f151c8ba9b5ac0c69c825659742e4c8 INSTALL
-SHA1 64da5f3324e02adf720d82dff6e8b1802ef3dcc8 LICENSE
+SHA1 984d6fd9c87297f3906143f8f27149fc381a77db LICENSE
 SHA1 395fbcb2fb29ea2f1df3a8bbaef1a8e4922cb644 MANIFEST
 SHA1 c7ec3399baf5029755e947427ea1d14b4937c14f MANIFEST.SKIP
-SHA1 2dbcc041d099199bac7eae2ccd1a2219d4119eae META.json
-SHA1 e2acb63a9c84b9f98764223ce09407a147d6dc5f META.yml
-SHA1 1ecc459ca6fc2d5534a9159e4cfcbefbba8f5d5c Makefile.PL
-SHA1 4f2df27165950fa0a527b181e91acc09e6dcf654 README
-SHA1 e728bee7cae5575013daa9eb4e058dfe40769a1a dist.ini
-SHA1 60723dd41541bcc5f1d9b30f95a7dad17dcbeade lib/Algorithm/AM.pm
-SHA1 4a1abc216bbb86eae410adb78ed4a3405693e0a6 lib/Algorithm/AM/algorithm.pod
-SHA1 2145a5b4748a5af8e5984338bca02fbffb703021 lib/Algorithm/AM/lattice.pod
+SHA1 7c899769ac6378e2f4cb2fdcd1f66074ac00444e META.json
+SHA1 6661788f7287ad0748adcfa0a90cef1ab0e28b64 META.yml
+SHA1 147ace058bf9984a507e3173c9fa4be1d0b58481 Makefile.PL
+SHA1 26dad3d8358e3347cf801536b59259209f23dfd3 README
+SHA1 9276ceec6416825b876db2fef204210b6ad461a2 dist.ini
+SHA1 801782662cf5dc9484752d155558b49207448f4c lib/Algorithm/AM.pm
+SHA1 b8812f314a3df22fa496ea1d9adb43b1642b13b2 lib/Algorithm/AM/algorithm.pod
+SHA1 6b4afefa7e1ebd446d399c9fa5fd90d898a431f8 lib/Algorithm/AM/lattice.pod
 SHA1 c054a2091499b95ffe8d55ac21f6d9637c2ca8e5 ppport.h
 SHA1 0365fd20ade4e407ba91d5c1f594a66bb2ef37e7 t/0-use.t
-SHA1 a545ea6ef78625543db191a7ec3eab387aa08e22 t/00-compile.t
+SHA1 98c4d822e259e84b02c0efff431a66ef05eaa0a0 t/00-compile.t
 SHA1 446e3e81c8c94297e702a00b220c346411f5e954 t/000-report-versions-tiny.t
 SHA1 a661460ff46e94685fc747a6de0259a8aa767bf8 t/01-classify.t
 SHA1 b10a0a1141c0cd6363af7050737aeb175a7fa574 t/01-finnverb.t
@@ -54,34 +54,34 @@ SHA1 eca0b6f6abfe4af6d33c039268c86da6ffbcc030 t/data/chapter3_multi_test/data
 SHA1 6bc23a7c84596494d3e87183e536baf9e9fb4704 t/data/chapter3_multi_test/test
 SHA1 eca0b6f6abfe4af6d33c039268c86da6ffbcc030 t/data/chapter3_null_feat/data
 SHA1 dc4ce6650b094a49e86ce22a51fa1c6ad11f6c9c t/data/chapter3_null_feat/test
-SHA1 6a3736551f10bee6a853c00a1a71dd6695c5e836 t/data/finnverb.pl
-SHA1 73b27b78a7ea02e07c1b066b20d8e475306e1bcf t/data/finnverb/amcpresults
+SHA1 10f2c107dd5c0a429d277cb51bd7646012484263 t/data/finnverb.pl
+SHA1 dd5d61cfce9afd2d27f9faa1efc0c59d3be37751 t/data/finnverb/amcpresults
 SHA1 c715612630d22da8152e2996304db433d504c34a t/data/finnverb/data
 SHA1 c715612630d22da8152e2996304db433d504c34a t/data/finnverb/test
 SHA1 fd6f73b19c082d7405817f174c1961924788b1be t/perlcriticrc
-SHA1 ab55100461f1562b5c8593d3c0253c392ec8a905 xt/author/critic.t
-SHA1 1f5cb909e31cb9c9ef0ca4ff2c466543eb91a147 xt/release/cpan-changes.t
-SHA1 aacee6a05f519414449da7111025f3f06016def0 xt/release/dist-manifest.t
-SHA1 a185deb6020f477cd4e9f4f0a4761bf1681c62df xt/release/distmeta.t
-SHA1 c4239c21d04800c7831adeabea8e16088b46d924 xt/release/kwalitee.t
-SHA1 b74540d6ba7317fcc787223ed99782dc0aafaea8 xt/release/meta-json.t
-SHA1 3d7521ec1a5cf171b6d1e141a6a7f7f56dab0ea3 xt/release/minimum-version.t
-SHA1 14430e4bd8a752577f67338136df02881c35a7c7 xt/release/mojibake.t
-SHA1 403486fb49dc33bed6f2f5b43fb53548349f3e33 xt/release/pod-coverage.t
-SHA1 ee1d4d86f5d781e4f167568d883c6609cc78e021 xt/release/pod-linkcheck.t
-SHA1 ebd154e42644bbf7517cd3a9e7f1e4dee1d4dd87 xt/release/pod-syntax.t
-SHA1 aa673c847796ac068d5bcf5b130be23e02f19ada xt/release/portability.t
-SHA1 2e652d81f69d41155ab8c964443b4c4079a0d846 xt/release/synopsis.t
+SHA1 5eff83850ba9ce608c6f2ec6b10178d434defe26 xt/author/critic.t
+SHA1 12be2af6a628ad18bb92f81e9016f1e48670001c xt/release/cpan-changes.t
+SHA1 ee2b5f5f9628a23589bddecaf1f22fdbccf59d6c xt/release/dist-manifest.t
+SHA1 a7b0027fd138f6825986d23ad7bd5cb42290572b xt/release/distmeta.t
+SHA1 4d77b8c88f53bb17b9a86be13d510fa88b38c4f6 xt/release/kwalitee.t
+SHA1 043d590ebd6e1dee913c7c7be068909d4b9f5610 xt/release/meta-json.t
+SHA1 22eb7a192219ff0a24c76bd4c42706bd475ea729 xt/release/minimum-version.t
+SHA1 509c28bc14a7a73bf7ca938ce23a7d0531fb5473 xt/release/mojibake.t
+SHA1 0e054963894abb26c7198c3b16e13d07fb7cd12c xt/release/pod-coverage.t
+SHA1 d3b121eba817c63cf48fe29a824635532cbf39bd xt/release/pod-linkcheck.t
+SHA1 49e659abba4bed4305f62f47e4d34afa74aa3dd3 xt/release/pod-syntax.t
+SHA1 5927de72512c1c118fdfb9e275ccaf82b4a6dbce xt/release/portability.t
+SHA1 29f1a6f41f73b956967b0915773861aa76cb8d0f xt/release/synopsis.t
 SHA1 bbcd59d081d9940af5d43337ae85458075933829 xt/release/test-version.t
-SHA1 908006d84644bf6b035ae951f4c187aef141e375 xt/release/unused-vars.t
+SHA1 78f94f50ec5c73e0c66ad2c7bd3ecce870d99c5b xt/release/unused-vars.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2.0.17 (MingW32)
 
-iQEcBAEBAgAGBQJRp8aUAAoJEF8b+BZrlpb0V4AH/Rc5gM26bHMEiRL2x290GXMv
-ojOZjp7MyDdqVV0akohRK+As8mWJA48YNFHgQXAbIsOHWfj5qhLYpo08Iyo0lB8u
-jOoJnzDcojmcZAJ0xh2xDBexB2TW9Yw6Hv+o6zr7gx5A0ARdYrl3kwDhu/ln0R0P
-q9Jyf2+rl5T5xJqQxE8yAoNwl88LKgQruGhINSfN9f8KLYQrm9Sm5eF5Ruw7TLmH
-Ir91VhuUze9IONDCdkL4OlfyFkFHLYYrS4O+dBir+O+QaJJZ3sf+RAepvsp/DJNq
-ddJLFmX+b35N62drh5WtZQo2+l6y5HrBsvvzEnAP0nyVmsoH9edCfJ1fIAluoYc=
-=hG0u
+iQEcBAEBAgAGBQJRrXmVAAoJEF8b+BZrlpb0jRMH/1+mXbPEGL84cizyg1DPHm5g
+HbY46gEO1XyMLYRXTAg3QSgOC6YAJ7rf8gtHaUYWU6+dXt8H9h3BAXgsw7PNULoF
+bpS61siTJ4cGL4yaTG0zFNMUFgb+dgGAdM9zLQb7YySPSY/xVPv9WWOAU2AqaBxB
+oliPDwgRO4CCjltDTMEG1QWMS2iV3bqZFLKu1v4xEH4XXBAj4jFofhO9EiEflEB7
+NRs8rM4b0v4xpStg2+n9bUHD3yioLSKFizP7LQ1/mZ3EdVzz3kvnyWdufpbvdB4/
+Yrz9wvTJ+nFGTbJcJjWQWRn778zUpupAn+5sVFuHVfmhgzV2ZV96dsYjPx/TlSU=
+=vfa/
 -----END PGP SIGNATURE-----
