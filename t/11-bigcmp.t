@@ -2,11 +2,11 @@
 use strict;
 use warnings;
 use Test::More 0.88;
-plan tests => 5;
-use Algorithm::AM;
+plan tests => 6;
+use Test::NoWarnings;
+use Algorithm::AM qw(bigcmp);
 use FindBin qw($Bin);
 use Path::Tiny;
-use Data::Dumper;
 
 use vars qw(@sum);
 use subs qw(bigcmp);
@@ -16,10 +16,10 @@ my $results_path = path($project_path, 'amcpresults');
 
 my $am = Algorithm::AM->new(
 	$project_path,
-	-commas => 'no',
+	commas => 'no',
 );
 $am->classify(
-	-endhook => \&endhook,
+	endhook => \&endhook,
 );
 
 #cleanup amcpresults file
@@ -27,12 +27,13 @@ unlink $results_path
 	if -e $results_path;
 
 sub endhook {
-	test_bigcmp();
+	test_bigcmp(@_);
 }
 
 #compare the pointer counts, which should be 4 and 9 for the chapter 3 data
 sub test_bigcmp {
-	my ($a, $b) = @sum[1,2];
+	my ($am, $data) = @_;
+	my ($a, $b) = @{$am->{sum}}[1,2];
 	is("$a", '4', 'compare 9');
 	is("$b", '9', 'and 4');
 	is(bigcmp($a, $b), -1, '4 is smaller than 9');

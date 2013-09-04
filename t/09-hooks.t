@@ -1,10 +1,12 @@
 #test hooks
 use strict;
 use warnings;
-use Test::More 0.88;
-plan tests => 3;
-use Test::LongString;
 use Algorithm::AM;
+use Test::More 0.88;
+plan tests => 4;
+use Test::NoWarnings;
+use Test::LongString;
+
 use FindBin qw($Bin);
 use Path::Tiny;
 use File::Slurp;
@@ -14,15 +16,15 @@ my $results_path = path($project_path, 'amcpresults');
 
 my $am = Algorithm::AM->new(
 	$project_path,
-	-commas => 'no',
-	-repeat => 2,
+	commas => 'no',
+	repeat => 2,
 );
 
 #first test that each hook is called at the appropriate time
 #by recording the call of each hook in @record
 my @record;
 my @args;
-push @args, ("-$_", record_hook($_))
+push @args, ("$_", record_hook($_))
 	for qw(
 		beginhook
 		begintesthook
@@ -70,13 +72,13 @@ unlink $results_path
 
 #now check that the return value of datahook is correctly interpreted
 $am->classify(
-	-datahook 	=> sub {
-		my ($index) = @_;
+	datahook 	=> sub {
+		my ($am, $data, $index) = @_;
 		#will be false for index 0, so index 0 will be removed
 		return $index;
 	},
-	-repeat => 1,
-	-gangs => 'yes',
+	repeat => 1,
+	gangs => 'yes',
 );
 
 my $results = read_file($results_path);

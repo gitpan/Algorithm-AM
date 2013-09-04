@@ -1,7 +1,7 @@
 Test items left: 173
-Time: 21:25:42
+Time: 22:30:38
 A A 0 = 0 = 0 = J A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  A A 0 = 0 = 0 = J A, AJA
 If context is in data file then exclude
 Number of data items: 173
@@ -9,19 +9,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-B  530  100.000%
-   ---
-   530
-Expected outcome: B
+VIRKKA  530  100.000%
+        ---
+        530
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 172
-Time: 21:25:42
+Time: 22:30:38
 A A 0 = S L 0 = K A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  A A 0 = S L 0 = K A, ALKA
 If context is in data file then exclude
 Number of data items: 173
@@ -29,21 +28,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  326   38.949%
-B  503   60.096%
-C    8    0.956%
-   ---
-   837
-Expected outcome: B
+VIRKKA  503   60.096%
+VaaNTa    8    0.956%
+YLTa    326   38.949%
+        ---
+        837
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 171
-Time: 21:25:42
+Time: 22:30:38
 A A 0 = S N 0 = T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  A A 0 = S N 0 = T A, ANTA
 If context is in data file then exclude
 Number of data items: 173
@@ -51,19 +49,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-B  657  100.000%
-   ---
-   657
-Expected outcome: B
+VIRKKA  657  100.000%
+        ---
+        657
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 170
-Time: 21:25:42
+Time: 22:30:38
 A A V U 0 = O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  A A V U 0 = O T T A, AUTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -71,20 +68,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A    96    2.874%
-B  3244   97.126%
-   ----
-   3340
-Expected outcome: B
+VIRKKA  3244   97.126%
+YLTa      96    2.874%
+        ----
+        3340
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 169
-Time: 21:25:42
+Time: 22:30:38
 E E 0 = 0 = 0 = L a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  E E 0 = 0 = 0 = L a, ELa
 If context is in data file then exclude
 Number of data items: 173
@@ -92,20 +88,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  450   91.837%
-B   40    8.163%
-   ---
-   490
-Expected outcome: A
+VIRKKA   40    8.163%
+YLTa    450   91.837%
+        ---
+        490
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 168
-Time: 21:25:42
+Time: 22:30:38
 E E 0 = 0 = O S T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  E E 0 = 0 = O S T a, ESTa
 If context is in data file then exclude
 Number of data items: 173
@@ -113,19 +108,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5127  100.000%
-   ----
-   5127
-Expected outcome: A
+YLTa    5127  100.000%
+        ----
+        5127
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 167
-Time: 21:25:42
+Time: 22:30:38
 H A V A 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H A V A 0 = O S T A, HAASTA
 If context is in data file then exclude
 Number of data items: 173
@@ -133,19 +127,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-B  3924  100.000%
-   ----
-   3924
-Expected outcome: B
+VIRKKA  3924  100.000%
+        ----
+        3924
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 166
-Time: 21:25:42
+Time: 22:30:38
 H A V I 0 = 0 = S E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H A V I 0 = 0 = S E, HAISE
 If context is in data file then exclude
 Number of data items: 173
@@ -153,21 +146,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  2788   98.031%
-B    44    1.547%
-C    12    0.422%
-   ----
-   2844
-Expected outcome: A
+VIRKKA    44    1.547%
+VaaNTa    12    0.422%
+YLTa    2788   98.031%
+        ----
+        2844
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 165
-Time: 21:25:42
+Time: 22:30:38
 H A V I 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H A V I 0 = O S T A, HAISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -175,20 +167,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   144    3.685%
-B  3764   96.315%
-   ----
-   3908
-Expected outcome: B
+VIRKKA  3764   96.315%
+YLTa     144    3.685%
+        ----
+        3908
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 164
-Time: 21:25:42
+Time: 22:30:38
 H A 0 = 0 = 0 = K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H A 0 = 0 = 0 = K E, HAKE
 If context is in data file then exclude
 Number of data items: 173
@@ -196,20 +187,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  5023   99.801%
-B    10    0.199%
-   ----
-   5033
-Expected outcome: A
+VIRKKA    10    0.199%
+YLTa    5023   99.801%
+        ----
+        5033
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 163
-Time: 21:25:42
+Time: 22:30:38
 H E V I 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H E V I 0 = O T T a, HEITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -217,19 +207,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  14117  100.000%
-   -----
-   14117
-Expected outcome: A
+YLTa    14117  100.000%
+        -----
+        14117
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 162
-Time: 21:25:42
+Time: 22:30:38
 H I V I 0 = O H T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H I V I 0 = O H T a, HIIHTa
 If context is in data file then exclude
 Number of data items: 173
@@ -237,20 +226,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  9721   98.620%
-B   136    1.380%
-   ----
-   9857
-Expected outcome: A
+VIRKKA   136    1.380%
+YLTa    9721   98.620%
+        ----
+        9857
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 161
-Time: 21:25:42
+Time: 22:30:38
 H O 0 = 0 = O H T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H O 0 = 0 = O H T A, HOHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -258,20 +246,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  4634   99.656%
-B    16    0.344%
-   ----
-   4650
-Expected outcome: A
+VIRKKA    16    0.344%
+YLTa    4634   99.656%
+        ----
+        4650
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 160
-Time: 21:25:42
+Time: 22:30:38
 H O V I 0 = 0 = T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H O V I 0 = 0 = T A, HOITA
 If context is in data file then exclude
 Number of data items: 173
@@ -279,21 +266,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3912   98.938%
-B     8    0.202%
-C    34    0.860%
-   ----
-   3954
-Expected outcome: A
+VIRKKA     8    0.202%
+VaaNTa    34    0.860%
+YLTa    3912   98.938%
+        ----
+        3954
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 159
-Time: 21:25:42
+Time: 22:30:38
 H U V O S L 0 = T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H U V O S L 0 = T A, HUOLTA
 If context is in data file then exclude
 Number of data items: 173
@@ -301,20 +287,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  300   33.040%
-C  608   66.960%
-   ---
-   908
-Expected outcome: C
+VaaNTa  608   66.960%
+YLTa    300   33.040%
+        ---
+        908
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 158
-Time: 21:25:42
+Time: 22:30:38
 H U V U 0 = 0 = T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  H U V U 0 = 0 = T A, HUUTA
 If context is in data file then exclude
 Number of data items: 173
@@ -322,20 +307,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  1256   98.279%
-C    22    1.721%
-   ----
-   1278
-Expected outcome: C
+VaaNTa    22    1.721%
+YLTa    1256   98.279%
+        ----
+        1278
+Expected outcome: VaaNTa
 Incorrect outcome predicted
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 157
-Time: 21:25:42
+Time: 22:30:38
 I I 0 = 0 = 0 = M E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  I I 0 = 0 = 0 = M E, IME
 If context is in data file then exclude
 Number of data items: 173
@@ -343,19 +327,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  3385  100.000%
-   ----
-   3385
-Expected outcome: A
+YLTa    3385  100.000%
+        ----
+        3385
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 156
-Time: 21:25:42
+Time: 22:30:38
 I I 0 = 0 = O S K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  I I 0 = 0 = O S K E, ISKE
 If context is in data file then exclude
 Number of data items: 173
@@ -363,19 +346,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5574  100.000%
-   ----
-   5574
-Expected outcome: A
+YLTa    5574  100.000%
+        ----
+        5574
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 155
-Time: 21:25:42
+Time: 22:30:38
 I I 0 = 0 = O T K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  I I 0 = 0 = O T K E, ITKE
 If context is in data file then exclude
 Number of data items: 173
@@ -383,19 +365,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5550  100.000%
-   ----
-   5550
-Expected outcome: A
+YLTa    5550  100.000%
+        ----
+        5550
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 154
-Time: 21:25:42
+Time: 22:30:38
 I I 0 = 0 = 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  I I 0 = 0 = 0 = T a, ITa
 If context is in data file then exclude
 Number of data items: 173
@@ -403,19 +384,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  312  100.000%
-   ---
-   312
-Expected outcome: A
+YLTa    312  100.000%
+        ---
+        312
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 153
-Time: 21:25:42
+Time: 22:30:38
 J A 0 = 0 = 0 = K A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  J A 0 = 0 = 0 = K A, JAKA
 If context is in data file then exclude
 Number of data items: 173
@@ -423,20 +403,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  100   15.873%
-B  530   84.127%
-   ---
-   630
-Expected outcome: B
+VIRKKA  530   84.127%
+YLTa    100   15.873%
+        ---
+        630
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 152
-Time: 21:25:42
+Time: 22:30:38
 J A 0 = 0 = O K S A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  J A 0 = 0 = O K S A, JAKSA
 If context is in data file then exclude
 Number of data items: 173
@@ -444,20 +423,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A    12    0.875%
-B  1359   99.125%
-   ----
-   1371
-Expected outcome: B
+VIRKKA  1359   99.125%
+YLTa      12    0.875%
+        ----
+        1371
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 151
-Time: 21:25:42
+Time: 22:30:38
 J A 0 = 0 = O T K A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  J A 0 = 0 = O T K A, JATKA
 If context is in data file then exclude
 Number of data items: 173
@@ -465,20 +443,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A   412   20.206%
-B  1627   79.794%
-   ----
-   2039
-Expected outcome: B
+VIRKKA  1627   79.794%
+YLTa     412   20.206%
+        ----
+        2039
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 150
-Time: 21:25:42
+Time: 22:30:38
 J A V U 0 = 0 = H A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  J A V U 0 = 0 = H A, JAUHA
 If context is in data file then exclude
 Number of data items: 173
@@ -486,20 +463,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A   30   17.045%
-B  146   82.955%
-   ---
-   176
-Expected outcome: B
+VIRKKA  146   82.955%
+YLTa     30   17.045%
+        ---
+        176
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 149
-Time: 21:25:42
+Time: 22:30:38
 J O 0 = 0 = O H T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  J O 0 = 0 = O H T A, JOHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -507,20 +483,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  4666   99.446%
-B    26    0.554%
-   ----
-   4692
-Expected outcome: A
+VIRKKA    26    0.554%
+YLTa    4666   99.446%
+        ----
+        4692
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 148
-Time: 21:25:42
+Time: 22:30:38
 J O V U 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  J O V U 0 = O S T A, JOUSTA
 If context is in data file then exclude
 Number of data items: 173
@@ -528,20 +503,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  5749   99.275%
-B    42    0.725%
-   ----
-   5791
-Expected outcome: A
+VIRKKA    42    0.725%
+YLTa    5749   99.275%
+        ----
+        5791
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 147
-Time: 21:25:42
+Time: 22:30:38
 J U V O 0 = O K S E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  J U V O 0 = O K S E, JUOKSE
 If context is in data file then exclude
 Number of data items: 173
@@ -549,20 +523,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  2948   99.595%
-B    12    0.405%
-   ----
-   2960
-Expected outcome: A
+VIRKKA    12    0.405%
+YLTa    2948   99.595%
+        ----
+        2960
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 146
-Time: 21:25:42
+Time: 22:30:38
 J a 0 = 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  J a 0 = 0 = O T T a, JaTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -570,20 +543,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  8244   99.903%
-B     8    0.097%
-   ----
-   8252
-Expected outcome: A
+VIRKKA     8    0.097%
+YLTa    8244   99.903%
+        ----
+        8252
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 145
-Time: 21:25:42
+Time: 22:30:38
 J a V Y 0 = 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  J a V Y 0 = 0 = T a, JaYTa
 If context is in data file then exclude
 Number of data items: 173
@@ -591,21 +563,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A   974   90.185%
-B    10    0.926%
-C    96    8.889%
-   ----
-   1080
-Expected outcome: A
+VIRKKA    10    0.926%
+VaaNTa    96    8.889%
+YLTa     974   90.185%
+        ----
+        1080
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 144
-Time: 21:25:42
+Time: 22:30:38
 K A V A 0 = 0 = T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K A V A 0 = 0 = T A, KAATA
 If context is in data file then exclude
 Number of data items: 173
@@ -613,21 +584,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A    5    0.710%
-B  694   98.580%
-C    5    0.710%
-   ---
-   704
-Expected outcome: B
+VIRKKA  694   98.580%
+VaaNTa    5    0.710%
+YLTa      5    0.710%
+        ---
+        704
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 143
-Time: 21:25:42
+Time: 22:30:38
 K A V I 0 = O H T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K A V I 0 = O H T A, KAIHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -635,20 +605,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   344    8.830%
-B  3552   91.170%
-   ----
-   3896
-Expected outcome: B
+VIRKKA  3552   91.170%
+YLTa     344    8.830%
+        ----
+        3896
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 142
-Time: 21:25:42
+Time: 22:30:38
 K A V I 0 = 0 = V A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K A V I 0 = 0 = V A, KAIVA
 If context is in data file then exclude
 Number of data items: 173
@@ -656,21 +625,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A    6    3.333%
-B  166   92.222%
-C    8    4.444%
-   ---
-   180
-Expected outcome: B
+VIRKKA  166   92.222%
+VaaNTa    8    4.444%
+YLTa      6    3.333%
+        ---
+        180
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 141
-Time: 21:25:42
+Time: 22:30:38
 K A 0 = S N 0 = T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K A 0 = S N 0 = T A, KANTA
 If context is in data file then exclude
 Number of data items: 173
@@ -678,21 +646,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A   65    8.442%
-B  703   91.299%
-C    2    0.260%
-   ---
-   770
-Expected outcome: B
+VIRKKA  703   91.299%
+VaaNTa    2    0.260%
+YLTa     65    8.442%
+        ---
+        770
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 140
-Time: 21:25:42
+Time: 22:30:38
 K A 0 = S R O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K A 0 = S R O T T A, KARTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -700,20 +667,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-B  1982   97.062%
-C    60    2.938%
-   ----
-   2042
-Expected outcome: B
+VIRKKA  1982   97.062%
+VaaNTa    60    2.938%
+        ----
+        2042
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 139
-Time: 21:25:42
+Time: 22:30:38
 K A 0 = 0 = O S V A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K A 0 = 0 = O S V A, KASVA
 If context is in data file then exclude
 Number of data items: 173
@@ -721,20 +687,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A   698   32.121%
-B  1475   67.879%
-   ----
-   2173
-Expected outcome: B
+VIRKKA  1475   67.879%
+YLTa     698   32.121%
+        ----
+        2173
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 138
-Time: 21:25:42
+Time: 22:30:38
 K A 0 = 0 = O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K A 0 = 0 = O T T A, KATTA
 If context is in data file then exclude
 Number of data items: 173
@@ -742,20 +707,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A   187    6.075%
-B  2891   93.925%
-   ----
-   3078
-Expected outcome: B
+VIRKKA  2891   93.925%
+YLTa     187    6.075%
+        ----
+        3078
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 137
-Time: 21:25:42
+Time: 22:30:38
 K E V I 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K E V I 0 = O T T a, KEITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -763,19 +727,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  14603  100.000%
-   -----
-   14603
-Expected outcome: A
+YLTa    14603  100.000%
+        -----
+        14603
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 136
-Time: 21:25:42
+Time: 22:30:38
 K E 0 = 0 = O S T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K E 0 = 0 = O S T a, KESTa
 If context is in data file then exclude
 Number of data items: 173
@@ -783,19 +746,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5274  100.000%
-   ----
-   5274
-Expected outcome: A
+YLTa    5274  100.000%
+        ----
+        5274
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 135
-Time: 21:25:42
+Time: 22:30:38
 K I V E S L 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K I V E S L 0 = T a, KIELTa
 If context is in data file then exclude
 Number of data items: 173
@@ -803,20 +765,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A    40    2.874%
-C  1352   97.126%
-   ----
-   1392
-Expected outcome: C
+VaaNTa  1352   97.126%
+YLTa      40    2.874%
+        ----
+        1392
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 134
-Time: 21:25:42
+Time: 22:30:38
 K I V E S R 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K I V E S R 0 = T a, KIERTa
 If context is in data file then exclude
 Number of data items: 173
@@ -824,20 +785,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-B     4    0.238%
-C  1676   99.762%
-   ----
-   1680
-Expected outcome: C
+VIRKKA     4    0.238%
+VaaNTa  1676   99.762%
+        ----
+        1680
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 133
-Time: 21:25:42
+Time: 22:30:38
 K I V I 0 = O S T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K I V I 0 = O S T a, KIISTa
 If context is in data file then exclude
 Number of data items: 173
@@ -845,19 +805,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  11262  100.000%
-   -----
-   11262
-Expected outcome: A
+YLTa    11262  100.000%
+        -----
+        11262
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 132
-Time: 21:25:42
+Time: 22:30:38
 K I V I 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K I V I 0 = O T T a, KIITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -865,19 +824,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  16770  100.000%
-   -----
-   16770
-Expected outcome: A
+YLTa    16770  100.000%
+        -----
+        16770
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 131
-Time: 21:25:42
+Time: 22:30:38
 K I V I 0 = 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K I V I 0 = 0 = T a, KIITa
 If context is in data file then exclude
 Number of data items: 173
@@ -885,21 +843,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  1389   92.972%
-B     5    0.335%
-C   100    6.693%
-   ----
-   1494
-Expected outcome: A
+VIRKKA     5    0.335%
+VaaNTa   100    6.693%
+YLTa    1389   92.972%
+        ----
+        1494
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 130
-Time: 21:25:42
+Time: 22:30:38
 K I 0 = 0 = O T K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K I 0 = 0 = O T K E, KITKE
 If context is in data file then exclude
 Number of data items: 173
@@ -907,19 +864,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  6215  100.000%
-   ----
-   6215
-Expected outcome: A
+YLTa    6215  100.000%
+        ----
+        6215
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 129
-Time: 21:25:42
+Time: 22:30:38
 K O V I 0 = O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K O V I 0 = O T T A, KOITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -927,20 +883,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  6385   98.992%
-B    65    1.008%
-   ----
-   6450
-Expected outcome: A
+VIRKKA    65    1.008%
+YLTa    6385   98.992%
+        ----
+        6450
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 128
-Time: 21:25:42
+Time: 22:30:38
 K O 0 = 0 = 0 = K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K O 0 = 0 = 0 = K E, KOKE
 If context is in data file then exclude
 Number of data items: 173
@@ -948,19 +903,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  7074  100.000%
-   ----
-   7074
-Expected outcome: A
+YLTa    7074  100.000%
+        ----
+        7074
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 127
-Time: 21:25:42
+Time: 22:30:38
 K O 0 = 0 = O S K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K O 0 = 0 = O S K E, KOSKE
 If context is in data file then exclude
 Number of data items: 173
@@ -968,19 +922,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  7902  100.000%
-   ----
-   7902
-Expected outcome: A
+YLTa    7902  100.000%
+        ----
+        7902
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 126
-Time: 21:25:42
+Time: 22:30:38
 K O 0 = 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K O 0 = 0 = O S T A, KOSTA
 If context is in data file then exclude
 Number of data items: 173
@@ -988,20 +941,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5488   98.990%
-B    56    1.010%
-   ----
-   5544
-Expected outcome: A
+VIRKKA    56    1.010%
+YLTa    5488   98.990%
+        ----
+        5544
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 125
-Time: 21:25:42
+Time: 22:30:38
 K U 0 = S L 0 = K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K U 0 = S L 0 = K E, KULKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1009,20 +961,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  2310   99.741%
-C     6    0.259%
-   ----
-   2316
-Expected outcome: A
+VaaNTa     6    0.259%
+YLTa    2310   99.741%
+        ----
+        2316
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 124
-Time: 21:25:42
+Time: 22:30:38
 K U V O 0 = 0 = L E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K U V O 0 = 0 = L E, KUOLE
 If context is in data file then exclude
 Number of data items: 173
@@ -1030,19 +981,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3740  100.000%
-   ----
-   3740
-Expected outcome: A
+YLTa    3740  100.000%
+        ----
+        3740
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 123
-Time: 21:25:42
+Time: 22:30:38
 K U V U 0 = 0 = L E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K U V U 0 = 0 = L E, KUULE
 If context is in data file then exclude
 Number of data items: 173
@@ -1050,20 +1000,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3616   99.779%
-C     8    0.221%
-   ----
-   3624
-Expected outcome: A
+VaaNTa     8    0.221%
+YLTa    3616   99.779%
+        ----
+        3624
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 122
-Time: 21:25:42
+Time: 22:30:38
 K U V U S L 0 = T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K U V U S L 0 = T A, KUULTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1071,21 +1020,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   40    5.602%
-B   28    3.922%
-C  646   90.476%
-   ---
-   714
-Expected outcome: C
+VIRKKA   28    3.922%
+VaaNTa  646   90.476%
+YLTa     40    5.602%
+        ---
+        714
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 121
-Time: 21:25:42
+Time: 22:30:38
 K Y 0 = S L 0 = P E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K Y 0 = S L 0 = P E, KYLPE
 If context is in data file then exclude
 Number of data items: 173
@@ -1093,20 +1041,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  661   99.698%
-B    2    0.302%
-   ---
-   663
-Expected outcome: A
+VIRKKA    2    0.302%
+YLTa    661   99.698%
+        ---
+        663
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 120
-Time: 21:25:42
+Time: 22:30:38
 K Y 0 = S L 0 = V a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K Y 0 = S L 0 = V a, KYLVa
 If context is in data file then exclude
 Number of data items: 173
@@ -1114,21 +1061,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  322   95.266%
-B   12    3.550%
-C    4    1.183%
-   ---
-   338
-Expected outcome: A
+VIRKKA   12    3.550%
+VaaNTa    4    1.183%
+YLTa    322   95.266%
+        ---
+        338
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 119
-Time: 21:25:42
+Time: 22:30:38
 K Y 0 = S N 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K Y 0 = S N 0 = T a, KYNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1136,21 +1082,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  235   37.066%
-B   13    2.050%
-C  386   60.883%
-   ---
-   634
-Expected outcome: A
+VIRKKA   13    2.050%
+VaaNTa  386   60.883%
+YLTa    235   37.066%
+        ---
+        634
+Expected outcome: YLTa
 Incorrect outcome predicted
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 118
-Time: 21:25:42
+Time: 22:30:38
 K Y 0 = 0 = 0 = T E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K Y 0 = 0 = 0 = T E, KYTE
 If context is in data file then exclude
 Number of data items: 173
@@ -1158,21 +1103,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  3660   99.755%
-B     5    0.136%
-C     4    0.109%
-   ----
-   3669
-Expected outcome: A
+VIRKKA     5    0.136%
+VaaNTa     4    0.109%
+YLTa    3660   99.755%
+        ----
+        3669
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 117
-Time: 21:25:42
+Time: 22:30:38
 K Y 0 = 0 = O T K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K Y 0 = 0 = O T K E, KYTKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1180,19 +1124,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5887  100.000%
-   ----
-   5887
-Expected outcome: A
+YLTa    5887  100.000%
+        ----
+        5887
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 116
-Time: 21:25:42
+Time: 22:30:38
 K a 0 = 0 = O S K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K a 0 = 0 = O S K E, KaSKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1200,19 +1143,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  6392  100.000%
-   ----
-   6392
-Expected outcome: A
+YLTa    6392  100.000%
+        ----
+        6392
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 115
-Time: 21:25:42
+Time: 22:30:38
 K a 0 = 0 = O T K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K a 0 = 0 = O T K E, KaTKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1220,19 +1162,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  6504  100.000%
-   ----
-   6504
-Expected outcome: A
+YLTa    6504  100.000%
+        ----
+        6504
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 114
-Time: 21:25:42
+Time: 22:30:38
 K a V Y 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K a V Y 0 = O T T a, KaYTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1240,20 +1181,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  13891   99.950%
-C      7    0.050%
-   -----
-   13898
-Expected outcome: A
+VaaNTa      7    0.050%
+YLTa    13891   99.950%
+        -----
+        13898
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 113
-Time: 21:25:42
+Time: 22:30:38
 K a V a S N 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  K a V a S N 0 = T a, KaaNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1261,20 +1201,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A    24    1.876%
-C  1255   98.124%
-   ----
-   1279
-Expected outcome: C
+VaaNTa  1255   98.124%
+YLTa      24    1.876%
+        ----
+        1279
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 112
-Time: 21:25:42
+Time: 22:30:38
 L A V I 0 = O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L A V I 0 = O T T A, LAITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1282,20 +1221,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   600   13.819%
-B  3742   86.181%
-   ----
-   4342
-Expected outcome: B
+VIRKKA  3742   86.181%
+YLTa     600   13.819%
+        ----
+        4342
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 111
-Time: 21:25:42
+Time: 22:30:38
 L A 0 = 0 = O S K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L A 0 = 0 = O S K E, LASKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1303,20 +1241,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5066   82.240%
-B  1094   17.760%
-   ----
-   6160
-Expected outcome: A
+VIRKKA  1094   17.760%
+YLTa    5066   82.240%
+        ----
+        6160
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 110
-Time: 21:25:42
+Time: 22:30:38
 L A V U 0 = 0 = L A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L A V U 0 = 0 = L A, LAULA
 If context is in data file then exclude
 Number of data items: 173
@@ -1324,20 +1261,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  200   58.480%
-B  142   41.520%
-   ---
-   342
-Expected outcome: B
+VIRKKA  142   41.520%
+YLTa    200   58.480%
+        ---
+        342
+Expected outcome: VIRKKA
 Incorrect outcome predicted
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 109
-Time: 21:25:42
+Time: 22:30:38
 L E 0 = S N 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L E 0 = S N 0 = T a, LENTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1345,20 +1281,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  1007   99.703%
-C     3    0.297%
-   ----
-   1010
-Expected outcome: C
+VaaNTa     3    0.297%
+YLTa    1007   99.703%
+        ----
+        1010
+Expected outcome: VaaNTa
 Incorrect outcome predicted
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 108
-Time: 21:25:42
+Time: 22:30:38
 L I V I 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L I V I 0 = O T T a, LIITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1366,21 +1301,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  16125   99.814%
-B     16    0.099%
-C     14    0.087%
-   -----
-   16155
-Expected outcome: A
+VIRKKA     16    0.099%
+VaaNTa     14    0.087%
+YLTa    16125   99.814%
+        -----
+        16155
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 107
-Time: 21:25:42
+Time: 22:30:38
 L O V I 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L O V I 0 = O S T A, LOISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1388,19 +1322,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  6763  100.000%
-   ----
-   6763
-Expected outcome: A
+YLTa    6763  100.000%
+        ----
+        6763
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 106
-Time: 21:25:42
+Time: 22:30:38
 L U V I 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L U V I 0 = O S T A, LUISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1408,19 +1341,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  1352  100.000%
-   ----
-   1352
-Expected outcome: A
+YLTa    1352  100.000%
+        ----
+        1352
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 105
-Time: 21:25:42
+Time: 22:30:38
 L U 0 = 0 = 0 = K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L U 0 = 0 = 0 = K E, LUKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1428,20 +1360,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  5727   99.983%
-C     1    0.017%
-   ----
-   5728
-Expected outcome: A
+VaaNTa     1    0.017%
+YLTa    5727   99.983%
+        ----
+        5728
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 104
-Time: 21:25:42
+Time: 22:30:38
 L U V O 0 = O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L U V O 0 = O T T A, LUOTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1449,20 +1380,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  1268   98.754%
-B    16    1.246%
-   ----
-   1284
-Expected outcome: A
+VIRKKA    16    1.246%
+YLTa    1268   98.754%
+        ----
+        1284
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 103
-Time: 21:25:42
+Time: 22:30:38
 L U V U 0 = 0 = L E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L U V U 0 = 0 = L E, LUULE
 If context is in data file then exclude
 Number of data items: 173
@@ -1470,20 +1400,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3416   99.302%
-B    24    0.698%
-   ----
-   3440
-Expected outcome: A
+VIRKKA    24    0.698%
+YLTa    3416   99.302%
+        ----
+        3440
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 102
-Time: 21:25:42
+Time: 22:30:38
 L a 0 = 0 = O H T E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L a 0 = 0 = O H T E, LaHTE
 If context is in data file then exclude
 Number of data items: 173
@@ -1491,21 +1420,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3799   98.881%
-B    42    1.093%
-C     1    0.026%
-   ----
-   3842
-Expected outcome: A
+VIRKKA    42    1.093%
+VaaNTa     1    0.026%
+YLTa    3799   98.881%
+        ----
+        3842
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 101
-Time: 21:25:42
+Time: 22:30:38
 L o V Y 0 = 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  L o V Y 0 = 0 = T a, LoYTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1513,21 +1441,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  106   65.839%
-B    4    2.484%
-C   51   31.677%
-   ---
-   161
-Expected outcome: C
+VIRKKA    4    2.484%
+VaaNTa   51   31.677%
+YLTa    106   65.839%
+        ---
+        161
+Expected outcome: VaaNTa
 Incorrect outcome predicted
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 100
-Time: 21:25:42
+Time: 22:30:38
 M A 0 = 0 = O H T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  M A 0 = 0 = O H T A, MAHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1535,20 +1462,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A   160    6.395%
-B  2342   93.605%
-   ----
-   2502
-Expected outcome: B
+VIRKKA  2342   93.605%
+YLTa     160    6.395%
+        ----
+        2502
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 99
-Time: 21:25:42
+Time: 22:30:38
 M A V I 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  M A V I 0 = O S T A, MAISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1556,20 +1482,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   152    3.905%
-B  3740   96.095%
-   ----
-   3892
-Expected outcome: B
+VIRKKA  3740   96.095%
+YLTa     152    3.905%
+        ----
+        3892
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 98
-Time: 21:25:42
+Time: 22:30:38
 M A 0 = 0 = O K S A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  M A 0 = 0 = O K S A, MAKSA
 If context is in data file then exclude
 Number of data items: 173
@@ -1577,19 +1502,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-B  1382  100.000%
-   ----
-   1382
-Expected outcome: B
+VIRKKA  1382  100.000%
+        ----
+        1382
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 97
-Time: 21:25:42
+Time: 22:30:38
 M A 0 = S L O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  M A 0 = S L O T T A, MALTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1597,21 +1521,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   148    7.298%
-B  1866   92.012%
-C    14    0.690%
-   ----
-   2028
-Expected outcome: B
+VIRKKA  1866   92.012%
+VaaNTa    14    0.690%
+YLTa     148    7.298%
+        ----
+        2028
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 96
-Time: 21:25:42
+Time: 22:30:38
 M E 0 = 0 = 0 = N E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  M E 0 = 0 = 0 = N E, MENE
 If context is in data file then exclude
 Number of data items: 173
@@ -1619,21 +1542,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  3377   99.734%
-B     4    0.118%
-C     5    0.148%
-   ----
-   3386
-Expected outcome: A
+VIRKKA     4    0.118%
+VaaNTa     5    0.148%
+YLTa    3377   99.734%
+        ----
+        3386
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 95
-Time: 21:25:42
+Time: 22:30:38
 M U V I 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  M U V I 0 = O S T A, MUISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1641,20 +1563,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  1250   92.868%
-B    96    7.132%
-   ----
-   1346
-Expected outcome: A
+VIRKKA    96    7.132%
+YLTa    1250   92.868%
+        ----
+        1346
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 94
-Time: 21:25:42
+Time: 22:30:38
 M U 0 = S R 0 = T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  M U 0 = S R 0 = T A, MURTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1662,21 +1583,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A   55   33.951%
-B   42   25.926%
-C   65   40.123%
-   ---
-   162
-Expected outcome: C
+VIRKKA   42   25.926%
+VaaNTa   65   40.123%
+YLTa     55   33.951%
+        ---
+        162
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 93
-Time: 21:25:42
+Time: 22:30:38
 M U V U 0 = O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  M U V U 0 = O T T A, MUUTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1684,21 +1604,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   974   93.295%
-B    40    3.831%
-C    30    2.874%
-   ----
-   1044
-Expected outcome: A
+VIRKKA    40    3.831%
+VaaNTa    30    2.874%
+YLTa     974   93.295%
+        ----
+        1044
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 92
-Time: 21:25:42
+Time: 22:30:38
 M Y V o S N 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  M Y V o S N 0 = T a, MYoNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1706,21 +1625,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A    12    0.864%
-B     6    0.432%
-C  1371   98.704%
-   ----
-   1389
-Expected outcome: C
+VIRKKA     6    0.432%
+VaaNTa  1371   98.704%
+YLTa      12    0.864%
+        ----
+        1389
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 91
-Time: 21:25:42
+Time: 22:30:38
 N A V U 0 = 0 = R A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N A V U 0 = 0 = R A, NAURA
 If context is in data file then exclude
 Number of data items: 173
@@ -1728,20 +1646,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  324   75.701%
-B  104   24.299%
-   ---
-   428
-Expected outcome: B
+VIRKKA  104   24.299%
+YLTa    324   75.701%
+        ---
+        428
+Expected outcome: VIRKKA
 Incorrect outcome predicted
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 90
-Time: 21:25:42
+Time: 22:30:38
 N I V E 0 = 0 = L E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N I V E 0 = 0 = L E, NIELE
 If context is in data file then exclude
 Number of data items: 173
@@ -1749,20 +1666,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  2968   99.731%
-C     8    0.269%
-   ----
-   2976
-Expected outcome: A
+VaaNTa     8    0.269%
+YLTa    2968   99.731%
+        ----
+        2976
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 89
-Time: 21:25:42
+Time: 22:30:38
 N I V I 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N I V I 0 = O T T a, NIITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1770,19 +1686,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  16281  100.000%
-   -----
-   16281
-Expected outcome: A
+YLTa    16281  100.000%
+        -----
+        16281
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 88
-Time: 21:25:42
+Time: 22:30:38
 N O 0 = 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N O 0 = 0 = O S T A, NOSTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1790,19 +1705,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5515  100.000%
-   ----
-   5515
-Expected outcome: A
+YLTa    5515  100.000%
+        ----
+        5515
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 87
-Time: 21:25:42
+Time: 22:30:38
 N O V U 0 = 0 = S E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N O V U 0 = 0 = S E, NOUSE
 If context is in data file then exclude
 Number of data items: 173
@@ -1810,19 +1724,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  4235  100.000%
-   ----
-   4235
-Expected outcome: A
+YLTa    4235  100.000%
+        ----
+        4235
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 86
-Time: 21:25:42
+Time: 22:30:38
 N O V U 0 = 0 = T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N O V U 0 = 0 = T A, NOUTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1830,20 +1743,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3506   99.602%
-B    14    0.398%
-   ----
-   3520
-Expected outcome: A
+VIRKKA    14    0.398%
+YLTa    3506   99.602%
+        ----
+        3520
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 85
-Time: 21:25:42
+Time: 22:30:38
 N Y 0 = 0 = O H T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N Y 0 = 0 = O H T a, NYHTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1851,20 +1763,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  4220   99.247%
-B    32    0.753%
-   ----
-   4252
-Expected outcome: A
+VIRKKA    32    0.753%
+YLTa    4220   99.247%
+        ----
+        4252
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 84
-Time: 21:25:42
+Time: 22:30:38
 N Y 0 = S L 0 = K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N Y 0 = S L 0 = K E, NYLKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1872,19 +1783,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  1823  100.000%
-   ----
-   1823
-Expected outcome: A
+YLTa    1823  100.000%
+        ----
+        1823
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 83
-Time: 21:25:42
+Time: 22:30:38
 N a 0 = 0 = 0 = K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N a 0 = 0 = 0 = K E, NaKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1892,19 +1802,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  5409  100.000%
-   ----
-   5409
-Expected outcome: A
+YLTa    5409  100.000%
+        ----
+        5409
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 82
-Time: 21:25:42
+Time: 22:30:38
 N a V Y 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  N a V Y 0 = O T T a, NaYTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1912,19 +1821,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  13711  100.000%
-   -----
-   13711
-Expected outcome: A
+YLTa    13711  100.000%
+        -----
+        13711
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 81
-Time: 21:25:42
+Time: 22:30:38
 O O 0 = 0 = 0 = L E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  O O 0 = 0 = 0 = L E, OLE
 If context is in data file then exclude
 Number of data items: 173
@@ -1932,19 +1840,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  4815  100.000%
-   ----
-   4815
-Expected outcome: A
+YLTa    4815  100.000%
+        ----
+        4815
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 80
-Time: 21:25:42
+Time: 22:30:38
 O O 0 = 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  O O 0 = 0 = O S T A, OSTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1952,19 +1859,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5500  100.000%
-   ----
-   5500
-Expected outcome: A
+YLTa    5500  100.000%
+        ----
+        5500
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 79
-Time: 21:25:42
+Time: 22:30:38
 O O 0 = 0 = O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  O O 0 = 0 = O T T A, OTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1972,20 +1878,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  4920   99.797%
-B    10    0.203%
-   ----
-   4930
-Expected outcome: A
+VIRKKA    10    0.203%
+YLTa    4920   99.797%
+        ----
+        4930
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 78
-Time: 21:25:42
+Time: 22:30:38
 P A V A 0 = O H T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P A V A 0 = O H T A, PAAHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1993,19 +1898,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-B  3578  100.000%
-   ----
-   3578
-Expected outcome: B
+VIRKKA  3578  100.000%
+        ----
+        3578
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 77
-Time: 21:25:42
+Time: 22:30:38
 P A V I 0 = 0 = N A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P A V I 0 = 0 = N A, PAINA
 If context is in data file then exclude
 Number of data items: 173
@@ -2013,21 +1917,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  30   32.967%
-B  53   58.242%
-C   8    8.791%
-   --
-   91
-Expected outcome: B
+VIRKKA  53   58.242%
+VaaNTa   8    8.791%
+YLTa    30   32.967%
+        --
+        91
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 76
-Time: 21:25:42
+Time: 22:30:38
 P A V I 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P A V I 0 = O S T A, PAISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2035,20 +1938,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   232    5.850%
-B  3734   94.150%
-   ----
-   3966
-Expected outcome: B
+VIRKKA  3734   94.150%
+YLTa     232    5.850%
+        ----
+        3966
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 75
-Time: 21:25:42
+Time: 22:30:38
 P A 0 = 0 = 0 = L A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P A 0 = 0 = 0 = L A, PALA
 If context is in data file then exclude
 Number of data items: 173
@@ -2056,20 +1958,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  338   40.190%
-B  503   59.810%
-   ---
-   841
-Expected outcome: B
+VIRKKA  503   59.810%
+YLTa    338   40.190%
+        ---
+        841
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 74
-Time: 21:25:42
+Time: 22:30:38
 P A 0 = 0 = 0 = N E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P A 0 = 0 = 0 = N E, PANE
 If context is in data file then exclude
 Number of data items: 173
@@ -2077,20 +1978,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  3511   98.430%
-B    56    1.570%
-   ----
-   3567
-Expected outcome: A
+VIRKKA    56    1.570%
+YLTa    3511   98.430%
+        ----
+        3567
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 73
-Time: 21:25:42
+Time: 22:30:38
 P E V I 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P E V I 0 = O T T a, PEITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2098,21 +1998,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  14323   99.833%
-B     20    0.139%
-C      4    0.028%
-   -----
-   14347
-Expected outcome: A
+VIRKKA     20    0.139%
+VaaNTa      4    0.028%
+YLTa    14323   99.833%
+        -----
+        14347
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 72
-Time: 21:25:42
+Time: 22:30:38
 P E 0 = 0 = 0 = S E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P E 0 = 0 = 0 = S E, PESE
 If context is in data file then exclude
 Number of data items: 173
@@ -2120,20 +2019,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  3835   99.792%
-B     8    0.208%
-   ----
-   3843
-Expected outcome: A
+VIRKKA     8    0.208%
+YLTa    3835   99.792%
+        ----
+        3843
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 71
-Time: 21:25:42
+Time: 22:30:38
 P E 0 = 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P E 0 = 0 = O T T a, PETTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2141,19 +2039,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  7706  100.000%
-   ----
-   7706
-Expected outcome: A
+YLTa    7706  100.000%
+        ----
+        7706
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 70
-Time: 21:25:42
+Time: 22:30:38
 P I V E 0 = O K S E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P I V E 0 = O K S E, PIEKSE
 If context is in data file then exclude
 Number of data items: 173
@@ -2161,20 +2058,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  3097   99.167%
-B    26    0.833%
-   ----
-   3123
-Expected outcome: A
+VIRKKA    26    0.833%
+YLTa    3097   99.167%
+        ----
+        3123
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 69
-Time: 21:25:42
+Time: 22:30:38
 P I V I 0 = 0 = L E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P I V I 0 = 0 = L E, PIILE
 If context is in data file then exclude
 Number of data items: 173
@@ -2182,21 +2078,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3345   99.672%
-B     6    0.179%
-C     5    0.149%
-   ----
-   3356
-Expected outcome: A
+VIRKKA     6    0.179%
+VaaNTa     5    0.149%
+YLTa    3345   99.672%
+        ----
+        3356
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 68
-Time: 21:25:42
+Time: 22:30:38
 P I V I S R 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P I V I S R 0 = T a, PIIRTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2204,20 +2099,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A    48    2.976%
-C  1565   97.024%
-   ----
-   1613
-Expected outcome: C
+VaaNTa  1565   97.024%
+YLTa      48    2.976%
+        ----
+        1613
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 67
-Time: 21:25:42
+Time: 22:30:38
 P I 0 = 0 = O S T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P I 0 = 0 = O S T a, PISTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2225,19 +2119,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5454  100.000%
-   ----
-   5454
-Expected outcome: A
+YLTa    5454  100.000%
+        ----
+        5454
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 66
-Time: 21:25:42
+Time: 22:30:38
 P I 0 = 0 = 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P I 0 = 0 = 0 = T a, PITa
 If context is in data file then exclude
 Number of data items: 173
@@ -2245,20 +2138,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  296   92.790%
-C   23    7.210%
-   ---
-   319
-Expected outcome: A
+VaaNTa   23    7.210%
+YLTa    296   92.790%
+        ---
+        319
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 65
-Time: 21:25:42
+Time: 22:30:38
 P O V I 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P O V I 0 = O S T A, POISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2266,20 +2158,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  6708   97.870%
-B   146    2.130%
-   ----
-   6854
-Expected outcome: A
+VIRKKA   146    2.130%
+YLTa    6708   97.870%
+        ----
+        6854
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 64
-Time: 21:25:42
+Time: 22:30:38
 P O 0 = S L 0 = K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P O 0 = S L 0 = K E, POLKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2287,19 +2178,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  2684  100.000%
-   ----
-   2684
-Expected outcome: A
+YLTa    2684  100.000%
+        ----
+        2684
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 63
-Time: 21:25:42
+Time: 22:30:38
 P O 0 = S L O T T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P O 0 = S L O T T A, POLTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2307,21 +2197,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  2774   96.655%
-B    92    3.206%
-C     4    0.139%
-   ----
-   2870
-Expected outcome: A
+VIRKKA    92    3.206%
+VaaNTa     4    0.139%
+YLTa    2774   96.655%
+        ----
+        2870
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 62
-Time: 21:25:42
+Time: 22:30:38
 P O 0 = 0 = 0 = T E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P O 0 = 0 = 0 = T E, POTE
 If context is in data file then exclude
 Number of data items: 173
@@ -2329,19 +2218,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  5626  100.000%
-   ----
-   5626
-Expected outcome: A
+YLTa    5626  100.000%
+        ----
+        5626
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 61
-Time: 21:25:42
+Time: 22:30:38
 P U 0 = 0 = 0 = K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P U 0 = 0 = 0 = K E, PUKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2349,19 +2237,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  6107  100.000%
-   ----
-   6107
-Expected outcome: A
+YLTa    6107  100.000%
+        ----
+        6107
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 60
-Time: 21:25:42
+Time: 22:30:38
 P U 0 = 0 = 0 = R E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P U 0 = 0 = 0 = R E, PURE
 If context is in data file then exclude
 Number of data items: 173
@@ -2369,19 +2256,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  3895  100.000%
-   ----
-   3895
-Expected outcome: A
+YLTa    3895  100.000%
+        ----
+        3895
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 59
-Time: 21:25:42
+Time: 22:30:38
 P U 0 = S R 0 = K A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P U 0 = S R 0 = K A, PURKA
 If context is in data file then exclude
 Number of data items: 173
@@ -2389,21 +2275,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  283   71.106%
-B   59   14.824%
-C   56   14.070%
-   ---
-   398
-Expected outcome: A
+VIRKKA   59   14.824%
+VaaNTa   56   14.070%
+YLTa    283   71.106%
+        ---
+        398
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 58
-Time: 21:25:42
+Time: 22:30:38
 P U 0 = 0 = O S K E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P U 0 = 0 = O S K E, PUSKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2411,19 +2296,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  5865  100.000%
-   ----
-   5865
-Expected outcome: A
+YLTa    5865  100.000%
+        ----
+        5865
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 57
-Time: 21:25:42
+Time: 22:30:38
 P Y V Y 0 = 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P Y V Y 0 = 0 = T a, PYYTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2431,21 +2315,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  509   94.259%
-B    3    0.556%
-C   28    5.185%
-   ---
-   540
-Expected outcome: C
+VIRKKA    3    0.556%
+VaaNTa   28    5.185%
+YLTa    509   94.259%
+        ---
+        540
+Expected outcome: VaaNTa
 Incorrect outcome predicted
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 56
-Time: 21:25:42
+Time: 22:30:38
 P Y V o S R 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P Y V o S R 0 = T a, PYoRTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2453,19 +2336,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-C  1349  100.000%
-   ----
-   1349
-Expected outcome: C
+VaaNTa  1349  100.000%
+        ----
+        1349
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 55
-Time: 21:25:42
+Time: 22:30:38
 P a V a 0 = 0 = S E
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P a V a 0 = 0 = S E, PaaSE
 If context is in data file then exclude
 Number of data items: 173
@@ -2473,19 +2355,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3456  100.000%
-   ----
-   3456
-Expected outcome: A
+YLTa    3456  100.000%
+        ----
+        3456
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 54
-Time: 21:25:42
+Time: 22:30:38
 P a V a 0 = O S T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P a V a 0 = O S T a, PaaSTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2493,20 +2374,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  8565   99.814%
-B    16    0.186%
-   ----
-   8581
-Expected outcome: A
+VIRKKA    16    0.186%
+YLTa    8565   99.814%
+        ----
+        8581
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 53
-Time: 21:25:42
+Time: 22:30:38
 P a V a 0 = O T T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  P a V a 0 = O T T a, PaaTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2514,19 +2394,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  13401  100.000%
-   -----
-   13401
-Expected outcome: A
+YLTa    13401  100.000%
+        -----
+        13401
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 52
-Time: 21:25:42
+Time: 22:30:38
 R A V A 0 = O S T A
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  R A V A 0 = O S T A, RAASTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2534,20 +2413,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   172    4.300%
-B  3828   95.700%
-   ----
-   4000
-Expected outcome: B
+VIRKKA  3828   95.700%
+YLTa     172    4.300%
+        ----
+        4000
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 51
-Time: 21:25:42
+Time: 22:30:38
 R I V E S N 0 = T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  R I V E S N 0 = T a, RIENTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2555,20 +2433,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A    68    4.533%
-C  1432   95.467%
-   ----
-   1500
-Expected outcome: C
+VaaNTa  1432   95.467%
+YLTa      68    4.533%
+        ----
+        1500
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:38
 Test items left: 50
-Time: 21:25:42
+Time: 22:30:38
 R I V I 0 = O S T a
-0/1  21:25:42
+0/1  22:30:38
 Given Context:  R I V I 0 = O S T a, RIISTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2576,19 +2453,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  10965  100.000%
-   -----
-   10965
-Expected outcome: A
+YLTa    10965  100.000%
+        -----
+        10965
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 49
-Time: 21:25:42
+Time: 22:30:39
 R I V I 0 = O T T a
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  R I V I 0 = O T T a, RIITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2596,19 +2472,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  16261  100.000%
-   -----
-   16261
-Expected outcome: A
+YLTa    16261  100.000%
+        -----
+        16261
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 48
-Time: 21:25:42
+Time: 22:30:39
 R Y V o 0 = O S T a
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  R Y V o 0 = O S T a, RYoSTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2616,19 +2491,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  6880  100.000%
-   ----
-   6880
-Expected outcome: A
+YLTa    6880  100.000%
+        ----
+        6880
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 47
-Time: 21:25:42
+Time: 22:30:39
 S A V A 0 = O T T A
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S A V A 0 = O T T A, SAATTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2636,20 +2510,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   707   15.227%
-B  3936   84.773%
-   ----
-   4643
-Expected outcome: B
+VIRKKA  3936   84.773%
+YLTa     707   15.227%
+        ----
+        4643
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 46
-Time: 21:25:42
+Time: 22:30:39
 S A 0 = 0 = 0 = T A
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S A 0 = 0 = 0 = T A, SATA
 If context is in data file then exclude
 Number of data items: 173
@@ -2657,21 +2530,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  145   20.984%
-B  542   78.437%
-C    4    0.579%
-   ---
-   691
-Expected outcome: B
+VIRKKA  542   78.437%
+VaaNTa    4    0.579%
+YLTa    145   20.984%
+        ---
+        691
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 45
-Time: 21:25:42
+Time: 22:30:39
 S I V E 0 = 0 = T a
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S I V E 0 = 0 = T a, SIETa
 If context is in data file then exclude
 Number of data items: 173
@@ -2679,20 +2551,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  134   37.853%
-C  220   62.147%
-   ---
-   354
-Expected outcome: A
+VaaNTa  220   62.147%
+YLTa    134   37.853%
+        ---
+        354
+Expected outcome: YLTa
 Incorrect outcome predicted
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 44
-Time: 21:25:42
+Time: 22:30:39
 S I V I S R 0 = T a
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S I V I S R 0 = T a, SIIRTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2700,20 +2571,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   256   14.480%
-C  1512   85.520%
-   ----
-   1768
-Expected outcome: C
+VaaNTa  1512   85.520%
+YLTa     256   14.480%
+        ----
+        1768
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 43
-Time: 21:25:42
+Time: 22:30:39
 S O V I 0 = O T T A
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S O V I 0 = O T T A, SOITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2721,20 +2591,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  6267   99.745%
-B    16    0.255%
-   ----
-   6283
-Expected outcome: A
+VIRKKA    16    0.255%
+YLTa    6267   99.745%
+        ----
+        6283
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 42
-Time: 21:25:42
+Time: 22:30:39
 S O 0 = 0 = O T K E
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S O 0 = 0 = O T K E, SOTKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2742,19 +2611,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  6916  100.000%
-   ----
-   6916
-Expected outcome: A
+YLTa    6916  100.000%
+        ----
+        6916
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 41
-Time: 21:25:42
+Time: 22:30:39
 S O V U 0 = 0 = T A
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S O V U 0 = 0 = T A, SOUTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2762,20 +2630,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3476   99.942%
-B     2    0.058%
-   ----
-   3478
-Expected outcome: A
+VIRKKA     2    0.058%
+YLTa    3476   99.942%
+        ----
+        3478
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 40
-Time: 21:25:42
+Time: 22:30:39
 S U V I 0 = O S T A
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S U V I 0 = O S T A, SUISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2783,19 +2650,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  1281  100.000%
-   ----
-   1281
-Expected outcome: A
+YLTa    1281  100.000%
+        ----
+        1281
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 39
-Time: 21:25:42
+Time: 22:30:39
 S U 0 = 0 = 0 = L A
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S U 0 = 0 = 0 = L A, SULA
 If context is in data file then exclude
 Number of data items: 173
@@ -2803,21 +2669,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  225   72.115%
-B   81   25.962%
-C    6    1.923%
-   ---
-   312
-Expected outcome: A
+VIRKKA   81   25.962%
+VaaNTa    6    1.923%
+YLTa    225   72.115%
+        ---
+        312
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 38
-Time: 21:25:42
+Time: 22:30:39
 S U 0 = S L 0 = K E
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S U 0 = S L 0 = K E, SULKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2825,19 +2690,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  2020  100.000%
-   ----
-   2020
-Expected outcome: A
+YLTa    2020  100.000%
+        ----
+        2020
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 37
-Time: 21:25:42
+Time: 22:30:39
 S U 0 = 0 = 0 = R E
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S U 0 = 0 = 0 = R E, SURE
 If context is in data file then exclude
 Number of data items: 173
@@ -2845,19 +2709,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  3577  100.000%
-   ----
-   3577
-Expected outcome: A
+YLTa    3577  100.000%
+        ----
+        3577
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 36
-Time: 21:25:42
+Time: 22:30:39
 S Y V Y 0 = O T T a
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S Y V Y 0 = O T T a, SYYTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2865,19 +2728,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  11544  100.000%
-   -----
-   11544
-Expected outcome: A
+YLTa    11544  100.000%
+        -----
+        11544
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 35
-Time: 21:25:42
+Time: 22:30:39
 S Y V Y 0 = 0 = T a
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S Y V Y 0 = 0 = T a, SYYTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2885,20 +2747,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  250   74.405%
-C   86   25.595%
-   ---
-   336
-Expected outcome: A
+VaaNTa   86   25.595%
+YLTa    250   74.405%
+        ---
+        336
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 34
-Time: 21:25:42
+Time: 22:30:39
 S Y V o 0 = O K S E
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S Y V o 0 = O K S E, SYoKSE
 If context is in data file then exclude
 Number of data items: 173
@@ -2906,19 +2767,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  2725  100.000%
-   ----
-   2725
-Expected outcome: A
+YLTa    2725  100.000%
+        ----
+        2725
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 33
-Time: 21:25:42
+Time: 22:30:39
 S Y V o 0 = O T T a
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S Y V o 0 = O T T a, SYoTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2926,19 +2786,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  11412  100.000%
-   -----
-   11412
-Expected outcome: A
+YLTa    11412  100.000%
+        -----
+        11412
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:42
+1/1  22:30:39
 Test items left: 32
-Time: 21:25:42
+Time: 22:30:39
 S a 0 = S R 0 = K E
-0/1  21:25:42
+0/1  22:30:39
 Given Context:  S a 0 = S R 0 = K E, SaRKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2946,20 +2805,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  1556   99.488%
-C     8    0.512%
-   ----
-   1564
-Expected outcome: A
+VaaNTa     8    0.512%
+YLTa    1556   99.488%
+        ----
+        1564
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 31
-Time: 21:25:43
+Time: 22:30:39
 S a V a 0 = O S T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  S a V a 0 = O S T a, SaaSTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2967,19 +2825,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  8528  100.000%
-   ----
-   8528
-Expected outcome: A
+YLTa    8528  100.000%
+        ----
+        8528
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 30
-Time: 21:25:43
+Time: 22:30:39
 S a V a 0 = 0 = T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  S a V a 0 = 0 = T a, SaaTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2987,20 +2844,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  1112   95.862%
-C    48    4.138%
-   ----
-   1160
-Expected outcome: A
+VaaNTa    48    4.138%
+YLTa    1112   95.862%
+        ----
+        1160
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 29
-Time: 21:25:43
+Time: 22:30:39
 T A V I 0 = 0 = T A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T A V I 0 = 0 = T A, TAITA
 If context is in data file then exclude
 Number of data items: 173
@@ -3008,21 +2864,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A    12    0.200%
-B  5970   99.467%
-C    20    0.333%
-   ----
-   6002
-Expected outcome: C
+VIRKKA  5970   99.467%
+VaaNTa    20    0.333%
+YLTa      12    0.200%
+        ----
+        6002
+Expected outcome: VaaNTa
 Incorrect outcome predicted
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 28
-Time: 21:25:43
+Time: 22:30:39
 T A V I 0 = O T T A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T A V I 0 = O T T A, TAITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3030,21 +2885,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   296    7.283%
-B  3740   92.028%
-C    28    0.689%
-   ----
-   4064
-Expected outcome: B
+VIRKKA  3740   92.028%
+VaaNTa    28    0.689%
+YLTa     296    7.283%
+        ----
+        4064
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 27
-Time: 21:25:43
+Time: 22:30:39
 T A 0 = 0 = O P P A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T A 0 = 0 = O P P A, TAPPA
 If context is in data file then exclude
 Number of data items: 173
@@ -3052,20 +2906,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A    11    0.905%
-B  1205   99.095%
-   ----
-   1216
-Expected outcome: B
+VIRKKA  1205   99.095%
+YLTa      11    0.905%
+        ----
+        1216
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 26
-Time: 21:25:43
+Time: 22:30:39
 T E V E 0 = O T T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T E V E 0 = O T T a, TEETTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3073,20 +2926,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  11587   99.862%
-C     16    0.138%
-   -----
-   11603
-Expected outcome: A
+VaaNTa     16    0.138%
+YLTa    11587   99.862%
+        -----
+        11603
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 25
-Time: 21:25:43
+Time: 22:30:39
 T E 0 = 0 = 0 = K E
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T E 0 = 0 = 0 = K E, TEKE
 If context is in data file then exclude
 Number of data items: 173
@@ -3094,19 +2946,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  5267  100.000%
-   ----
-   5267
-Expected outcome: A
+YLTa    5267  100.000%
+        ----
+        5267
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 24
-Time: 21:25:43
+Time: 22:30:39
 T I V E 0 = 0 = T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T I V E 0 = 0 = T a, TIETa
 If context is in data file then exclude
 Number of data items: 173
@@ -3114,20 +2965,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  1933   98.774%
-C    24    1.226%
-   ----
-   1957
-Expected outcome: C
+VaaNTa    24    1.226%
+YLTa    1933   98.774%
+        ----
+        1957
+Expected outcome: VaaNTa
 Incorrect outcome predicted
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 23
-Time: 21:25:43
+Time: 22:30:39
 T O V I 0 = O S T A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T O V I 0 = O S T A, TOISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3135,20 +2985,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  6687   99.761%
-B    16    0.239%
-   ----
-   6703
-Expected outcome: A
+VIRKKA    16    0.239%
+YLTa    6687   99.761%
+        ----
+        6703
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 22
-Time: 21:25:43
+Time: 22:30:39
 T U 0 = 0 = 0 = K E
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T U 0 = 0 = 0 = K E, TUKE
 If context is in data file then exclude
 Number of data items: 173
@@ -3156,19 +3005,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  5742  100.000%
-   ----
-   5742
-Expected outcome: A
+YLTa    5742  100.000%
+        ----
+        5742
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 21
-Time: 21:25:43
+Time: 22:30:39
 T U 0 = 0 = 0 = L E
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T U 0 = 0 = 0 = L E, TULE
 If context is in data file then exclude
 Number of data items: 173
@@ -3176,19 +3024,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  3878  100.000%
-   ----
-   3878
-Expected outcome: A
+YLTa    3878  100.000%
+        ----
+        3878
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 20
-Time: 21:25:43
+Time: 22:30:39
 T U 0 = S n 0 = K E
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T U 0 = S n 0 = K E, TUnKE
 If context is in data file then exclude
 Number of data items: 173
@@ -3196,20 +3043,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  1740   98.751%
-C    22    1.249%
-   ----
-   1762
-Expected outcome: A
+VaaNTa    22    1.249%
+YLTa    1740   98.751%
+        ----
+        1762
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 19
-Time: 21:25:43
+Time: 22:30:39
 T U 0 = S N 0 = T E
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T U 0 = S N 0 = T E, TUNTE
 If context is in data file then exclude
 Number of data items: 173
@@ -3217,21 +3063,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  6138   97.817%
-B    64    1.020%
-C    73    1.163%
-   ----
-   6275
-Expected outcome: C
+VIRKKA    64    1.020%
+VaaNTa    73    1.163%
+YLTa    6138   97.817%
+        ----
+        6275
+Expected outcome: VaaNTa
 Incorrect outcome predicted
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 18
-Time: 21:25:43
+Time: 22:30:39
 T U V O 0 = O T T A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T U V O 0 = O T T A, TUOTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3239,21 +3084,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  1218   98.623%
-B    16    1.296%
-C     1    0.081%
-   ----
-   1235
-Expected outcome: A
+VIRKKA    16    1.296%
+VaaNTa     1    0.081%
+YLTa    1218   98.623%
+        ----
+        1235
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 17
-Time: 21:25:43
+Time: 22:30:39
 T Y V o S N 0 = T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T Y V o S N 0 = T a, TYoNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3261,19 +3105,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-C  1399  100.000%
-   ----
-   1399
-Expected outcome: C
+VaaNTa  1399  100.000%
+        ----
+        1399
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 16
-Time: 21:25:43
+Time: 22:30:39
 T a V Y 0 = O T T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  T a V Y 0 = O T T a, TaYTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3281,19 +3124,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  13581  100.000%
-   -----
-   13581
-Expected outcome: A
+YLTa    13581  100.000%
+        -----
+        13581
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 15
-Time: 21:25:43
+Time: 22:30:39
 U U V I 0 = O T T A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  U U V I 0 = O T T A, UITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3301,20 +3143,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  1474   90.208%
-B   160    9.792%
-   ----
-   1634
-Expected outcome: A
+VIRKKA   160    9.792%
+YLTa    1474   90.208%
+        ----
+        1634
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 14
-Time: 21:25:43
+Time: 22:30:39
 V A V I 0 = O H T A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V A V I 0 = O H T A, VAIHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3322,20 +3163,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   511   13.242%
-B  3348   86.758%
-   ----
-   3859
-Expected outcome: B
+VIRKKA  3348   86.758%
+YLTa     511   13.242%
+        ----
+        3859
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 13
-Time: 21:25:43
+Time: 22:30:39
 V A 0 = 0 = 0 = L A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V A 0 = 0 = 0 = L A, VALA
 If context is in data file then exclude
 Number of data items: 173
@@ -3343,20 +3183,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A   18    3.564%
-B  487   96.436%
-   ---
-   505
-Expected outcome: B
+VIRKKA  487   96.436%
+YLTa     18    3.564%
+        ---
+        505
+Expected outcome: VIRKKA
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 12
-Time: 21:25:43
+Time: 22:30:39
 V E 0 = 0 = 0 = T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V E 0 = 0 = 0 = T a, VETa
 If context is in data file then exclude
 Number of data items: 173
@@ -3364,21 +3203,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 7
-
 Test item is in the data.
 Statistical Summary
-A  594   98.507%
-B    3    0.498%
-C    6    0.995%
-   ---
-   603
-Expected outcome: A
+VIRKKA    3    0.498%
+VaaNTa    6    0.995%
+YLTa    594   98.507%
+        ---
+        603
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 11
-Time: 21:25:43
+Time: 22:30:39
 V I V E 0 = O T T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V I V E 0 = O T T a, VIETTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3386,20 +3224,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  12677   99.905%
-C     12    0.095%
-   -----
-   12689
-Expected outcome: A
+VaaNTa     12    0.095%
+YLTa    12677   99.905%
+        -----
+        12689
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 10
-Time: 21:25:43
+Time: 22:30:39
 V I V I 0 = O S T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V I V I 0 = O S T a, VIISTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3407,19 +3244,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  10995  100.000%
-   -----
-   10995
-Expected outcome: A
+YLTa    10995  100.000%
+        -----
+        10995
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 9
-Time: 21:25:43
+Time: 22:30:39
 V I 0 = S R O K K A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V I 0 = S R O K K A, VIRKKA
 If context is in data file then exclude
 Number of data items: 173
@@ -3427,21 +3263,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  333   80.630%
-B   37    8.959%
-C   43   10.412%
-   ---
-   413
-Expected outcome: B
+VIRKKA   37    8.959%
+VaaNTa   43   10.412%
+YLTa    333   80.630%
+        ---
+        413
+Expected outcome: VIRKKA
 Incorrect outcome predicted
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 8
-Time: 21:25:43
+Time: 22:30:39
 V O V I 0 = O T T A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V O V I 0 = O T T A, VOITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3449,20 +3284,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  6399   99.580%
-B    27    0.420%
-   ----
-   6426
-Expected outcome: A
+VIRKKA    27    0.420%
+YLTa    6399   99.580%
+        ----
+        6426
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 7
-Time: 21:25:43
+Time: 22:30:39
 V U V O 0 = 0 = L E
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V U V O 0 = 0 = L E, VUOLE
 If context is in data file then exclude
 Number of data items: 173
@@ -3470,20 +3304,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  3513   99.886%
-B     4    0.114%
-   ----
-   3517
-Expected outcome: A
+VIRKKA     4    0.114%
+YLTa    3513   99.886%
+        ----
+        3517
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 6
-Time: 21:25:43
+Time: 22:30:39
 V U V O 0 = 0 = T A
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V U V O 0 = 0 = T A, VUOTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3491,21 +3324,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  202   66.887%
-B   14    4.636%
-C   86   28.477%
-   ---
-   302
-Expected outcome: A
+VIRKKA   14    4.636%
+VaaNTa   86   28.477%
+YLTa    202   66.887%
+        ---
+        302
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 5
-Time: 21:25:43
+Time: 22:30:39
 V Y V o 0 = O T T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V Y V o 0 = O T T a, VYoTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3513,19 +3345,18 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  11496  100.000%
-   -----
-   11496
-Expected outcome: A
+YLTa    11496  100.000%
+        -----
+        11496
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 4
-Time: 21:25:43
+Time: 22:30:39
 V a V I 0 = O T T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V a V I 0 = O T T a, VaITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3533,20 +3364,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  15553   99.974%
-C      4    0.026%
-   -----
-   15557
-Expected outcome: A
+VaaNTa      4    0.026%
+YLTa    15553   99.974%
+        -----
+        15557
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 3
-Time: 21:25:43
+Time: 22:30:39
 V a 0 = S L O T T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V a 0 = S L O T T a, VaLTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3554,21 +3384,20 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A  4260   98.361%
-B    52    1.201%
-C    19    0.439%
-   ----
-   4331
-Expected outcome: A
+VIRKKA    52    1.201%
+VaaNTa    19    0.439%
+YLTa    4260   98.361%
+        ----
+        4331
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 2
-Time: 21:25:43
+Time: 22:30:39
 V a V a S N 0 = T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  V a V a S N 0 = T a, VaaNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3576,20 +3405,19 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 9
-
 Test item is in the data.
 Statistical Summary
-A   142   10.558%
-C  1203   89.442%
-   ----
-   1345
-Expected outcome: C
+VaaNTa  1203   89.442%
+YLTa     142   10.558%
+        ----
+        1345
+Expected outcome: VaaNTa
 Correct outcome predicted.
-1/1  21:25:43
+1/1  22:30:39
 Test items left: 1
-Time: 21:25:43
+Time: 22:30:39
 Y Y 0 = S L 0 = T a
-0/1  21:25:43
+0/1  22:30:39
 Given Context:  Y Y 0 = S L 0 = T a, YLTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3597,14 +3425,13 @@ Total Excluded: 173  + test item
 Nulls: exclude
 Gang: squared
 Number of active variables: 8
-
 Test item is in the data.
 Statistical Summary
-A  241   92.337%
-C   20    7.663%
-   ---
-   261
-Expected outcome: A
+VaaNTa   20    7.663%
+YLTa    241   92.337%
+        ---
+        261
+Expected outcome: YLTa
 Correct outcome predicted.
-1/1  21:25:43
-Time: 21:25:43
+1/1  22:30:39
+Time: 22:30:39

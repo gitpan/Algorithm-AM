@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.010;
+use 5.014;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -21,11 +21,11 @@ my %WriteMakefileArgs = (
   "NAME" => "Algorithm::AM",
   "PREREQ_PM" => {
     "Carp" => 0,
-    "Data::Dumper" => 0,
+    "Exporter::Easy" => 0,
     "IO::Handle" => 0,
     "Log::Dispatch" => 0,
     "Log::Dispatch::File" => 0,
-    "Symbol" => 0,
+    "Path::Tiny" => 0,
     "XSLoader" => 0,
     "feature" => 0,
     "integer" => 0,
@@ -33,17 +33,20 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
+    "Diagnostics" => 0,
     "File::Find" => 0,
     "File::Slurp" => 0,
     "File::Temp" => 0,
     "FindBin" => 0,
-    "Path::Tiny" => 0,
+    "Test::Exception" => 0,
     "Test::LongString" => 0,
     "Test::More" => "0.88",
+    "Test::NoWarnings" => 0,
+    "Test::Warn" => 0,
     "subs" => 0,
     "vars" => 0
   },
-  "VERSION" => "2.33",
+  "VERSION" => "2.34",
   "test" => {
     "TESTS" => "t/*.t"
   }
