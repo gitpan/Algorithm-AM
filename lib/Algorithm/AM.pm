@@ -10,9 +10,8 @@ package Algorithm::AM;
 use strict;
 use warnings;
 # ABSTRACT: Perl extension for Analogical Modeling using a parallel algorithm
-our $VERSION = '2.34'; # TRIAL VERSION;
+our $VERSION = '2.35'; # TRIAL VERSION;
 use feature 'state';
-use feature 'switch';
 use Path::Tiny;
 use Exporter::Easy (
     OK => ['bigcmp']
@@ -20,6 +19,8 @@ use Exporter::Easy (
 use Carp;
 our @CARP_NOT = qw(Algorithm::AM);
 use IO::Handle;
+use Data::Dumper;
+use Algorithm::AM::Project;
 
 require XSLoader;
 XSLoader::load();
@@ -51,43 +52,60 @@ my %import;
 ## %gang
 
 sub new {
-    my ($proto, $project, %opts) = @_;
+    my ($proto, $project_path, %opts) = @_;
 
     #TODO: what is the purpose of these two statements?
     my $class = ref($proto) || $proto;
-    $project = ''
+    $project_path = ''
         if $proto =~ /^-/;
 
-    my $opts = _check_project_opts($project, \%opts);
+    # all of the options except commas are for the Project object,
+    # but creating the Project first could use a lot of time, and
+    # incorrect classification options is a fatal error. So put this
+    # aside for the Project constructor.
+    my $commas = $opts{commas};
+    delete $opts{commas};
+
+    my $opts = _check_classify_opts(
+        #classification defaults
+        exclude_nulls     => 1,
+        exclude_given    => 1,
+        linear      => 0,
+        probability => undef,
+        repeat      => 1,
+        skipset     => 1,
+        gangs       => 'no',
+        %opts
+    );
     my $self = bless $opts, $class;
 
-    #don't buffer error messages
-    *STDOUT->autoflush();
+    $logger->info("Initializing project $project_path");
 
-    $logger->info("Initializing project $self->{project}");
+    # read project files
+    my $project = Algorithm::AM::Project->new(
+        $project_path, commas => $commas);
+    # TODO: these lines are necessary for now because each of these variables
+    # is assumed to be provided to the hook methods through $self. Once we
+    # have data objects, and we can provide proper accessors (and remove
+    # the need for outcometonum, outcomelist, and outcome).
+    $self->{outcometonum} = $project->_outcome_to_num;
+    $self->{outcomelist} = $project->_outcome_list;
+    $self->{outcome} = $project->_outcomes;
+    $self->{spec} = $project->_specs;
+    $self->{data} = $project->_data;
 
-    ## read data file
-    my $data_path = path($self->{project}, 'data');
-    my @data_set = $data_path->lines;
-    #cross-platform chomp
-    s/[\n\r]+$// for @data_set;
+    $self->{project} = $project;
 
-    $self->_read_data_set(\@data_set);
+    # compute activeVars here so that lattice space can be allocated in the
+    # _initialize method
+    $self->{activeVars} = _compute_lattice_sizes($project->num_variables);
 
-    @{$self->{itemcontextchain}} = (0) x @{$self->{data}};    ## preemptive allocation of memory
-    @{$self->{datatocontext}} = ( pack "S!4", 0, 0, 0, 0 ) x @{$self->{data}};
+    # sum is intitialized to a list of zeros the same length as outcomelist
+    @{$self->{sum}} = (0.0) x ($project->num_outcomes + 1);
 
-    ## read outcome file
-
-    $logger->info('Outcome file...');
-    $self->_set_outcomes();
-    $logger->info('...done');
-
-## test file
-
-    $logger->info('Test file...');
-    $self->_read_test_set();
-    $self->_compute_vars();
+    # preemptively allocate memory
+    @{$self->{itemcontextchain}} = (0) x $project->num_exemplars;
+    @{$self->{datatocontext}} = ( pack "S!4", 0, 0, 0, 0 ) x $project->num_exemplars;
 
     $self->{$_} = {} for (
         qw(
@@ -101,9 +119,10 @@ sub new {
 
     $self->{_classify_sub} = _create_classify_sub()
         or die "didn't work out";
+    # calls XS code
     $self->_initialize(
         $self->{activeVars},
-        $self->{outcome},
+        $project->_outcomes,
         $self->{itemcontextchain},
         $self->{itemcontextchainhead},
         $self->{subtooutcome},
@@ -118,183 +137,6 @@ sub new {
 sub classify {
     my ($self, @args) = @_;
     return $self->{_classify_sub}->($self, @args);
-}
-
-#read data set, setting internal variables for processing and printing
-sub _read_data_set {
-    my ($self, $data_set) = @_;
-    $self->{slen} = 0;
-    $self->{vlen} = [(0) x 60];
-    for (@$data_set) {
-        my ( $outcome, $data, $spec ) = split /$self->{bigsep}/, $_, 3;
-        $spec ||= $data;
-        my $l;
-
-        push @{$self->{outcome}}, $outcome;
-        push @{$self->{spec}}, $spec;
-        $l = length $spec;
-        $self->{slen} = $l if $l > $self->{slen};
-        my @datavar = split /$self->{smallsep}/, $data;
-        push @{$self->{data}}, \@datavar;
-
-        for my $i (0 .. $#datavar ) {
-            $l = length $datavar[$i];
-            $self->{vlen}->[$i] = $l if $l > $self->{vlen}->[$i];
-        }
-        $logger->debug( 'Data file: ' . scalar(@{$self->{data}}) );
-    }
-    #length of longest specifier
-    $self->{sformat} = "%-$self->{slen}.$self->{slen}s";
-    #length of integer hold number of data items
-    $self->{dformat} = "%" . ( scalar @{$self->{data}}) . ".0u";
-    return;
-}
-
-sub _set_outcomes {
-    my ($self) = @_;
-    $self->{outcomelist} = [''];
-    $self->{ocl} = [''];
-    $self->{olen} = 0;
-    $self->{outcomecounter} = 0;
-    $logger->info('checking for outcome file');
-    my $outcome_path = path($self->{project}, 'outcome');
-    if ( $outcome_path->exists ) {
-        ## no
-        my @data_set = $outcome_path->lines;
-        #cross-platform chomp
-        s/[\n\r]+$// for @data_set;
-        $self->_read_outcome_set(\@data_set);
-    }
-    else {
-        $logger->info('...will use data file');
-        $self->_read_outcomes_from_data();
-    }
-    $logger->info('...converting outcomes to indices');
-    @{$self->{outcome}} = map { $self->{octonum}{$_} } @{$self->{outcome}};
-    foreach (@{$self->{outcomelist}}) {
-        my $l;
-        $l = length;
-        $self->{olen} = $l if $l > $self->{olen};
-    }
-    $self->{oformat} = "%-$self->{olen}.$self->{olen}s";
-    return;
-}
-
-sub _read_outcome_set {
-    my ($self, $data_set) = @_;
-
-    for my $datum (@$data_set) {
-        my ( $oc, $outcome ) = split /\s+/, $datum, 2;
-        $self->{octonum}{$oc}           = ++$self->{outcomecounter};
-        $self->{outcometonum}{$outcome} = $self->{outcomecounter};
-        push @{$self->{outcomelist}}, $outcome;
-        push @{$self->{ocl}}, $oc;
-    }
-    return;
-}
-
-sub _read_outcomes_from_data {
-    my ($self) = @_;
-    my %oc = ();
-    map { ++$oc{$_} } @{$self->{outcome}};
-    foreach ( sort { lc($a) cmp lc($b) } keys %oc ) {
-        $self->{octonum}{$_}      = ++$self->{outcomecounter};
-        $self->{outcometonum}{$_} = $self->{outcomecounter};
-        push @{$self->{outcomelist}}, $_;
-        push @{$self->{ocl}},         $_;
-    }
-    return;
-}
-
-sub _read_test_set {
-    my ($self) = @_;
-    my $test_file = path($self->{project}, 'test');
-    if(!$test_file->exists){
-        carp "Couldn't open $self->{project}/test";
-        $logger->warn('Will run data file against itself');
-        $test_file = path($self->{project}, 'data');
-    }
-    @{$self->{testItems}} = $test_file->lines;
-    #cross-platform chomp
-    s/[\n\r]+$// for @{ $self->{testItems} };
-    return;
-}
-
-#not really sure what all of these calculations are for, but I wanted to group them
-sub _compute_vars {
-    my ($self) = @_;
-    my $item;
-    ( undef, $item ) = split /$self->{bigsep}/, $self->{testItems}->[0];
-
-    #$maxvar is the number of features in the item
-    my $maxvar = scalar split /$self->{smallsep}/, $item;
-    $logger->info('...done');
-
-    splice @{$self->{vlen}}, $maxvar;
-    $self->{vformat} = join " ", map { "%-$_.${_}s" } @{$self->{vlen}};
-
-    {
-        use integer;
-        my $half = $maxvar / 2;
-        $self->{activeVars}->[0] = $half / 2;
-        $self->{activeVars}->[1] = $half - $self->{activeVars}->[0];
-        $half         = $maxvar - $half;
-        $self->{activeVars}->[2] = $half / 2;
-        $self->{activeVars}->[3] = $half - $self->{activeVars}->[2];
-    }
-    @{$self->{sum}} = (0.0) x @{$self->{outcomelist}};
-    return;
-}
-
-#check that the project has a data file,
-#and that the options have a legal commas value;
-#return bigsep and smallsep, the values used to parse the
-#project data files
-sub _check_project_opts {
-    my ($project, $opts) = @_;
-
-    #first check $project and commas, which are allowed in the project
-    #constructor but not in the classify() method
-    croak 'Must specify project'
-        unless $project;
-    croak 'Project has no data file'
-        unless path($project, 'data')->exists;
-
-    croak "Failed to provide 'commas' parameter (should be 'yes' or 'no')"
-        unless exists $opts->{commas};
-
-    my ($bigsep, $smallsep);
-    given($opts->{commas}){
-        when('yes'){
-            $bigsep   = qr{\s*,\s*};
-            $smallsep = qr{\s+};
-        }
-        when('no'){
-            $bigsep   = qr{\s+};
-            $smallsep = qr{};
-        }
-        default{
-            croak "Failed to specify comma formatting correctly;\n" .
-                q{(must specify commas => 'yes' or commas => 'no')};
-        }
-    }
-    delete $opts->{commas};
-
-    #add default classification options and then check all options
-    $opts = _check_classify_opts(
-        exclude_nulls     => 1,
-        exclude_given    => 1,
-        linear      => 0,
-        probability => undef,
-        repeat      => '1',
-        skipset     => 1,
-        gangs       => 'no',
-        %$opts
-    );
-    $opts->{project} = $project;
-    $opts->{bigsep} = $bigsep;
-    $opts->{smallsep} = $smallsep;
-    return $opts;
 }
 
 sub _check_classify_opts {
@@ -339,10 +181,31 @@ sub _check_classify_opts {
     return \%opts;
 }
 
+# since we split the lattice in four, we have to decide which variables
+# go where. Given the number of variables being used, return an arrayref
+# containing the number of variables to be used in each of the the four
+# lattices.
+sub _compute_lattice_sizes {
+    my ($num_feats) = @_;
+
+    use integer;
+    my @active_vars;
+    my $half = $num_feats / 2;
+    $active_vars[0] = $half / 2;
+    $active_vars[1] = $half - $active_vars[0];
+    $half         = $num_feats - $half;
+    $active_vars[2] = $half / 2;
+    $active_vars[3] = $half - $active_vars[2];
+    return \@active_vars;
+}
+
 #create the classification subroutine
 sub _create_classify_sub {
     return sub {
         my $self = shift;
+
+        # don't buffer messages; remember the caller's autoflush setting
+        my $autoflush = *STDOUT->autoflush(1);
 
         #check all input parameters and then save them in $self
         my $opts = _check_classify_opts(@_);
@@ -350,13 +213,11 @@ sub _create_classify_sub {
             $self->{$opt_name} = $opts->{$opt_name};
         }
 
+        my $project = $self->{project};
+
         # TODO: neat/ugly hack starts here...
         local $_ = $subsource;
-
-        if ( $self->{exclude_nulls} ) {
-            s/## begin include nulls.*?## end include nulls//sg;
-        }
-        else {
+        if(!$self->{exclude_nulls}){
             s/## begin exclude nulls.*?## end exclude nulls//sg;
         }
 
@@ -420,10 +281,11 @@ sub _create_classify_sub {
         my $grandtotal;
 
         #beginning vars
-        $data->{datacap} = @{$self->{data}};
+        $data->{datacap} = $project->num_exemplars;
 
         #item vars
-        #TODO: stop using sclar pointers here...
+        #TODO: stop using scalar pointers here. Should
+        #have some sort of an CurrentIteration object instead.
         $data->{curTestOutcome} = \$curTestOutcome;
 
         #iter vars
@@ -435,6 +297,9 @@ sub _create_classify_sub {
         eval $_; ## no critic (ProhibitStringyEval)
         $logger->warn($@)
           if $@;
+
+        # return autoflush setting to what the caller was using
+        *STDOUT->autoflush($autoflush);
     };
 }
 
@@ -477,7 +342,7 @@ Algorithm::AM - Perl extension for Analogical Modeling using a parallel algorith
 
 =head1 VERSION
 
-version 2.34
+version 2.35
 
 =head1 AUTHOR
 
@@ -495,12 +360,13 @@ the same terms as the Perl 5 programming language system itself.
 __DATA__
 
 #print to amcpresults file instead of to the screen
+#TODO: move file choice to different module, and use Log::Any in this one.
 $logger->remove('Screen');
 $logger->add(
     Log::Dispatch::File->new(
         name      => 'amcpresults',
         min_level => 'debug',
-        filename  => "$self->{project}/amcpresults",
+        filename  => $project->results_path,
         newline => 1
     )
 );
@@ -509,39 +375,36 @@ my ( $sec, $min, $hour );
 
 $self->{beginhook}->($self, $data);
 
-my $left = scalar @{$self->{testItems}};
-foreach my $t (@{$self->{testItems}}) {
+my $left = scalar $project->num_test_items;
+foreach my $item_number (0 .. $project->num_test_items - 1) {
     $logger->debug("Test items left: $left");
     --$left;
-
-## parse test item
-
-    my $curTestItem;
-    ( $curTestOutcome, $curTestItem, $data->{curTestSpec} ) = split /$self->{bigsep}/, $t, 3;
-    $curTestOutcome = $self->{octonum}{$curTestOutcome};
-    $data->{curTestSpec} ||= "";
+    my $t = $project->get_test_item($item_number);
+    ( $curTestOutcome, $data->{curTestItem}, $data->{curTestSpec} ) =
+        @$t;
+    # set to index outcomelist instead of actual outcome string
+    $curTestOutcome = $project->short_outcome_index($curTestOutcome);
+    # activeVar is the number of active variables; if we exclude nulls,
+    # then we need to minus the number of '=' found in this test item;
+    # otherwise, it's just the number of columns in a single item vector
+    $self->{activeVar} = $project->num_variables;
 
 ## begin exclude nulls
-    my $eq = 0;
-    $data->{curTestItem} = [split /$self->{smallsep}/, $curTestItem];
-    $eq += ( $_ eq '=' ) foreach @{ $data->{curTestItem} };
-    $self->{activeVar} = @{ $data->{curTestItem} } - $eq;
+    $self->{activeVar} -= grep {$_ eq '='} @{ $data->{curTestItem} };
 ## end exclude nulls
-## begin include nulls
-    $data->{curTestItem}  = [split /$self->{smallsep}/, $curTestItem];
-    $self->{activeVar} = @{ $data->{curTestItem} };
-## end include nulls
 
     $self->{begintesthook}->($self, $data);
 
-    {
-        use integer;
-        my $half = $self->{activeVar} / 2;
-        $self->{activeVars}->[0] = $half / 2;
-        $self->{activeVars}->[1] = $half - $self->{activeVars}->[0];
-        $half         = $self->{activeVar} - $half;
-        $self->{activeVars}->[2] = $half / 2;
-        $self->{activeVars}->[3] = $half - $self->{activeVars}->[2];
+    # recalculate the lattice sizes with new number of active variables;
+    # must edit activeVars instead of assigning it a new arrayref because
+    # the XS code only has the existing arrayref and will not be given
+    # a new one. This must be done for every test item because activeVars
+    # is a global that could have been edited during classification of the
+    # last test item.
+    # TODO: pass activeVars into fill_and_count instead of doing this
+    my $lattice_sizes = _compute_lattice_sizes($self->{activeVar});
+    for(0 .. $#$lattice_sizes){
+        $self->{activeVars}->[$_] = $lattice_sizes->[$_];
     }
 ##  $activeContexts = 1 << $activeVar;
 
@@ -572,12 +435,17 @@ foreach my $t (@{$self->{testItems}}) {
 
         for ( my $i = $data->{datacap} ; $i ; ) {
             --$i;
+            # skip this data item if the datahook returns false
+            # TODO: this and the next one below would be better in an if
+            # block, but this code text is searched and replaced in
+            # _create_classify_sub
             ++$self->{excludedData}, next unless $self->{datahook}->($self, $data, $i);
 ## begin probability
+            # skip this data item with probability $self->{probability}
             ++$self->{excludedData}, next
                 if rand() > $self->{probability};
 ## end probability
-            my @dataItem = @{ $self->{data}->[$i] };
+            my @dataItem = @{ $project->get_exemplar_data($i) };
             my @alist    = @{$self->{activeVars}};
             my $j        = 0;
             my @clist    = ();
@@ -598,7 +466,7 @@ foreach my $t (@{$self->{testItems}}) {
             $self->{itemcontextchain}->[$i]           = $self->{itemcontextchainhead}->{$context};
             $self->{itemcontextchainhead}->{$context} = $i;
             ++$self->{contextsize}->{$context};
-            my $outcome = $self->{outcome}->[$i];
+            my $outcome = $project->get_exemplar_outcome($i);
             if ( defined $self->{subtooutcome}->{$context} ) {
                 $self->{subtooutcome}->{$context} = 0
                   if $self->{subtooutcome}->{$context} != $outcome;
@@ -622,35 +490,46 @@ foreach my $t (@{$self->{testItems}}) {
 
         $self->_fillandcount(X);
         $grandtotal = $self->{pointers}->{'grandtotal'};
-        my $longest = length $grandtotal;
-        $self->{gformat} = "%$longest.${longest}s";
-        $data->{pointermax}    = "";
-
         unless ($grandtotal) {
+            #TODO: is this tested yet?
             $logger->warn('No data items considered.  No prediction possible.');
             next;
         }
 
-        #TODO: put this in a return value or something!
+        # TODO: explain all of these formatting variables
+        my $longest = length $grandtotal;
+        my $gang_format =  "%$longest.${longest}s";
+        my $var_format = $project->var_format;
+        my $spec_format = $project->spec_format;
+        my $outcome_format = $project->outcome_format;
+        my $data_format = $project->data_format;
+
+        #TODO: put all of this information in a return value or something!
+        $data->{pointermax}    = "";
         $logger->info('Statistical Summary');
         for ( my $i = 1 ; $i < @{$self->{outcomelist}} ; ++$i ) {
             my $n;
             next unless $n = $self->{sum}->[$i];
-            $data->{pointermax} = $n
-              if length($n) > length($data->{pointermax})
-              or length($n) == length($data->{pointermax})
-              and $n gt $data->{pointermax};#TODO: it having a semi-colon here right?
+
+            if(
+                length($n) > length($data->{pointermax})
+                or length($n) == length($data->{pointermax})
+                and $n gt $data->{pointermax}
+            ){
+                $data->{pointermax} = $n
+            }
             $logger->info(
                 sprintf(
-                    "$self->{oformat}  $self->{gformat}  %7.3f%%",
-                    $self->{outcomelist}->[$i], $n, 100 * $n / $grandtotal
+                    "$outcome_format  $gang_format  %7.3f%%",
+                    $project->get_outcome($i), $n, 100 * $n / $grandtotal
                 )
             );
         }
-        $logger->info( sprintf( "$self->{oformat}  $self->{gformat}", "", '-' x $longest ) );
-        $logger->info( sprintf( "$self->{oformat}  $self->{gformat}", "", $grandtotal ) );
+        $logger->info( sprintf( "$outcome_format  $gang_format", "", '-' x $longest ) );
+        $logger->info( sprintf( "$outcome_format  $gang_format", "", $grandtotal ) );
         if ( defined $curTestOutcome ) {
-            $logger->info("Expected outcome: $self->{outcomelist}->[$curTestOutcome]");
+            $logger->info('Expected outcome: ' .
+                $project->get_outcome($curTestOutcome));
             if ( $self->{sum}->[$curTestOutcome] eq $data->{pointermax} ) {
                 $logger->info('Correct outcome predicted.');
             }
@@ -679,9 +558,11 @@ foreach my $t (@{$self->{testItems}}) {
             my $p = $self->{pointers}->{$self->{datatocontext}->[$i] };
             $logger->info(
                 sprintf(
-                    "$self->{oformat}  $self->{sformat}  $self->{gformat}  %7.3f%%",
-                    $self->{outcomelist}->[ $self->{outcome}->[$i] ], $self->{spec}->[$i],
-                    $p,                           100 * $p / $grandtotal
+                    "$outcome_format  $spec_format  $gang_format  %7.3f%%",
+                    $project->get_outcome(
+                        $project->get_exemplar_outcome($i) ),
+                    $project->get_exemplar_spec($i),
+                    $p, 100 * $p / $grandtotal
                 )
             );
         }
@@ -691,7 +572,7 @@ foreach my $t (@{$self->{testItems}}) {
         #TODO: explain the magic below
         $logger->info('Gang effects');
         my $dashes = '-' x ( $longest + 10 );
-        my $pad = " " x length sprintf "%7.3f%%  $self->{gformat} x $self->{dformat}  $self->{oformat}",
+        my $pad = " " x length sprintf "%7.3f%%  $gang_format x $data_format  $outcome_format",
           0, '0', 0, "";
         foreach my $k (
             sort {
@@ -722,25 +603,25 @@ foreach my $t (@{$self->{testItems}}) {
                     no warnings;
                     $logger->info(
                         sprintf(
-                            "%7.3f%%  $self->{gformat}   $self->{dformat}  $self->{oformat}  $self->{vformat}",
+                            "%7.3f%%  $gang_format   $data_format  $outcome_format  $var_format",
                             100 * $self->{gang}->{$k} / $grandtotal,
                             $self->{gang}->{$k}, "", "", @{ $data->{curTestItem} }
                         )
                     );
                     $logger->info(
                         sprintf(
-                            "$dashes   $self->{dformat}  $self->{oformat}  $self->{vformat}",
+                            "$dashes   $data_format  $outcome_format  $var_format",
                             "", "", @vtemp
                         )
                     );
                 }
                 $logger->info(
                     sprintf(
-                        "%7.3f%%  $self->{gformat} x $self->{dformat}  $self->{oformat}",
+                        "%7.3f%%  $gang_format x $data_format  $outcome_format",
                         100 * $self->{gang}->{$k} / $grandtotal,
                         $p,
                         $self->{contextsize}->{$k},
-                        $self->{outcomelist}->[ $self->{subtooutcome}->{$k} ]
+                        $project->get_outcome($self->{subtooutcome}->{$k} )
                     )
                 );
 ## begin skip gang list
@@ -751,13 +632,14 @@ foreach my $t (@{$self->{testItems}}) {
                     $i = $self->{itemcontextchain}->[$i]
                   )
                 {
-                    $logger->info( sprintf "$pad  $self->{vformat}  $self->{spec}->[$i]",
-                        @{ $self->{data}->[$i] } );
+                    $logger->info( sprintf "$pad  $var_format  " .
+                        $project->get_exemplar_spec($i),
+                        @{ $project->get_exemplar_data($i) } );
                 }
 ## end skip gang list
             }
             else {
-                my @gangsort = (0) x @{$self->{outcomelist}};
+                my @gangsort = (0) x ($project->num_outcomes + 1);
 ## begin skip gang list
                 my @ganglist = ();
 ## end skip gang list
@@ -768,41 +650,43 @@ foreach my $t (@{$self->{testItems}}) {
                     $i = $self->{itemcontextchain}->[$i]
                   )
                 {
-                    ++$gangsort[ $self->{outcome}->[$i] ];
+                    ++$gangsort[ $project->get_exemplar_outcome($i) ];
 ## begin skip gang list
-                    push @{ $ganglist[ $self->{outcome}->[$i] ] }, $i;
+                    push @{ $ganglist[
+                        $project->get_exemplar_outcome($i) ] }, $i;
 ## end skip gang list
                 }
                 {
                     no warnings;
                     $logger->info(
                         sprintf(
-"%7.3f%%  $self->{gformat}   $self->{dformat}  $self->{oformat}  $self->{vformat}",
+"%7.3f%%  $gang_format   $data_format  $outcome_format  $var_format",
                             100 * $self->{gang}->{$k} / $grandtotal,
                             $self->{gang}->{$k}, "", "", @{ $data->{curTestItem} }
                         )
                     );
                     $logger->info(
                         sprintf(
-                            "$dashes   $self->{dformat}  $self->{oformat}  $self->{vformat}",
+                            "$dashes   $data_format  $outcome_format  $var_format",
                             "", "", @vtemp
                         )
                     );
                 }
-                for ( $i = 1 ; $i < @{$self->{outcomelist}} ; ++$i ) {
+                for $i ( 1 .. $project->num_outcomes ) {
                     next unless $gangsort[$i];
                     $logger->info(
                         sprintf(
-                            "%7.3f%%  $self->{gformat} x $self->{dformat}  $self->{oformat}",
+                            "%7.3f%%  $gang_format x $data_format  $outcome_format",
                             100 * $gangsort[$i] * $p / $grandtotal,
-                            $p, $gangsort[$i], $self->{outcomelist}->[$i]
+                            $p, $gangsort[$i], $project->get_outcome($i)
                         )
                     );
 ## begin skip gang list
                     foreach ( @{ $ganglist[$i] } ) {
                         $logger->info(
-                            sprintf( "$pad  $self->{vformat}  $self->{spec}->[$_]",
-                                @{ $self->{data}->[$_] } )
+                            sprintf( "$pad  $var_format  " .
+                                $project->get_exemplar_spec($_),
+                                @{ $project->get_exemplar_data($_) } )
                         );
                     }
 ## end skip gang list

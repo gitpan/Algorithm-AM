@@ -16,7 +16,7 @@ Algorithm::AM::algorithm - How the Analogical Modeling algorithm works
 
 =head1 VERSION
 
-version 2.34
+version 2.35
 
 =head1 DESCRIPTION
 

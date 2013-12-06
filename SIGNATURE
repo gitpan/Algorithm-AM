@@ -15,52 +15,65 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 1ddc3926bb303267f44df6f3a290b2ccff303980 AM.xs
-SHA1 ee63c3defd6bd881d790c87c824c9569274507cc Changes
+SHA1 11ceaa2fbea7c565550bcaecc5103578b5421e59 Changes
 SHA1 d6c57d8b2f151c8ba9b5ac0c69c825659742e4c8 INSTALL
 SHA1 984d6fd9c87297f3906143f8f27149fc381a77db LICENSE
-SHA1 384b381b1151e8a76d6ae30932e3d235426c5bc2 MANIFEST
-SHA1 c7ec3399baf5029755e947427ea1d14b4937c14f MANIFEST.SKIP
-SHA1 d6b6cad5f82d6e0461125330f87b648545837b0e META.json
-SHA1 b5bcdd591941d7c1f8b824726d15550a52538a85 META.yml
-SHA1 e2940d6c29e053efaeb5e02b8719474de8e7a830 Makefile.PL
-SHA1 a8a09184e11764e997856fcc3946e07c20fe28c7 README
-SHA1 9276ceec6416825b876db2fef204210b6ad461a2 dist.ini
-SHA1 34cb5fc4608aad866ee65cb9ee9ccc3331474d6e lib/Algorithm/AM.pm
-SHA1 4a02e67a14ff46244fc71092c992b507508ef798 lib/Algorithm/AM/algorithm.pod
-SHA1 89bc571cf6fcf2dbca2528573fbde67dd392c88a lib/Algorithm/AM/lattice.pod
+SHA1 c25364e4a09aea0e55d05fd0218a54d7882e25aa MANIFEST
+SHA1 86e5d027db8b2a0c15d8b5d7739ab3fa35c27366 MANIFEST.SKIP
+SHA1 8a6aafed6f3f257035a119217d0c3c42e1bc29a3 META.json
+SHA1 0fc7a3f26680173cf46e2c1c4ec9de3ca11ee4be META.yml
+SHA1 aa04b0263676b75f3cc71ef743d66a54e67d98a0 Makefile.PL
+SHA1 90cf9e2086dae2cd0f68e35e7e6f7e48094be276 README
+SHA1 5138835f0bfe8d85f964f2701c2fc9f1e3d71c5d dist.ini
+SHA1 eb4c4798e78dd43c4fc4d8c799a98200746eaf39 lib/Algorithm/AM.pm
+SHA1 1d8730be29d02f545f08547d8c7388983458ed18 lib/Algorithm/AM/Project.pm
+SHA1 400b42e6badd0bec7690d61e3008ae12f4d4caf5 lib/Algorithm/AM/algorithm.pod
+SHA1 99ad8e696ee0a7f7a7206bf87e2b23b546821404 lib/Algorithm/AM/lattice.pod
 SHA1 c054a2091499b95ffe8d55ac21f6d9637c2ca8e5 ppport.h
 SHA1 0365fd20ade4e407ba91d5c1f594a66bb2ef37e7 t/0-use.t
 SHA1 98c4d822e259e84b02c0efff431a66ef05eaa0a0 t/00-compile.t
-SHA1 666a76427b49e736a886d41ffc4add45722b081b t/000-report-versions-tiny.t
-SHA1 942153f22d121024f033f90238db29dffc26e87c t/01-classify.t
-SHA1 d88bb9b83d8d8735b36a8260700bd6d623aacdff t/02-commas.t
+SHA1 0d6b3bd9011137995c643618f72122fbc5e6b234 t/000-report-versions-tiny.t
+SHA1 9751022e235ba0e1818aa5e2bbd691237d3c7bbe t/01-classify.t
+SHA1 827d1c8f9ab3b2c87cd6c5a9147720023d1978cd t/02-commas.t
 SHA1 9ed72b2a652572b06f8a050fd2bae1d77a1401a0 t/03-repeat.t
 SHA1 a5a680f37975239c695f4c71170e427113f095b5 t/04-nulls.t
 SHA1 d4500f6967bda3ad18ddf1b147cba126eb385e45 t/05-given.t
-SHA1 5476908c50c9d0338d8ec2bb22a67a9ff48b6dba t/06-gangs.t
-SHA1 ac81f7f4edd42b4247cdb0f577874542fa5e7ad0 t/07-skipset.t
+SHA1 a14f7d2e617b53c31713044aafb118f26a97bcea t/06-gangs.t
+SHA1 c65b429e7cd4c1511a7fe3d39e198eb804dbbdde t/07-skipset.t
 SHA1 dec8baa991e918539d896ad060167427dec18166 t/08-probability.t
 SHA1 26ffb263db709727d17e300cb868bbcb75274481 t/09-hooks.t
-SHA1 b8a6ea1639bfd6037adadf44fa43db9e3fe08f54 t/10-exports.t
+SHA1 de1f6aa95e452f556435b9b066d5b614a9bdfec7 t/10-exports.t
 SHA1 c8f8c60a17b777454590bc8118058057348cb608 t/11-bigcmp.t
 SHA1 2dbb1c2b5f0070f5172d17e9902d2d68a784d9e9 t/12-finnverb.t
 SHA1 6284db84f7c57e896925a25147eee683bdb5f475 t/13-exceptions.t
-SHA1 79e665c52df5bbb83f30a8e4ca7f259c6142f488 t/data/chapter3/data
+SHA1 3bd0de6c87ece90e233232d1bad98f59b3a3e0f4 t/14-project.t
+SHA1 070d9e52a974e1ad20e4c0952dc1271580f8cf3c t/data/chapter3/data
 SHA1 bcc0876b26133c7014c0047d8bb50f6548b18b38 t/data/chapter3/test
-SHA1 8e16c4e80603c1774c6f1ee585ea57770ef999ab t/data/chapter3_commas/data
+SHA1 8cfc6c06f292d84f186d5d75063df9a7907bca10 t/data/chapter3_bad_data/data
+SHA1 bcc0876b26133c7014c0047d8bb50f6548b18b38 t/data/chapter3_bad_data/test
+SHA1 79e665c52df5bbb83f30a8e4ca7f259c6142f488 t/data/chapter3_bad_outcomes/data
+SHA1 a343d8084545a349892ace81ff86fc5a852ffb53 t/data/chapter3_bad_outcomes/outcome
+SHA1 bcc0876b26133c7014c0047d8bb50f6548b18b38 t/data/chapter3_bad_outcomes/test
+SHA1 91970f19b0b92392531151f98464333ea591593f t/data/chapter3_commas/data
 SHA1 1d997a3107552cf3d1d2151dc7673b27cd7f491d t/data/chapter3_commas/test
 SHA1 e46375c929f367b998ebf058451d66b710ee49a1 t/data/chapter3_given/data
 SHA1 bcc0876b26133c7014c0047d8bb50f6548b18b38 t/data/chapter3_given/test
-SHA1 eca0b6f6abfe4af6d33c039268c86da6ffbcc030 t/data/chapter3_multi_test/data
+SHA1 c20266544777b78032cf08662871950e63ad319a t/data/chapter3_multi_test/data
 SHA1 6bc23a7c84596494d3e87183e536baf9e9fb4704 t/data/chapter3_multi_test/test
 SHA1 bcc0876b26133c7014c0047d8bb50f6548b18b38 t/data/chapter3_no_data/test
 SHA1 eca0b6f6abfe4af6d33c039268c86da6ffbcc030 t/data/chapter3_no_test/data
 SHA1 eca0b6f6abfe4af6d33c039268c86da6ffbcc030 t/data/chapter3_null_feat/data
 SHA1 dc4ce6650b094a49e86ce22a51fa1c6ad11f6c9c t/data/chapter3_null_feat/test
-SHA1 bd897a88ec9704c040405c6e30657feb541c1b54 t/data/finnverb/amcpresults
+SHA1 79e665c52df5bbb83f30a8e4ca7f259c6142f488 t/data/chapter3_outcomes/data
+SHA1 841aa3595b171019d0113e468bbea04edc4e7788 t/data/chapter3_outcomes/outcome
+SHA1 bcc0876b26133c7014c0047d8bb50f6548b18b38 t/data/chapter3_outcomes/test
+SHA1 d20aad80ce4f27beee413aa8e1d557a80d7c8319 t/data/finnverb/amcpresults
 SHA1 c715612630d22da8152e2996304db433d504c34a t/data/finnverb/data
 SHA1 b439aeca6841eb485e48f907fbe854b71debe2b0 t/data/finnverb/outcome
 SHA1 c715612630d22da8152e2996304db433d504c34a t/data/finnverb/test
+SHA1 012835b82c1750f06ee52f83339c6850d182df23 t/data/format_test/data
+SHA1 06e4606dae5b679c858680095bb5520481d96b08 t/data/format_test/outcome
+SHA1 261990346795284f41c4837ec9c2e1b986e193f2 t/data/format_test/test
 SHA1 fd6f73b19c082d7405817f174c1961924788b1be t/perlcriticrc
 SHA1 5eff83850ba9ce608c6f2ec6b10178d434defe26 xt/author/critic.t
 SHA1 12be2af6a628ad18bb92f81e9016f1e48670001c xt/release/cpan-changes.t
@@ -80,11 +93,11 @@ SHA1 78f94f50ec5c73e0c66ad2c7bd3ecce870d99c5b xt/release/unused-vars.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2.0.17 (MingW32)
 
-iQEcBAEBAgAGBQJSJsebAAoJEF8b+BZrlpb0/KAH/0p+SvuepYYRXk7mgh8aq82g
-2ekfTqAe7Se9l0Lhv0vKs/i32PhvpTl7BRSWRZmNScabfNO3PvKtlvlIH8du/pUJ
-/2tgb2Ta9S6Y3zRgXuXujaF/H7w4XeCkhIBgSdaGTwwesJMLKX576NGkZ0VbDZD4
-OiJ5Dgg1nvXeWQ6JACDX/iXwXcUx9oPDjHNLZofJBEkiq7BXMBGDDuHhIqDp5ipe
-HDIZVATLjOwRSdKAMqWtpuy8VeIfa/RfN2/jmT/8bfQkxtpkYJy1ocMtNOy6Nzuo
-ZvA1v2OCZMwq9njtLPR1X+6QWWZlSCBLE1m9HSKaqn7twpYz/xwP05312naJwLs=
-=TyZy
+iQEcBAEBAgAGBQJSoUmWAAoJEF8b+BZrlpb09dsH/jpJRXGXJpjs2g0+clr+pUMW
+dXqnPIML6vtLiRcs0srt4DoInVpYsqxjepzJl+QfFhmbVUxh4sXTR74sWmD//sjD
+isbbFvGZmzqt/W0eUHw5DoI+vFA0reTR/PEinZLomLf5c539RSNMDgiOkQRWDKzr
+fLuFUGqjpa+obneuYOf1PB7PnHEP3N4sMmTti/uYpu+gj6frbkwZSc4nMhwWefjW
++SLeaQXMNBvsAJTvfFhXTpnWSFVNxsxkQOsjTVRe5JUPMrksrz3Da3ZAjaITYA/2
+nN37UON4BcOE8bUdkuHFMX+2rPFAGBl/RHteOAWjV/mZUf3+keDZBKW+MEnroBo=
+=gcrI
 -----END PGP SIGNATURE-----

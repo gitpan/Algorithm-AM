@@ -21,8 +21,10 @@ my %WriteMakefileArgs = (
   "NAME" => "Algorithm::AM",
   "PREREQ_PM" => {
     "Carp" => 0,
+    "Data::Dumper" => 0,
     "Exporter::Easy" => 0,
     "IO::Handle" => 0,
+    "Log::Any" => 0,
     "Log::Dispatch" => 0,
     "Log::Dispatch::File" => 0,
     "Path::Tiny" => 0,
@@ -46,7 +48,7 @@ my %WriteMakefileArgs = (
     "subs" => 0,
     "vars" => 0
   },
-  "VERSION" => "2.34",
+  "VERSION" => "2.35",
   "test" => {
     "TESTS" => "t/*.t"
   }

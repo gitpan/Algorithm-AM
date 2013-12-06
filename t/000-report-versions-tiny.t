@@ -49,6 +49,7 @@ sub pmver {
 }
 
 eval { $v .= pmver('Carp','any version') };
+eval { $v .= pmver('Data::Dumper','any version') };
 eval { $v .= pmver('Diagnostics','any version') };
 eval { $v .= pmver('Exporter::Easy','any version') };
 eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
@@ -57,6 +58,7 @@ eval { $v .= pmver('File::Slurp','any version') };
 eval { $v .= pmver('File::Temp','any version') };
 eval { $v .= pmver('FindBin','any version') };
 eval { $v .= pmver('IO::Handle','any version') };
+eval { $v .= pmver('Log::Any','any version') };
 eval { $v .= pmver('Log::Dispatch','any version') };
 eval { $v .= pmver('Log::Dispatch::File','any version') };
 eval { $v .= pmver('Path::Tiny','any version') };
