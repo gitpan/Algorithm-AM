@@ -3,7 +3,6 @@ abstract: 'Perl extension for Analogical Modeling using a parallel algorithm'
 author:
   - 'Theron Stanford <shixilun@yahoo.com>, Nathan Glenn <garfieldnate@gmail.com>'
 build_requires:
-  Diagnostics: 0
   File::Find: 0
   File::Slurp: 0
   File::Temp: 0
@@ -30,16 +29,16 @@ no_index:
 provides:
   Algorithm::AM:
     file: lib/Algorithm/AM.pm
-    version: 2.36
+    version: 2.37
   Algorithm::AM::Project:
     file: lib/Algorithm/AM/Project.pm
-    version: 2.36
+    version: 2.37
   Algorithm::AM::algorithm:
     file: lib/Algorithm/AM/algorithm.pod
-    version: 2.36
+    version: 2.37
   Algorithm::AM::lattice:
     file: lib/Algorithm/AM/lattice.pod
-    version: 2.36
+    version: 2.37
 requires:
   Carp: 0
   Data::Dumper: 0
@@ -60,12 +59,11 @@ resources:
   homepage: https://github.com/garfieldnate/Algorithm-AM
   license: http://dev.perl.org/licenses/
   repository: https://github.com/garfieldnate/Algorithm-AM.git
-version: 2.36
+version: 2.37
 x_BuiltWith:
   modules:
     Carp: 1.26
     Data::Dumper: 2.145
-    Diagnostics: NA(undef)
     Dist::Zilla: 4.300039
     Dist::Zilla::Plugin::ArchiveRelease: 4.00
     Dist::Zilla::Plugin::AutoPrereqs: 4.300039
@@ -459,5 +457,5 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: 1
+      is_trial: 0
     version: 4.300039
