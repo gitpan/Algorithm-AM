@@ -30,16 +30,16 @@ no_index:
 provides:
   Algorithm::AM:
     file: lib/Algorithm/AM.pm
-    version: 2.35
+    version: 2.36
   Algorithm::AM::Project:
     file: lib/Algorithm/AM/Project.pm
-    version: 2.35
+    version: 2.36
   Algorithm::AM::algorithm:
     file: lib/Algorithm/AM/algorithm.pod
-    version: 2.35
+    version: 2.36
   Algorithm::AM::lattice:
     file: lib/Algorithm/AM/lattice.pod
-    version: 2.35
+    version: 2.36
 requires:
   Carp: 0
   Data::Dumper: 0
@@ -60,12 +60,76 @@ resources:
   homepage: https://github.com/garfieldnate/Algorithm-AM
   license: http://dev.perl.org/licenses/
   repository: https://github.com/garfieldnate/Algorithm-AM.git
-version: 2.35
+version: 2.36
 x_BuiltWith:
   modules:
     Carp: 1.26
     Data::Dumper: 2.145
     Diagnostics: NA(undef)
+    Dist::Zilla: 4.300039
+    Dist::Zilla::Plugin::ArchiveRelease: 4.00
+    Dist::Zilla::Plugin::AutoPrereqs: 4.300039
+    Dist::Zilla::Plugin::Bugtracker: 1.111080
+    Dist::Zilla::Plugin::CPANFile: 4.300039
+    Dist::Zilla::Plugin::CheckChangesHasContent: 0.006
+    Dist::Zilla::Plugin::CheckPrereqsIndexed: 0.008
+    Dist::Zilla::Plugin::Clean: 0.07
+    Dist::Zilla::Plugin::ConfirmRelease: 4.300039
+    Dist::Zilla::Plugin::CopyFilesFromBuild: 0.103510
+    Dist::Zilla::Plugin::ExecDir: 4.300039
+    Dist::Zilla::Plugin::GatherDir: 4.300039
+    Dist::Zilla::Plugin::GenerateFile: 4.300039
+    Dist::Zilla::Plugin::Git::Commit: 2.013
+    Dist::Zilla::Plugin::Git::NextVersion: 2.013
+    Dist::Zilla::Plugin::Git::Push: 2.013
+    Dist::Zilla::Plugin::Git::Tag: 2.013
+    Dist::Zilla::Plugin::GithubMeta: 0.28
+    Dist::Zilla::Plugin::Homepage: 1.101420
+    Dist::Zilla::Plugin::InstallGuide: 1.200000
+    Dist::Zilla::Plugin::License: 4.300039
+    Dist::Zilla::Plugin::MakeMaker: 4.300039
+    Dist::Zilla::Plugin::Manifest: 4.300039
+    Dist::Zilla::Plugin::ManifestSkip: 4.300039
+    Dist::Zilla::Plugin::MetaConfig: 4.300039
+    Dist::Zilla::Plugin::MetaData::BuiltWith: 0.03000100
+    Dist::Zilla::Plugin::MetaJSON: 4.300039
+    Dist::Zilla::Plugin::MetaNoIndex: 4.300039
+    Dist::Zilla::Plugin::MetaProvides::Package: 1.14000001
+    Dist::Zilla::Plugin::MetaResources: 4.300039
+    Dist::Zilla::Plugin::MetaTests: 4.300039
+    Dist::Zilla::Plugin::MetaYAML: 4.300039
+    Dist::Zilla::Plugin::MinimumPerl: 1.003
+    Dist::Zilla::Plugin::MojibakeTests: 0.5
+    Dist::Zilla::Plugin::NextRelease: 4.300039
+    Dist::Zilla::Plugin::OurPkgVersion: 0.004000
+    Dist::Zilla::Plugin::PodCoverageTests: 4.300039
+    Dist::Zilla::Plugin::PodSyntaxTests: 4.300039
+    Dist::Zilla::Plugin::PodWeaver: 3.101641
+    Dist::Zilla::Plugin::Prepender: 1.112280
+    Dist::Zilla::Plugin::Prereqs::AuthorDeps: 0.002
+    Dist::Zilla::Plugin::PruneCruft: 4.300039
+    Dist::Zilla::Plugin::ReadmeAnyFromPod: 0.120120
+    Dist::Zilla::Plugin::ReadmeFromPod: 0.18
+    Dist::Zilla::Plugin::ReportPhase: 0.00
+    Dist::Zilla::Plugin::ReportVersions::Tiny: 1.08
+    Dist::Zilla::Plugin::Repository: 0.19
+    Dist::Zilla::Plugin::RunExtraTests: 0.007
+    Dist::Zilla::Plugin::ShareDir: 4.300039
+    Dist::Zilla::Plugin::Signature: 1.100930
+    Dist::Zilla::Plugin::Test::CPAN::Changes: 0.005
+    Dist::Zilla::Plugin::Test::CPAN::Meta::JSON: 0.003
+    Dist::Zilla::Plugin::Test::Compile: 2.001
+    Dist::Zilla::Plugin::Test::DistManifest: 2.000002
+    Dist::Zilla::Plugin::Test::Kwalitee: 2.03
+    Dist::Zilla::Plugin::Test::MinimumVersion: 2.000003
+    Dist::Zilla::Plugin::Test::Perl::Critic: 2.112410
+    Dist::Zilla::Plugin::Test::Pod::LinkCheck: 1.001
+    Dist::Zilla::Plugin::Test::Portability: 2.000003
+    Dist::Zilla::Plugin::Test::Synopsis: 2.000002
+    Dist::Zilla::Plugin::Test::UnusedVars: 2.000003
+    Dist::Zilla::Plugin::Test::Version: 0.002004
+    Dist::Zilla::Plugin::TestRelease: 4.300039
+    Dist::Zilla::Plugin::UploadToCPAN: 4.300039
     Exporter::Easy: 0.16
     ExtUtils::MakeMaker: 6.66
     File::Find: 1.20
@@ -76,7 +140,7 @@ x_BuiltWith:
     Log::Any: 0.15
     Log::Dispatch: 2.39
     Log::Dispatch::File: 2.39
-    Path::Tiny: 0.043
+    Path::Tiny: 0.052
     Pod::Coverage::TrustPod: 0.100002
     Test::CPAN::Meta: 0.23
     Test::Exception: 0.31
@@ -126,6 +190,14 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: AutoPrereqs
+      version: 4.300039
+    -
+      class: Dist::Zilla::Plugin::Prereqs::AuthorDeps
+      name: Prereqs::AuthorDeps
+      version: 0.002
+    -
+      class: Dist::Zilla::Plugin::CPANFile
+      name: CPANFile
       version: 4.300039
     -
       class: Dist::Zilla::Plugin::GenerateFile
@@ -308,6 +380,10 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Manifest
       name: Manifest
       version: 4.300039
+    -
+      class: Dist::Zilla::Plugin::CopyFilesFromBuild
+      name: CopyFilesFromBuild
+      version: 0.103510
     -
       class: Dist::Zilla::Plugin::CheckChangesHasContent
       name: CheckChangesHasContent

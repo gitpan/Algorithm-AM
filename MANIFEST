@@ -9,6 +9,7 @@ META.yml
 Makefile.PL
 README
 SIGNATURE
+cpanfile
 dist.ini
 lib/Algorithm/AM.pm
 lib/Algorithm/AM/Project.pm

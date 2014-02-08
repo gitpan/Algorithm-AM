@@ -13,25 +13,30 @@ use Path::Tiny;
 use Carp;
 use Log::Any '$log';
 # ABSTRACT: Manage data used by Algorithm::AM
-our $VERSION = '2.35'; # TRIAL VERSION;
+our $VERSION = '2.36'; # TRIAL VERSION;
 
 sub new {
     my ($class, $path, %opts) = @_;
 
-    my $new_opts = _check_opts($path, %opts);
+    # without a path, no option processing is needed
+    my $new_opts = $path ?
+        _check_opts($path, %opts) :
+        {project_path => '.'};
 
     my $self = bless $new_opts, $class;
 
-    $log->info('Reading data file...');
-    $self->_read_data_set();
+    $self->_init;
 
-    $log->info('Reading outcome file...');
-    $self->_set_outcomes();
+    # read project files if they exist
+    if($path){
+        $log->info('Reading data file...');
+        $self->_read_data_set();
 
-    $log->info('Reading test file...');
-    $self->_read_test_set();
+        $log->info('Reading test file...');
+        $self->_read_test_set();
 
-    $log->info('...done');
+        $log->info('...done');
+    }
 
     return $self;
 }
@@ -79,6 +84,28 @@ sub _check_opts {
     return \%proj_opts;
 }
 
+# initialize internal state
+sub _init {
+    my ($self) = @_;
+    # length of the longest spec string
+    $self->{longest_spec} = 0;
+    # length of the longest outcome string
+    $self->{longest_outcome} = 0;
+    # used to keep track of unique outcomes
+    $self->{outcomes} = {};
+    $self->{outcome_num} = 0;
+    # index 0 of outcomelist is reserved for the AM algorithm
+    $self->{outcomelist} = [''];
+    # 0 means number of data columns has not been determined
+    $self->{num_feats} = 0;
+
+    $self->{testItems} = [];
+    $self->{data} = [];
+    $self->{outcome} = [];
+    $self->{spec} = [];
+    return;
+}
+
 sub base_path {
     my ($self) = @_;
     return $self->{project_path};
@@ -90,10 +117,7 @@ sub results_path {
 }
 
 sub num_variables {
-    my ($self, $num) = @_;
-    if($num){
-        $self->{num_feats} = $num;
-    }
+    my ($self) = @_;
     return $self->{num_feats};
 }
 
@@ -134,12 +158,10 @@ sub get_test_item {
     return $self->{testItems}->[$index];
 }
 
-
 sub num_outcomes {
     my ($self) = @_;
-    return scalar @{$self->{outcomelist}} - 1;
+    return $self->{outcome_num};
 }
-
 
 sub get_outcome {
     my ($self, $index) = @_;
@@ -147,41 +169,55 @@ sub get_outcome {
 }
 
 sub var_format {
-    my ($self, $var_format) = @_;
-    if($var_format){
-        $self->{var_format} = $var_format;
+    my ($self) = @_;
+
+    if(!$self->num_variables){
+        croak "must add data before calling var_format";
     }
-    return $self->{var_format};
+
+    return join " ", map { "%-$_.${_}s" }
+        @{ $self->{longest_variables} };
 }
 
 sub spec_format {
-    my ($self, $spec_format) = @_;
-    if($spec_format){
-        $self->{spec_format} = $spec_format;
+    my ($self) = @_;
+
+    if(!$self->num_variables){
+        croak "must add data before calling spec_format";
     }
-    return $self->{spec_format};
+
+    my $length = $self->{longest_spec};
+    return "%-$length.${length}s";
 }
 
 sub outcome_format {
-    my ($self, $outcome_format) = @_;
-    if($outcome_format){
-        $self->{outcome_format} = $outcome_format;
+    my ($self) = @_;
+
+    if(!$self->num_variables){
+        croak "must add data before calling outcome_format";
     }
-    return $self->{outcome_format};
+
+    my $length = $self->{longest_outcome};
+    return "%-$length.${length}s";
 }
 
 
 sub data_format {
-    my ($self, $data_format) = @_;
-    if($data_format){
-        $self->{data_format} = $data_format;
+    my ($self) = @_;
+
+    if(!$self->num_variables){
+        croak "must add data before calling data_format";
     }
-    return $self->{data_format};
+
+    return '%' . $self->num_exemplars . '.0u';
 }
 
 sub short_outcome_index {
     my ($self, $outcome) = @_;
-    return $self->{octonum}{$outcome};
+    if(exists $self->{octonum}{$outcome}){
+        return $self->{octonum}{$outcome};
+    }
+    return -1;
 }
 
 # Used by AM.pm to retrieve the arrayref containing all of the "short"
@@ -221,188 +257,221 @@ sub _outcome_to_num {
     return $self->{outcometonum};
 }
 
-#read data set, calling _add_data for each item found in the data file.
+#read data set, calling add_data for each item found in the data file.
 #Also set spec_format, data_format and var_format.
+# Sets octonum, outcomelist, and outcometonum
 sub _read_data_set {
     my ($self) = @_;
 
     my $data_path = path($self->{project_path}, 'data');
-
-    my @data_set = $data_path->lines;
-    $log->debug( 'Data file: ' . scalar(@data_set) );
-
-    # the length of the longest spec
-    my $longest_spec = 0;
-    # the lengths of the longest variables in each column
-    my @longest_variables = ((0) x 60);
-    for (@data_set) {
-        # cross-platform chomp
-        s/[\n\r]+$//;
-        my ( $outcome, $data, $spec ) = split /$self->{bigsep}/, $_, 3;
-        $spec ||= $data;
-        my @datavar = split /$self->{smallsep}/, $data;
-        $self->_add_data($outcome, \@datavar, $spec);
-
-        # spec_length holds length of longest spec in data set
-        $longest_spec = do {
-            my $l = length $spec;
-            $l > $longest_spec ? $l : $longest_spec;
-        };
-
-        # variable_length is an arrayref, each index holding the length of the
-        # longest variable in that column
-        for my $i (0 .. $#datavar ) {
-            my $l = length $datavar[$i];
-            $longest_variables[$i] = $l if $l > $longest_variables[$i];
-        }
+    $log->info('checking for outcome file');
+    my $outcome_path = path($self->{project_path}, 'outcome');
+    # $data_sub will either read data file or data file and outcome file
+    my $data_sub;
+    if ( $outcome_path->exists ) {
+        $data_sub = $self->_read_data_outcome_sub(
+            $data_path->openr_utf8, $outcome_path->openr_utf8);
+    }
+    else {
+        $log->info('...will use data file');
+        $data_sub = $self->_read_data_sub($data_path->openr_utf8);
     }
 
-    #set format variables
-    $self->spec_format(
-        "%-$longest_spec.${longest_spec}s");
-    $self->data_format("%" . $self->num_exemplars . ".0u");
+    while (my ($data, $spec, $short, $long) = $data_sub->()) {
+        $self->add_data($data, $spec, $short, $long);
+    }
+    $log->debug( 'Data file: ' . $self->num_exemplars );
 
-    splice @longest_variables, $self->num_variables;
-    $self->var_format(
-        join " ", map { "%-$_.${_}s" } @longest_variables);
     return;
+}
+
+# return a sub that returns one data vector per call from the given FH,
+# and returns undef once the data file is done being read. Throws errors
+# on bad file contents. Long outcomes will be identical to short ones.
+sub _read_data_sub {
+    my ($self, $data_fh) = @_;
+    return sub {
+        my $line = <$data_fh>;
+        return unless $line;
+        # cross-platform chomp
+        $line =~ s/\R$//;
+        my ( $outcome, $data, $spec ) = split /$self->{bigsep}/, $line, 3;
+        $spec ||= $data;
+        my @data_vars = split /$self->{smallsep}/, $data;
+        # return $outcome twice for "short" and "long" versions
+        return (\@data_vars, $spec, $outcome);
+    };
+}
+
+# return a sub that reads one line of the input outcome file FH
+# per call. Dies on bad file contents.
+sub _read_outcome_sub {
+    my ($self, $outcome_fh) = @_;
+    return sub {
+        my $line = <$outcome_fh>;
+        return unless $line;
+        #cross-platform chomp
+        $line =~ s/\R$//;
+        my ( $short, $long ) = split /\s+/, $line, 2;
+        return ($short, $long);
+    };
+}
+
+# return a sub that returns one data vector at a time, and returns
+# undef once the data and outcome file are done being read. Throws
+# errors on bad file contents or different file sizes.
+sub _read_data_outcome_sub {
+    my ($self, $data_fh, $outcome_fh) = @_;
+    my $data_sub = $self->_read_data_sub($data_fh);
+    my $outcome_sub = $self->_read_outcome_sub($outcome_fh);
+    return sub {
+        # becomes obvious here that data file and outcome file have
+        # redundant information
+        my ($short, $long) = $outcome_sub->();
+        my ($data, $spec) = $data_sub->();
+        if($short && !$data){
+            croak 'Found more items in outcome file than in data file';
+        }elsif(!$short && $data){
+            croak 'Found more items in data file than in outcome file';
+        }
+        if($short){
+            return ($data, $spec, $short, $long);
+        }
+        return;
+    };
 }
 
 # $data should be an arrayref of variables
 # adds data item to three internal arrays: outcome, data, and spec
-sub _add_data {
-    my ($self, $outcome, $data, $spec) = @_;
+sub add_data {
+    my ($self, $data, $spec, $short, $long) = @_;
 
-    # first check that the number of variables in @$data is correct
+    $self->_check_variables($data, $spec);
+    $self->_update_format_vars($data, $spec, $short, $long);
+    $self->_update_outcome_vars($short, $long);
+
+    # store the new data item
+    push @{$self->{spec}}, $spec;
+    push @{$self->{data}}, $data;
+    push @{$self->{outcome}}, $self->{octonum}{$short};
+    return;
+}
+
+# check the input variable vector for size, and set the data vector
+# size for this project if it isn't set yet
+sub _check_variables {
+    my ($self, $data, $spec) = @_;
+    # check that the number of variables in @$data is correct
     # if num_variables is 0, it means it hasn't been set yet
     if(my $num = $self->num_variables){
         $num == @$data or
             croak "Expected $num variables, but found " . (scalar @$data) .
                 " in @$data" . ($spec ? " ($spec)" : '');
     }else{
-        $self->num_variables(scalar @$data);
-    }
-
-    # store the new data item
-    push @{$self->{spec}}, $spec;
-    push @{$self->{data}}, $data;
-    push @{$self->{outcome}}, $outcome;
-    return;
-}
-
-# figure out what all of the possible outcomes are
-sub _set_outcomes {
-    my ($self) = @_;
-
-    #grab outcomes from either outcome file or existing data
-    $log->info('checking for outcome file');
-    my $outcome_path = path($self->{project_path}, 'outcome');
-    if ( $outcome_path->exists ) {
-        my $num_outcomes = $self->_read_outcome_set($outcome_path);
-        if($num_outcomes != $self->num_exemplars){
-            croak 'Found ' . $self->num_exemplars . ' items in data file, ' .
-                "but $num_outcomes items in outcome file.";
+        # if not 0, store number of variables and expect all future
+        # data vectors to be the same length
+        if(@$data == 0){
+            croak "Found 0 data variables in @$data " .
+                ($spec ? " ($spec)" : '');
         }
+        $self->{num_feats} = scalar @$data;
     }
-    else {
-        $log->info('...will use data file');
-        $self->_read_outcomes_from_data();
-    }
-
-    $log->debug('...converting outcomes to indices');
-    my $max_length = 0;
-    @{$self->{outcome}} = map { $self->{octonum}{$_} } @{$self->{outcome}};
-    foreach (@{$self->{outcomelist}}) {
-        my $l;
-        $l = length;
-        $max_length = $l if $l > $max_length;
-    }
-    # index 0 is reserved for the AM algorithm
-    unshift @{$self->{outcomelist}}, '';
-    $self->outcome_format("%-$max_length.${max_length}s");
     return;
 }
 
-# Returns the number of outcome items found in the outcome file and
-# sets several key values in $self:
-# octonum, outcomelist, and outcometonum
-#
-# outcome file should have one outcome per line, with first a short
-# string and then a long one, separated by a space.
-# TODO: The first column is apparently redundant information, since
-# it must also be listed in the data file.
-sub _read_outcome_set {
-    my ($self, $outcome_path) = @_;
+# update format variables used for printing;
+# needs updating every data item.
+sub _update_format_vars {
+    my ($self, $data, $spec, $short, $long) = @_;
+    defined($long) or $long = $short;
 
-    my @outcome_set = $outcome_path->lines;
+    if((my $l = length $spec) > $self->{longest_spec}){
+        $self->{longest_spec} = $l;
+    }
 
-    # octonum maps short outcomes to the index of their (first)
-    #   long version listed in in outcomelist
-    # outcometonum maps long outcomes to the same to their own
-    #   (first) position in outcomelist
-    # outcomelist will hold list of all long outcome strings in file
-    my $counter = 0;
-    for my $outcome (@outcome_set) {
-        #cross-platform chomp
-        $outcome =~ s/[\n\r]+$//;
-        my ( $short, $long ) = split /\s+/, $outcome, 2;
-        $counter++;
-        $self->{octonum}{$short}   ||= $counter;
-        $self->{outcometonum}{$long} ||= $counter;
+    # longest_variables is an arrayref, each index holding the
+    # length of the longest variable in that column.
+    # Initialize it on addition of first data item.
+    if(!$self->{longest_variables}[0]){
+        $self->{longest_variables} = [((0) x scalar @$data)]
+    }
+    for my $i (0 .. $#$data ) {
+        my $l = length $data->[$i];
+        $self->{longest_variables}[$i] = $l
+            if $l > $self->{longest_variables}[$i];
+    }
+
+    if( (my $l = length $long) > $self->{longest_outcome}) {
+        $self->{longest_outcome} = $l;
+    }
+    return;
+}
+
+
+# keep track of outcomes; needs updating for every data/test item.
+# Variables:
+#   outcomes is a hash of the outcomes used for tracking unique
+#     values
+#   outcome_num is the total number of outcomes so far
+#   outcometonum is the index of a "long" outcome in outcomelist
+#   octonum is the index of a "short" outcome in outcomelist
+#   outcomelist is a list of the unique outcomes
+sub _update_outcome_vars {
+    my ($self, $short, $long) = @_;
+
+    defined($long) or $long = $short;
+
+    if(!$self->{outcomes}->{$long}){
+        $self->{outcome_num}++;
+        $self->{outcomes}->{$long} = $self->{outcome_num};
+        $self->{outcometonum}{$long} ||= $self->{outcome_num};
         push @{$self->{outcomelist}}, $long;
     }
-    return $counter;
-}
-
-# uses the outcomes from the data file for both "short"
-# and "long" outcome names
-#
-# sets several key values in $self:
-# octonum, outcomelist, and outcometonum
-sub _read_outcomes_from_data {
-    my ($self) = @_;
-
-    # Use a hash (%oc) to obtain a list of unique outcomes
-    my %oc;
-    $_++ for @oc{ @{$self->{outcome}} };
-
-    my $counter = 0;
-    # sort the keys to maintain the same ordering across multiple runs
-    for(sort {lc($a) cmp lc($b)} keys %oc){
-        $counter++;
-        $self->{octonum}{$_} = $counter;
-        $self->{outcometonum}{$_} = $counter;
-        push @{$self->{outcomelist}}, $_;
-    }
-
+    $self->{octonum}{$short}   ||= $self->{outcome_num};
     return;
 }
 
 # Sets the testItems to an arrayref of [outcome, [data], spec] for each
-# item in the test file (or data file if there is none)
-# test file, like the data file, should have "short" outcome, data vector,
-# and a spec
+# item in the test file (or data file if there is none). outcome is
+# the index in outcomelist.
+# The test file, like the data file, should have "short" outcome,
+# data vector, and a spec.
 sub _read_test_set {
     my ($self) = @_;
     my $test_file = path($self->{project_path}, 'test');
-    if(!$test_file->exists){
+    if($test_file->exists){
+        my $test_sub = $self->_read_data_sub($test_file->openr_utf8);
+        while(my ($data, $spec, $outcome) = $test_sub->()){
+            $self->add_test($data, $spec, $outcome);
+        }
+    }else{
         carp "Couldn't open $test_file";
         $log->warn(qq{Couldn't open $test_file; } .
             q{will run data file against itself});
-        $test_file = path($self->{project_path}, 'data');
+        # we don't need the extra processing of add_test
+        @{$self->{testItems}} = map {[
+            $self->{outcome}->[$_],
+            $self->{data}->[$_],
+            $self->{spec}->[$_]
+        ]} (0 .. $self->num_exemplars);
     }
-    for my $t ($test_file->lines){
-        #cross-platform chomp
-        $t =~ s/[\n\r]+$//;
-        my ($outcome, $data, $spec ) = split /$self->{bigsep}/, $t, 3;
-        my @vector = split /$self->{smallsep}/, $data;
-        if($self->num_variables != @vector){
-            croak 'expected ' . $self->num_variables . ' variables, but found ' .
-                (scalar @vector) . " in @vector" . ($spec ? " ($spec)" : '');
-        }
+    return;
+}
 
-        push @{$self->{testItems}}, [$outcome, \@vector, $spec || '']
+sub add_test {
+    my ($self, $data, $spec, $short, $long) = @_;
+    # TODO: make sure outcome exists in index
+
+    $self->_check_variables($data, $spec);
+    # if it's a new outcome, add it to the list
+    if($self->short_outcome_index($short) == -1){
+        $self->_update_outcome_vars($short, $long);
     }
+    push @{$self->{testItems}}, [
+        $self->short_outcome_index($short),
+        $data,
+        $spec || ''
+        ];
     return;
 }
 
@@ -418,13 +487,13 @@ Algorithm::AM::Project - Manage data used by Algorithm::AM
 
 =head1 VERSION
 
-version 2.35
+version 2.36
 
 =head2 C<new>
 
-Creates a new Project object. Pass in the path to the project directory
-followed by any named arguments (currently only the required C<commas>
-parameter is accepted).
+Creates a new Project object. You may optionally pass in the path to
+the project directory, followed by any named arguments (currently only
+the required C<commas> parameter is accepted).
 
 A project directory should contain the data set, the test set, and the
 outcome file (named, not surprisingly, F<data>, F<test>, and F<outcome>).
@@ -544,13 +613,12 @@ outcomelist.
 
 =head2 C<var_format>
 
-Returns (and/or sets) a format string for printing the variables of
+Returns a format string for printing the variables of
 a data item.
 
 =head2 C<spec_format>
 
-Returns (and/or sets) a format string for printing a spec string from
-the data set.
+Returns a format string for printing a spec string from the data set.
 
 =head2 C<outcome_format>
 
@@ -558,16 +626,27 @@ Returns (and/or sets) a format string for printing a "long" outcome.
 
 =head2 C<data_format>
 
-Returns (and/or sets) the format string for printing the number of
-data items
+Returns the format string for printing the number of data items.
 
 =head2 C<short_outcome_index>
 
-Returns the index of the given "short" outcome in outcomelist.
+Returns the index of the given "short" outcome in outcomelist, or
+-1 if it is not in the list.
 
 This is obviously not very transparent, as outcomelist is only
 accessible via a private method. In the future this will be
 done away with.
+
+=head2 C<add_data>
+
+Adds the arguments as a new data exemplar. There are four required
+arguments: an array ref containing the data variables, the spec, the
+short outcome string, and the long outcome string.
+
+=head2 C<add_test>
+
+Add a test item to the project. The arguments are the same as for
+c<add_data>.
 
 =head1 AUTHOR
 
