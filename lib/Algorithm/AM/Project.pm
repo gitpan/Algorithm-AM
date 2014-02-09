@@ -13,7 +13,7 @@ use Path::Tiny;
 use Carp;
 use Log::Any '$log';
 # ABSTRACT: Manage data used by Algorithm::AM
-our $VERSION = '2.38'; # VERSION;
+our $VERSION = '2.39'; # TRIAL VERSION;
 
 sub new {
     my ($class, $path, %opts) = @_;
@@ -487,7 +487,7 @@ Algorithm::AM::Project - Manage data used by Algorithm::AM
 
 =head1 VERSION
 
-version 2.38
+version 2.39
 
 =head2 C<new>
 

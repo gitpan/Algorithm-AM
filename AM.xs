@@ -1,6 +1,7 @@
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
+#include <stdio.h>
 
 #include "ppport.h"
 
@@ -227,14 +228,18 @@ normalize(SV *s) {
   unsigned int outlength = 0;
   AM_LONG *p = (AM_LONG *) SvPVX(s);
   STRLEN length = SvCUR(s) / sizeof(AM_LONG);
+  /* TODO: is this required to be a certain number of bits?*/
   long double nn = 0;
   int j;
 
   /* you can't put the for block in {}, or it doesn't work
    * ask me for details some time
+   * TODO: is this still necessary? (Nate)
    */
-  for (j = 8; j; --j)
+  for (j = 8; j; --j){
+    /*   2^16    * nn +           p[j-1] */
     nn = 65536.0 * nn + (double) *(p + j - 1);
+  }
 
   dividend = &dspace[0];
   quotient = &qspace[0];
@@ -255,11 +260,77 @@ normalize(SV *s) {
       *dptr += carry << 16;
       *qptr = 0;
       for (i = 16; i; ) {
-	--i;
-	if (tens[i] <= *dptr) {
-	  *dptr -= tens[i];
-	  *qptr += ones[i];
-	}
+  --i;
+  if (tens[i] <= *dptr) {
+    *dptr -= tens[i];
+    *qptr += ones[i];
+  }
+      }
+      carry = *dptr;
+      --dptr;
+      --qptr;
+    }
+    --outptr;
+    *outptr = (char) (0x30 + *dividend) & 0x00ff;
+    ++outlength;
+    temp = dividend;
+    dividend = quotient;
+    quotient = temp;
+  }
+
+  SvNVX(s) = nn;
+  SvNOK_on(s);
+}
+
+normalize_debug(SV *s) {
+  AM_LONG dspace[10];
+  AM_LONG qspace[10];
+  char outspace[55];
+  AM_LONG *dividend, *quotient, *dptr, *qptr;
+  char *outptr;
+  unsigned int outlength = 0;
+  AM_LONG *p = (AM_LONG *) SvPVX(s);
+  STRLEN length = SvCUR(s) / sizeof(AM_LONG);
+  /* TODO: is this required to be a certain number of bits?*/
+  long double nn = 0;
+  int j;
+
+  fprintf(stderr, "--------\n");/*DEBUG*/
+  /* you can't put the for block in {}, or it doesn't work
+   * ask me for details some time
+   * TODO: is this still necessary? (Nate)
+   */
+  for (j = 8; j; --j){
+    /*   2^16    * nn +           p[j-1] */
+    nn = 65536.0 * nn + (double) *(p + j - 1);
+    fprintf(stderr, "%lu\n", *(p + j - 1));/*DEBUG*/
+    /* fprintf(stderr, "%Le\n", nn);*/
+  }
+
+  dividend = &dspace[0];
+  quotient = &qspace[0];
+  Copy(p, dividend, length, sizeof(AM_LONG));
+  outptr = outspace + 54;
+
+  while (1) {
+    AM_LONG *temp, carry = 0;
+    while (length && (*(dividend + length - 1) == 0)) --length;
+    if (length == 0) {
+      sv_setpvn(s, outptr, outlength);
+      break;
+    }
+    dptr = dividend + length - 1;
+    qptr = quotient + length - 1;
+    while (dptr >= dividend) {
+      unsigned int i;
+      *dptr += carry << 16;
+      *qptr = 0;
+      for (i = 16; i; ) {
+  --i;
+  if (tens[i] <= *dptr) {
+    *dptr -= tens[i];
+    *qptr += ones[i];
+  }
       }
       carry = *dptr;
       --dptr;
@@ -313,16 +384,28 @@ _initialize(...)
   MAGIC *mg;
   int i;
  PPCODE:
-  project = (HV *) SvRV(ST(0)); /* $self is here */
+  /* 9 arguments are passed to the _initialize method: */
+  /* $self, the AM object */
+  project = (HV *) SvRV(ST(0));
+  /* number of active variables in each lattice*/
   guts.activeVar = AvARRAY((AV *) SvRV(ST(1)));
+  /* array ref of "short" outcomes for whole data set*/
   guts.outcome = AvARRAY((AV *) SvRV(ST(2)));
+  /* ??? */
   guts.itemcontextchain = AvARRAY((AV *) SvRV(ST(3)));
+  /* ??? */
   guts.itemcontextchainhead = (HV *) SvRV(ST(4));
+  /* ??? */
   guts.subtooutcome = (HV *) SvRV(ST(5));
+  /* ??? */
   guts.contextsize = (HV *) SvRV(ST(6));
+  /* ??? */
   guts.pointers = (HV *) SvRV(ST(7));
+  /* ??? */
   guts.gang = (HV *) SvRV(ST(8));
+  /* number of pointers to each outcome */
   guts.sum = AvARRAY((AV *) SvRV(ST(9)));
+  /* ??? */
   guts.numoutcomes = av_len((AV *) SvRV(ST(9)));
 
   /*
@@ -1092,7 +1175,8 @@ _fillandcount(...)
   tempsv = *hv_fetch(pointers, "grandtotal", 10, 1);
   SvUPGRADE(tempsv, SVt_PVNV);
   sv_setpvn(tempsv, (char *) grandtotal, 8 * sizeof(AM_LONG));
-  normalize(tempsv);
+  fprintf(stderr, "normalizing grandtotal\n");/*DEBUG*/
+  normalize_debug(tempsv);
 
   Safefree(subcontext);
   Safefree(suboutcome);

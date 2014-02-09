@@ -101,6 +101,7 @@
          "requires" : {
             "Carp" : "0",
             "Data::Dumper" : "0",
+            "Devel::Peek" : "0",
             "Exporter::Easy" : "0",
             "IO::Handle" : "0",
             "Log::Any" : "0",
@@ -134,22 +135,22 @@
    "provides" : {
       "Algorithm::AM" : {
          "file" : "lib/Algorithm/AM.pm",
-         "version" : "2.38"
+         "version" : "2.39"
       },
       "Algorithm::AM::Project" : {
          "file" : "lib/Algorithm/AM/Project.pm",
-         "version" : "2.38"
+         "version" : "2.39"
       },
       "Algorithm::AM::algorithm" : {
          "file" : "lib/Algorithm/AM/algorithm.pod",
-         "version" : "2.38"
+         "version" : "2.39"
       },
       "Algorithm::AM::lattice" : {
          "file" : "lib/Algorithm/AM/lattice.pod",
-         "version" : "2.38"
+         "version" : "2.39"
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "bugtracker" : {
          "mailto" : "bug-algorithm-am at rt.cpan.org",
@@ -165,11 +166,12 @@
          "web" : "https://github.com/garfieldnate/Algorithm-AM"
       }
    },
-   "version" : "2.38",
+   "version" : "2.39",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.26",
          "Data::Dumper" : "2.145",
+         "Devel::Peek" : "1.08",
          "Dist::Zilla" : "4.300039",
          "Dist::Zilla::Plugin::ArchiveRelease" : "4.00",
          "Dist::Zilla::Plugin::AutoPrereqs" : "4.300039",
@@ -641,7 +643,7 @@
       "zilla" : {
          "class" : "Dist::Zilla::Dist::Builder",
          "config" : {
-            "is_trial" : "0"
+            "is_trial" : "1"
          },
          "version" : "4.300039"
       }

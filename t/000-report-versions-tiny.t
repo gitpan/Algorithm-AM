@@ -50,6 +50,7 @@ sub pmver {
 
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('Data::Dumper','any version') };
+eval { $v .= pmver('Devel::Peek','any version') };
 eval { $v .= pmver('Dist::Zilla','4.300039') };
 eval { $v .= pmver('Dist::Zilla::Plugin::ArchiveRelease','any version') };
 eval { $v .= pmver('Dist::Zilla::Plugin::AutoPrereqs','any version') };

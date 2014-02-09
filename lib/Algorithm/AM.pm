@@ -10,7 +10,7 @@ package Algorithm::AM;
 use strict;
 use warnings;
 # ABSTRACT: Perl extension for Analogical Modeling using a parallel algorithm
-our $VERSION = '2.38'; # VERSION;
+our $VERSION = '2.39'; # TRIAL VERSION;
 use feature 'state';
 use Path::Tiny;
 use Exporter::Easy (
@@ -21,6 +21,7 @@ our @CARP_NOT = qw(Algorithm::AM);
 use IO::Handle;
 use Data::Dumper;
 use Algorithm::AM::Project;
+use Devel::Peek 'Dump';
 
 require XSLoader;
 XSLoader::load();
@@ -347,7 +348,7 @@ Algorithm::AM - Perl extension for Analogical Modeling using a parallel algorith
 
 =head1 VERSION
 
-version 2.38
+version 2.39
 
 =head1 AUTHOR
 
@@ -436,6 +437,8 @@ foreach my $item_number (0 .. $project->num_test_items - 1) {
         %{$self->{subtooutcome}}            = ();
         %{$self->{pointers}}                = ();
         %{$self->{gang}}                    = ();
+        # big ints are used in AM.xs; these consist of an
+        # array of 8 unsigned longs
         foreach (@{$self->{sum}}) {
             $_ = pack "L!8", 0, 0, 0, 0, 0, 0, 0, 0;
         }
@@ -501,6 +504,10 @@ foreach my $item_number (0 .. $project->num_test_items - 1) {
 # line 1600 "call XS"
         $self->_fillandcount(X);
         $grandtotal = $self->{pointers}->{'grandtotal'};
+
+        # DEBUG
+        Dump($grandtotal);
+
         unless ($grandtotal) {
             #TODO: is this tested yet?
             $logger->warn('No data items considered.  No prediction possible.');
