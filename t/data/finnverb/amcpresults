@@ -1,7 +1,7 @@
 Test items left: 173
-Time: 21:26:01
+Time: 18:32:25
 A A 0 = 0 = 0 = J A
-0/1  21:26:01
+0/1  18:32:25
 Given Context:  A A 0 = 0 = 0 = J A, AJA
 If context is in data file then exclude
 Number of data items: 173
@@ -16,11 +16,11 @@ AJA     530  100.000%
         530
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:01
+1/1  18:32:25
 Test items left: 172
-Time: 21:26:01
+Time: 18:32:25
 A A 0 = S L 0 = K A
-0/1  21:26:01
+0/1  18:32:25
 Given Context:  A A 0 = S L 0 = K A, ALKA
 If context is in data file then exclude
 Number of data items: 173
@@ -37,11 +37,11 @@ HUOLTA    8    0.956%
         837
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:01
+1/1  18:32:25
 Test items left: 171
-Time: 21:26:01
+Time: 18:32:25
 A A 0 = S N 0 = T A
-0/1  21:26:01
+0/1  18:32:25
 Given Context:  A A 0 = S N 0 = T A, ANTA
 If context is in data file then exclude
 Number of data items: 173
@@ -56,11 +56,11 @@ AJA     657  100.000%
         657
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:01
+1/1  18:32:25
 Test items left: 170
-Time: 21:26:01
+Time: 18:32:25
 A A V U 0 = O T T A
-0/1  21:26:01
+0/1  18:32:25
 Given Context:  A A V U 0 = O T T A, AUTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -76,11 +76,11 @@ ELa       96    2.874%
         3340
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:25
 Test items left: 169
-Time: 21:26:02
+Time: 18:32:25
 E E 0 = 0 = 0 = L a
-0/1  21:26:02
+0/1  18:32:25
 Given Context:  E E 0 = 0 = 0 = L a, ELa
 If context is in data file then exclude
 Number of data items: 173
@@ -96,11 +96,11 @@ ELa     450   91.837%
         490
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:25
 Test items left: 168
-Time: 21:26:02
+Time: 18:32:25
 E E 0 = 0 = O S T a
-0/1  21:26:02
+0/1  18:32:25
 Given Context:  E E 0 = 0 = O S T a, ESTa
 If context is in data file then exclude
 Number of data items: 173
@@ -115,11 +115,11 @@ ELa     5127  100.000%
         5127
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:25
 Test items left: 167
-Time: 21:26:02
+Time: 18:32:25
 H A V A 0 = O S T A
-0/1  21:26:02
+0/1  18:32:25
 Given Context:  H A V A 0 = O S T A, HAASTA
 If context is in data file then exclude
 Number of data items: 173
@@ -134,11 +134,11 @@ AJA     3924  100.000%
         3924
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:25
 Test items left: 166
-Time: 21:26:02
+Time: 18:32:25
 H A V I 0 = 0 = S E
-0/1  21:26:02
+0/1  18:32:25
 Given Context:  H A V I 0 = 0 = S E, HAISE
 If context is in data file then exclude
 Number of data items: 173
@@ -155,11 +155,11 @@ HUOLTA    12    0.422%
         2844
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:25
 Test items left: 165
-Time: 21:26:02
+Time: 18:32:25
 H A V I 0 = O S T A
-0/1  21:26:02
+0/1  18:32:25
 Given Context:  H A V I 0 = O S T A, HAISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -175,11 +175,11 @@ ELa      144    3.685%
         3908
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 164
-Time: 21:26:02
+Time: 18:32:26
 H A 0 = 0 = 0 = K E
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  H A 0 = 0 = 0 = K E, HAKE
 If context is in data file then exclude
 Number of data items: 173
@@ -195,11 +195,11 @@ ELa     5023   99.801%
         5033
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 163
-Time: 21:26:02
+Time: 18:32:26
 H E V I 0 = O T T a
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  H E V I 0 = O T T a, HEITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -214,11 +214,11 @@ ELa     14117  100.000%
         14117
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 162
-Time: 21:26:02
+Time: 18:32:26
 H I V I 0 = O H T a
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  H I V I 0 = O H T a, HIIHTa
 If context is in data file then exclude
 Number of data items: 173
@@ -234,11 +234,11 @@ ELa     9721   98.620%
         9857
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 161
-Time: 21:26:02
+Time: 18:32:26
 H O 0 = 0 = O H T A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  H O 0 = 0 = O H T A, HOHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -254,11 +254,11 @@ ELa     4634   99.656%
         4650
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 160
-Time: 21:26:02
+Time: 18:32:26
 H O V I 0 = 0 = T A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  H O V I 0 = 0 = T A, HOITA
 If context is in data file then exclude
 Number of data items: 173
@@ -275,11 +275,11 @@ HUOLTA    34    0.860%
         3954
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 159
-Time: 21:26:02
+Time: 18:32:26
 H U V O S L 0 = T A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  H U V O S L 0 = T A, HUOLTA
 If context is in data file then exclude
 Number of data items: 173
@@ -295,11 +295,11 @@ HUOLTA  608   66.960%
         908
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 158
-Time: 21:26:02
+Time: 18:32:26
 H U V U 0 = 0 = T A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  H U V U 0 = 0 = T A, HUUTA
 If context is in data file then exclude
 Number of data items: 173
@@ -315,11 +315,11 @@ HUOLTA    22    1.721%
         1278
 Expected outcome: HUOLTA
 Incorrect outcome predicted
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 157
-Time: 21:26:02
+Time: 18:32:26
 I I 0 = 0 = 0 = M E
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  I I 0 = 0 = 0 = M E, IME
 If context is in data file then exclude
 Number of data items: 173
@@ -334,11 +334,11 @@ ELa     3385  100.000%
         3385
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 156
-Time: 21:26:02
+Time: 18:32:26
 I I 0 = 0 = O S K E
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  I I 0 = 0 = O S K E, ISKE
 If context is in data file then exclude
 Number of data items: 173
@@ -353,11 +353,11 @@ ELa     5574  100.000%
         5574
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 155
-Time: 21:26:02
+Time: 18:32:26
 I I 0 = 0 = O T K E
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  I I 0 = 0 = O T K E, ITKE
 If context is in data file then exclude
 Number of data items: 173
@@ -372,11 +372,11 @@ ELa     5550  100.000%
         5550
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 154
-Time: 21:26:02
+Time: 18:32:26
 I I 0 = 0 = 0 = T a
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  I I 0 = 0 = 0 = T a, ITa
 If context is in data file then exclude
 Number of data items: 173
@@ -391,11 +391,11 @@ ELa     312  100.000%
         312
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 153
-Time: 21:26:02
+Time: 18:32:26
 J A 0 = 0 = 0 = K A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  J A 0 = 0 = 0 = K A, JAKA
 If context is in data file then exclude
 Number of data items: 173
@@ -411,11 +411,11 @@ ELa     100   15.873%
         630
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 152
-Time: 21:26:02
+Time: 18:32:26
 J A 0 = 0 = O K S A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  J A 0 = 0 = O K S A, JAKSA
 If context is in data file then exclude
 Number of data items: 173
@@ -431,11 +431,11 @@ ELa       12    0.875%
         1371
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 151
-Time: 21:26:02
+Time: 18:32:26
 J A 0 = 0 = O T K A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  J A 0 = 0 = O T K A, JATKA
 If context is in data file then exclude
 Number of data items: 173
@@ -451,11 +451,11 @@ ELa      412   20.206%
         2039
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 150
-Time: 21:26:02
+Time: 18:32:26
 J A V U 0 = 0 = H A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  J A V U 0 = 0 = H A, JAUHA
 If context is in data file then exclude
 Number of data items: 173
@@ -471,11 +471,11 @@ ELa      30   17.045%
         176
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 149
-Time: 21:26:02
+Time: 18:32:26
 J O 0 = 0 = O H T A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  J O 0 = 0 = O H T A, JOHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -491,11 +491,11 @@ ELa     4666   99.446%
         4692
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 148
-Time: 21:26:02
+Time: 18:32:26
 J O V U 0 = O S T A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  J O V U 0 = O S T A, JOUSTA
 If context is in data file then exclude
 Number of data items: 173
@@ -511,11 +511,11 @@ ELa     5749   99.275%
         5791
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 147
-Time: 21:26:02
+Time: 18:32:26
 J U V O 0 = O K S E
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  J U V O 0 = O K S E, JUOKSE
 If context is in data file then exclude
 Number of data items: 173
@@ -531,11 +531,11 @@ ELa     2948   99.595%
         2960
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 146
-Time: 21:26:02
+Time: 18:32:26
 J a 0 = 0 = O T T a
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  J a 0 = 0 = O T T a, JaTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -551,11 +551,11 @@ ELa     8244   99.903%
         8252
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 145
-Time: 21:26:02
+Time: 18:32:26
 J a V Y 0 = 0 = T a
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  J a V Y 0 = 0 = T a, JaYTa
 If context is in data file then exclude
 Number of data items: 173
@@ -572,11 +572,11 @@ HUOLTA    96    8.889%
         1080
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 144
-Time: 21:26:02
+Time: 18:32:26
 K A V A 0 = 0 = T A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  K A V A 0 = 0 = T A, KAATA
 If context is in data file then exclude
 Number of data items: 173
@@ -593,11 +593,11 @@ HUOLTA    5    0.710%
         704
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 143
-Time: 21:26:02
+Time: 18:32:26
 K A V I 0 = O H T A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  K A V I 0 = O H T A, KAIHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -613,11 +613,11 @@ ELa      344    8.830%
         3896
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:26
 Test items left: 142
-Time: 21:26:02
+Time: 18:32:26
 K A V I 0 = 0 = V A
-0/1  21:26:02
+0/1  18:32:26
 Given Context:  K A V I 0 = 0 = V A, KAIVA
 If context is in data file then exclude
 Number of data items: 173
@@ -634,11 +634,11 @@ HUOLTA    8    4.444%
         180
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 141
-Time: 21:26:02
+Time: 18:32:27
 K A 0 = S N 0 = T A
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K A 0 = S N 0 = T A, KANTA
 If context is in data file then exclude
 Number of data items: 173
@@ -655,11 +655,11 @@ HUOLTA    2    0.260%
         770
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 140
-Time: 21:26:02
+Time: 18:32:27
 K A 0 = S R O T T A
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K A 0 = S R O T T A, KARTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -675,11 +675,11 @@ HUOLTA    60    2.938%
         2042
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 139
-Time: 21:26:02
+Time: 18:32:27
 K A 0 = 0 = O S V A
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K A 0 = 0 = O S V A, KASVA
 If context is in data file then exclude
 Number of data items: 173
@@ -695,11 +695,11 @@ ELa      698   32.121%
         2173
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 138
-Time: 21:26:02
+Time: 18:32:27
 K A 0 = 0 = O T T A
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K A 0 = 0 = O T T A, KATTA
 If context is in data file then exclude
 Number of data items: 173
@@ -715,11 +715,11 @@ ELa      187    6.075%
         3078
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 137
-Time: 21:26:02
+Time: 18:32:27
 K E V I 0 = O T T a
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K E V I 0 = O T T a, KEITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -734,11 +734,11 @@ ELa     14603  100.000%
         14603
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 136
-Time: 21:26:02
+Time: 18:32:27
 K E 0 = 0 = O S T a
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K E 0 = 0 = O S T a, KESTa
 If context is in data file then exclude
 Number of data items: 173
@@ -753,11 +753,11 @@ ELa     5274  100.000%
         5274
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 135
-Time: 21:26:02
+Time: 18:32:27
 K I V E S L 0 = T a
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K I V E S L 0 = T a, KIELTa
 If context is in data file then exclude
 Number of data items: 173
@@ -773,11 +773,11 @@ HUOLTA  1352   97.126%
         1392
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 134
-Time: 21:26:02
+Time: 18:32:27
 K I V E S R 0 = T a
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K I V E S R 0 = T a, KIERTa
 If context is in data file then exclude
 Number of data items: 173
@@ -793,11 +793,11 @@ HUOLTA  1676   99.762%
         1680
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 133
-Time: 21:26:02
+Time: 18:32:27
 K I V I 0 = O S T a
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K I V I 0 = O S T a, KIISTa
 If context is in data file then exclude
 Number of data items: 173
@@ -812,11 +812,11 @@ ELa     11262  100.000%
         11262
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 132
-Time: 21:26:02
+Time: 18:32:27
 K I V I 0 = O T T a
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K I V I 0 = O T T a, KIITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -831,11 +831,11 @@ ELa     16770  100.000%
         16770
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 131
-Time: 21:26:02
+Time: 18:32:27
 K I V I 0 = 0 = T a
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K I V I 0 = 0 = T a, KIITa
 If context is in data file then exclude
 Number of data items: 173
@@ -852,11 +852,11 @@ HUOLTA   100    6.693%
         1494
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 130
-Time: 21:26:02
+Time: 18:32:27
 K I 0 = 0 = O T K E
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K I 0 = 0 = O T K E, KITKE
 If context is in data file then exclude
 Number of data items: 173
@@ -871,11 +871,11 @@ ELa     6215  100.000%
         6215
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 129
-Time: 21:26:02
+Time: 18:32:27
 K O V I 0 = O T T A
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K O V I 0 = O T T A, KOITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -891,11 +891,11 @@ ELa     6385   98.992%
         6450
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 128
-Time: 21:26:02
+Time: 18:32:27
 K O 0 = 0 = 0 = K E
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K O 0 = 0 = 0 = K E, KOKE
 If context is in data file then exclude
 Number of data items: 173
@@ -910,11 +910,11 @@ ELa     7074  100.000%
         7074
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:02
+1/1  18:32:27
 Test items left: 127
-Time: 21:26:02
+Time: 18:32:27
 K O 0 = 0 = O S K E
-0/1  21:26:02
+0/1  18:32:27
 Given Context:  K O 0 = 0 = O S K E, KOSKE
 If context is in data file then exclude
 Number of data items: 173
@@ -929,11 +929,11 @@ ELa     7902  100.000%
         7902
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:27
 Test items left: 126
-Time: 21:26:03
+Time: 18:32:27
 K O 0 = 0 = O S T A
-0/1  21:26:03
+0/1  18:32:27
 Given Context:  K O 0 = 0 = O S T A, KOSTA
 If context is in data file then exclude
 Number of data items: 173
@@ -949,11 +949,11 @@ ELa     5488   98.990%
         5544
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:27
 Test items left: 125
-Time: 21:26:03
+Time: 18:32:27
 K U 0 = S L 0 = K E
-0/1  21:26:03
+0/1  18:32:27
 Given Context:  K U 0 = S L 0 = K E, KULKE
 If context is in data file then exclude
 Number of data items: 173
@@ -969,11 +969,11 @@ HUOLTA     6    0.259%
         2316
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:27
 Test items left: 124
-Time: 21:26:03
+Time: 18:32:27
 K U V O 0 = 0 = L E
-0/1  21:26:03
+0/1  18:32:27
 Given Context:  K U V O 0 = 0 = L E, KUOLE
 If context is in data file then exclude
 Number of data items: 173
@@ -988,11 +988,11 @@ ELa     3740  100.000%
         3740
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:27
 Test items left: 123
-Time: 21:26:03
+Time: 18:32:27
 K U V U 0 = 0 = L E
-0/1  21:26:03
+0/1  18:32:27
 Given Context:  K U V U 0 = 0 = L E, KUULE
 If context is in data file then exclude
 Number of data items: 173
@@ -1008,11 +1008,11 @@ HUOLTA     8    0.221%
         3624
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 122
-Time: 21:26:03
+Time: 18:32:28
 K U V U S L 0 = T A
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K U V U S L 0 = T A, KUULTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1029,11 +1029,11 @@ HUOLTA  646   90.476%
         714
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 121
-Time: 21:26:03
+Time: 18:32:28
 K Y 0 = S L 0 = P E
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K Y 0 = S L 0 = P E, KYLPE
 If context is in data file then exclude
 Number of data items: 173
@@ -1049,11 +1049,11 @@ ELa     661   99.698%
         663
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 120
-Time: 21:26:03
+Time: 18:32:28
 K Y 0 = S L 0 = V a
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K Y 0 = S L 0 = V a, KYLVa
 If context is in data file then exclude
 Number of data items: 173
@@ -1070,11 +1070,11 @@ HUOLTA    4    1.183%
         338
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 119
-Time: 21:26:03
+Time: 18:32:28
 K Y 0 = S N 0 = T a
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K Y 0 = S N 0 = T a, KYNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1091,11 +1091,11 @@ HUOLTA  386   60.883%
         634
 Expected outcome: ELa
 Incorrect outcome predicted
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 118
-Time: 21:26:03
+Time: 18:32:28
 K Y 0 = 0 = 0 = T E
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K Y 0 = 0 = 0 = T E, KYTE
 If context is in data file then exclude
 Number of data items: 173
@@ -1112,11 +1112,11 @@ HUOLTA     4    0.109%
         3669
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 117
-Time: 21:26:03
+Time: 18:32:28
 K Y 0 = 0 = O T K E
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K Y 0 = 0 = O T K E, KYTKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1131,11 +1131,11 @@ ELa     5887  100.000%
         5887
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 116
-Time: 21:26:03
+Time: 18:32:28
 K a 0 = 0 = O S K E
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K a 0 = 0 = O S K E, KaSKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1150,11 +1150,11 @@ ELa     6392  100.000%
         6392
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 115
-Time: 21:26:03
+Time: 18:32:28
 K a 0 = 0 = O T K E
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K a 0 = 0 = O T K E, KaTKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1169,11 +1169,11 @@ ELa     6504  100.000%
         6504
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 114
-Time: 21:26:03
+Time: 18:32:28
 K a V Y 0 = O T T a
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K a V Y 0 = O T T a, KaYTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1189,11 +1189,11 @@ HUOLTA      7    0.050%
         13898
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 113
-Time: 21:26:03
+Time: 18:32:28
 K a V a S N 0 = T a
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  K a V a S N 0 = T a, KaaNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1209,11 +1209,11 @@ HUOLTA  1255   98.124%
         1279
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 112
-Time: 21:26:03
+Time: 18:32:28
 L A V I 0 = O T T A
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L A V I 0 = O T T A, LAITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1229,11 +1229,11 @@ ELa      600   13.819%
         4342
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 111
-Time: 21:26:03
+Time: 18:32:28
 L A 0 = 0 = O S K E
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L A 0 = 0 = O S K E, LASKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1249,11 +1249,11 @@ ELa     5066   82.240%
         6160
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 110
-Time: 21:26:03
+Time: 18:32:28
 L A V U 0 = 0 = L A
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L A V U 0 = 0 = L A, LAULA
 If context is in data file then exclude
 Number of data items: 173
@@ -1269,11 +1269,11 @@ ELa     200   58.480%
         342
 Expected outcome: AJA
 Incorrect outcome predicted
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 109
-Time: 21:26:03
+Time: 18:32:28
 L E 0 = S N 0 = T a
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L E 0 = S N 0 = T a, LENTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1289,11 +1289,11 @@ HUOLTA     3    0.297%
         1010
 Expected outcome: HUOLTA
 Incorrect outcome predicted
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 108
-Time: 21:26:03
+Time: 18:32:28
 L I V I 0 = O T T a
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L I V I 0 = O T T a, LIITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1310,11 +1310,11 @@ HUOLTA     14    0.087%
         16155
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 107
-Time: 21:26:03
+Time: 18:32:28
 L O V I 0 = O S T A
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L O V I 0 = O S T A, LOISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1329,11 +1329,11 @@ ELa     6763  100.000%
         6763
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 106
-Time: 21:26:03
+Time: 18:32:28
 L U V I 0 = O S T A
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L U V I 0 = O S T A, LUISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1348,11 +1348,11 @@ ELa     1352  100.000%
         1352
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 105
-Time: 21:26:03
+Time: 18:32:28
 L U 0 = 0 = 0 = K E
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L U 0 = 0 = 0 = K E, LUKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1368,11 +1368,11 @@ HUOLTA     1    0.017%
         5728
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 104
-Time: 21:26:03
+Time: 18:32:28
 L U V O 0 = O T T A
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L U V O 0 = O T T A, LUOTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1388,11 +1388,11 @@ ELa     1268   98.754%
         1284
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:28
 Test items left: 103
-Time: 21:26:03
+Time: 18:32:28
 L U V U 0 = 0 = L E
-0/1  21:26:03
+0/1  18:32:28
 Given Context:  L U V U 0 = 0 = L E, LUULE
 If context is in data file then exclude
 Number of data items: 173
@@ -1408,11 +1408,11 @@ ELa     3416   99.302%
         3440
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 102
-Time: 21:26:03
+Time: 18:32:29
 L a 0 = 0 = O H T E
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  L a 0 = 0 = O H T E, LaHTE
 If context is in data file then exclude
 Number of data items: 173
@@ -1429,11 +1429,11 @@ HUOLTA     1    0.026%
         3842
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 101
-Time: 21:26:03
+Time: 18:32:29
 L o V Y 0 = 0 = T a
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  L o V Y 0 = 0 = T a, LoYTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1450,11 +1450,11 @@ HUOLTA   51   31.677%
         161
 Expected outcome: HUOLTA
 Incorrect outcome predicted
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 100
-Time: 21:26:03
+Time: 18:32:29
 M A 0 = 0 = O H T A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  M A 0 = 0 = O H T A, MAHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1470,11 +1470,11 @@ ELa      160    6.395%
         2502
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 99
-Time: 21:26:03
+Time: 18:32:29
 M A V I 0 = O S T A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  M A V I 0 = O S T A, MAISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1490,11 +1490,11 @@ ELa      152    3.905%
         3892
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 98
-Time: 21:26:03
+Time: 18:32:29
 M A 0 = 0 = O K S A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  M A 0 = 0 = O K S A, MAKSA
 If context is in data file then exclude
 Number of data items: 173
@@ -1509,11 +1509,11 @@ AJA     1382  100.000%
         1382
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 97
-Time: 21:26:03
+Time: 18:32:29
 M A 0 = S L O T T A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  M A 0 = S L O T T A, MALTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1530,11 +1530,11 @@ HUOLTA    14    0.690%
         2028
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 96
-Time: 21:26:03
+Time: 18:32:29
 M E 0 = 0 = 0 = N E
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  M E 0 = 0 = 0 = N E, MENE
 If context is in data file then exclude
 Number of data items: 173
@@ -1551,11 +1551,11 @@ HUOLTA     5    0.148%
         3386
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 95
-Time: 21:26:03
+Time: 18:32:29
 M U V I 0 = O S T A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  M U V I 0 = O S T A, MUISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1571,11 +1571,11 @@ ELa     1250   92.868%
         1346
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 94
-Time: 21:26:03
+Time: 18:32:29
 M U 0 = S R 0 = T A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  M U 0 = S R 0 = T A, MURTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1592,11 +1592,11 @@ HUOLTA   65   40.123%
         162
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 93
-Time: 21:26:03
+Time: 18:32:29
 M U V U 0 = O T T A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  M U V U 0 = O T T A, MUUTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1613,11 +1613,11 @@ HUOLTA    30    2.874%
         1044
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 92
-Time: 21:26:03
+Time: 18:32:29
 M Y V o S N 0 = T a
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  M Y V o S N 0 = T a, MYoNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1634,11 +1634,11 @@ HUOLTA  1371   98.704%
         1389
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 91
-Time: 21:26:03
+Time: 18:32:29
 N A V U 0 = 0 = R A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  N A V U 0 = 0 = R A, NAURA
 If context is in data file then exclude
 Number of data items: 173
@@ -1654,11 +1654,11 @@ ELa     324   75.701%
         428
 Expected outcome: AJA
 Incorrect outcome predicted
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 90
-Time: 21:26:03
+Time: 18:32:29
 N I V E 0 = 0 = L E
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  N I V E 0 = 0 = L E, NIELE
 If context is in data file then exclude
 Number of data items: 173
@@ -1674,11 +1674,11 @@ HUOLTA     8    0.269%
         2976
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 89
-Time: 21:26:03
+Time: 18:32:29
 N I V I 0 = O T T a
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  N I V I 0 = O T T a, NIITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1693,11 +1693,11 @@ ELa     16281  100.000%
         16281
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 88
-Time: 21:26:03
+Time: 18:32:29
 N O 0 = 0 = O S T A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  N O 0 = 0 = O S T A, NOSTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1712,11 +1712,11 @@ ELa     5515  100.000%
         5515
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 87
-Time: 21:26:03
+Time: 18:32:29
 N O V U 0 = 0 = S E
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  N O V U 0 = 0 = S E, NOUSE
 If context is in data file then exclude
 Number of data items: 173
@@ -1731,11 +1731,11 @@ ELa     4235  100.000%
         4235
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 86
-Time: 21:26:03
+Time: 18:32:29
 N O V U 0 = 0 = T A
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  N O V U 0 = 0 = T A, NOUTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1751,11 +1751,11 @@ ELa     3506   99.602%
         3520
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 85
-Time: 21:26:03
+Time: 18:32:29
 N Y 0 = 0 = O H T a
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  N Y 0 = 0 = O H T a, NYHTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1771,11 +1771,11 @@ ELa     4220   99.247%
         4252
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:03
+1/1  18:32:29
 Test items left: 84
-Time: 21:26:03
+Time: 18:32:29
 N Y 0 = S L 0 = K E
-0/1  21:26:03
+0/1  18:32:29
 Given Context:  N Y 0 = S L 0 = K E, NYLKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1790,11 +1790,11 @@ ELa     1823  100.000%
         1823
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:29
 Test items left: 83
-Time: 21:26:04
+Time: 18:32:29
 N a 0 = 0 = 0 = K E
-0/1  21:26:04
+0/1  18:32:29
 Given Context:  N a 0 = 0 = 0 = K E, NaKE
 If context is in data file then exclude
 Number of data items: 173
@@ -1809,11 +1809,11 @@ ELa     5409  100.000%
         5409
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:29
 Test items left: 82
-Time: 21:26:04
+Time: 18:32:29
 N a V Y 0 = O T T a
-0/1  21:26:04
+0/1  18:32:29
 Given Context:  N a V Y 0 = O T T a, NaYTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -1828,11 +1828,11 @@ ELa     13711  100.000%
         13711
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:29
 Test items left: 81
-Time: 21:26:04
+Time: 18:32:29
 O O 0 = 0 = 0 = L E
-0/1  21:26:04
+0/1  18:32:29
 Given Context:  O O 0 = 0 = 0 = L E, OLE
 If context is in data file then exclude
 Number of data items: 173
@@ -1847,11 +1847,11 @@ ELa     4815  100.000%
         4815
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:29
 Test items left: 80
-Time: 21:26:04
+Time: 18:32:29
 O O 0 = 0 = O S T A
-0/1  21:26:04
+0/1  18:32:29
 Given Context:  O O 0 = 0 = O S T A, OSTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1866,11 +1866,11 @@ ELa     5500  100.000%
         5500
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 79
-Time: 21:26:04
+Time: 18:32:30
 O O 0 = 0 = O T T A
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  O O 0 = 0 = O T T A, OTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1886,11 +1886,11 @@ ELa     4920   99.797%
         4930
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 78
-Time: 21:26:04
+Time: 18:32:30
 P A V A 0 = O H T A
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P A V A 0 = O H T A, PAAHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1905,11 +1905,11 @@ AJA     3578  100.000%
         3578
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 77
-Time: 21:26:04
+Time: 18:32:30
 P A V I 0 = 0 = N A
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P A V I 0 = 0 = N A, PAINA
 If context is in data file then exclude
 Number of data items: 173
@@ -1926,11 +1926,11 @@ HUOLTA   8    8.791%
         91
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 76
-Time: 21:26:04
+Time: 18:32:30
 P A V I 0 = O S T A
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P A V I 0 = O S T A, PAISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -1946,11 +1946,11 @@ ELa      232    5.850%
         3966
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 75
-Time: 21:26:04
+Time: 18:32:30
 P A 0 = 0 = 0 = L A
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P A 0 = 0 = 0 = L A, PALA
 If context is in data file then exclude
 Number of data items: 173
@@ -1966,11 +1966,11 @@ ELa     338   40.190%
         841
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 74
-Time: 21:26:04
+Time: 18:32:30
 P A 0 = 0 = 0 = N E
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P A 0 = 0 = 0 = N E, PANE
 If context is in data file then exclude
 Number of data items: 173
@@ -1986,11 +1986,11 @@ ELa     3511   98.430%
         3567
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 73
-Time: 21:26:04
+Time: 18:32:30
 P E V I 0 = O T T a
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P E V I 0 = O T T a, PEITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2007,11 +2007,11 @@ HUOLTA      4    0.028%
         14347
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 72
-Time: 21:26:04
+Time: 18:32:30
 P E 0 = 0 = 0 = S E
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P E 0 = 0 = 0 = S E, PESE
 If context is in data file then exclude
 Number of data items: 173
@@ -2027,11 +2027,11 @@ ELa     3835   99.792%
         3843
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 71
-Time: 21:26:04
+Time: 18:32:30
 P E 0 = 0 = O T T a
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P E 0 = 0 = O T T a, PETTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2046,11 +2046,11 @@ ELa     7706  100.000%
         7706
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 70
-Time: 21:26:04
+Time: 18:32:30
 P I V E 0 = O K S E
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P I V E 0 = O K S E, PIEKSE
 If context is in data file then exclude
 Number of data items: 173
@@ -2066,11 +2066,11 @@ ELa     3097   99.167%
         3123
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 69
-Time: 21:26:04
+Time: 18:32:30
 P I V I 0 = 0 = L E
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P I V I 0 = 0 = L E, PIILE
 If context is in data file then exclude
 Number of data items: 173
@@ -2087,11 +2087,11 @@ HUOLTA     5    0.149%
         3356
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 68
-Time: 21:26:04
+Time: 18:32:30
 P I V I S R 0 = T a
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P I V I S R 0 = T a, PIIRTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2107,11 +2107,11 @@ HUOLTA  1565   97.024%
         1613
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 67
-Time: 21:26:04
+Time: 18:32:30
 P I 0 = 0 = O S T a
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P I 0 = 0 = O S T a, PISTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2126,11 +2126,11 @@ ELa     5454  100.000%
         5454
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 66
-Time: 21:26:04
+Time: 18:32:30
 P I 0 = 0 = 0 = T a
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P I 0 = 0 = 0 = T a, PITa
 If context is in data file then exclude
 Number of data items: 173
@@ -2146,11 +2146,11 @@ HUOLTA   23    7.210%
         319
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 65
-Time: 21:26:04
+Time: 18:32:30
 P O V I 0 = O S T A
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P O V I 0 = O S T A, POISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2166,11 +2166,11 @@ ELa     6708   97.870%
         6854
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 64
-Time: 21:26:04
+Time: 18:32:30
 P O 0 = S L 0 = K E
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P O 0 = S L 0 = K E, POLKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2185,11 +2185,11 @@ ELa     2684  100.000%
         2684
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 63
-Time: 21:26:04
+Time: 18:32:30
 P O 0 = S L O T T A
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P O 0 = S L O T T A, POLTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2206,11 +2206,11 @@ HUOLTA     4    0.139%
         2870
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 62
-Time: 21:26:04
+Time: 18:32:30
 P O 0 = 0 = 0 = T E
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P O 0 = 0 = 0 = T E, POTE
 If context is in data file then exclude
 Number of data items: 173
@@ -2225,11 +2225,11 @@ ELa     5626  100.000%
         5626
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 61
-Time: 21:26:04
+Time: 18:32:30
 P U 0 = 0 = 0 = K E
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P U 0 = 0 = 0 = K E, PUKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2244,11 +2244,11 @@ ELa     6107  100.000%
         6107
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:30
 Test items left: 60
-Time: 21:26:04
+Time: 18:32:30
 P U 0 = 0 = 0 = R E
-0/1  21:26:04
+0/1  18:32:30
 Given Context:  P U 0 = 0 = 0 = R E, PURE
 If context is in data file then exclude
 Number of data items: 173
@@ -2263,11 +2263,11 @@ ELa     3895  100.000%
         3895
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 59
-Time: 21:26:04
+Time: 18:32:31
 P U 0 = S R 0 = K A
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  P U 0 = S R 0 = K A, PURKA
 If context is in data file then exclude
 Number of data items: 173
@@ -2284,11 +2284,11 @@ HUOLTA   56   14.070%
         398
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 58
-Time: 21:26:04
+Time: 18:32:31
 P U 0 = 0 = O S K E
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  P U 0 = 0 = O S K E, PUSKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2303,11 +2303,11 @@ ELa     5865  100.000%
         5865
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 57
-Time: 21:26:04
+Time: 18:32:31
 P Y V Y 0 = 0 = T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  P Y V Y 0 = 0 = T a, PYYTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2324,11 +2324,11 @@ HUOLTA   28    5.185%
         540
 Expected outcome: HUOLTA
 Incorrect outcome predicted
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 56
-Time: 21:26:04
+Time: 18:32:31
 P Y V o S R 0 = T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  P Y V o S R 0 = T a, PYoRTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2343,11 +2343,11 @@ HUOLTA  1349  100.000%
         1349
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 55
-Time: 21:26:04
+Time: 18:32:31
 P a V a 0 = 0 = S E
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  P a V a 0 = 0 = S E, PaaSE
 If context is in data file then exclude
 Number of data items: 173
@@ -2362,11 +2362,11 @@ ELa     3456  100.000%
         3456
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 54
-Time: 21:26:04
+Time: 18:32:31
 P a V a 0 = O S T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  P a V a 0 = O S T a, PaaSTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2382,11 +2382,11 @@ ELa     8565   99.814%
         8581
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 53
-Time: 21:26:04
+Time: 18:32:31
 P a V a 0 = O T T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  P a V a 0 = O T T a, PaaTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2401,11 +2401,11 @@ ELa     13401  100.000%
         13401
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 52
-Time: 21:26:04
+Time: 18:32:31
 R A V A 0 = O S T A
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  R A V A 0 = O S T A, RAASTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2421,11 +2421,11 @@ ELa      172    4.300%
         4000
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 51
-Time: 21:26:04
+Time: 18:32:31
 R I V E S N 0 = T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  R I V E S N 0 = T a, RIENTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2441,11 +2441,11 @@ HUOLTA  1432   95.467%
         1500
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 50
-Time: 21:26:04
+Time: 18:32:31
 R I V I 0 = O S T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  R I V I 0 = O S T a, RIISTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2460,11 +2460,11 @@ ELa     10965  100.000%
         10965
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 49
-Time: 21:26:04
+Time: 18:32:31
 R I V I 0 = O T T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  R I V I 0 = O T T a, RIITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2479,11 +2479,11 @@ ELa     16261  100.000%
         16261
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 48
-Time: 21:26:04
+Time: 18:32:31
 R Y V o 0 = O S T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  R Y V o 0 = O S T a, RYoSTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2498,11 +2498,11 @@ ELa     6880  100.000%
         6880
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 47
-Time: 21:26:04
+Time: 18:32:31
 S A V A 0 = O T T A
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  S A V A 0 = O T T A, SAATTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2518,11 +2518,11 @@ ELa      707   15.227%
         4643
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 46
-Time: 21:26:04
+Time: 18:32:31
 S A 0 = 0 = 0 = T A
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  S A 0 = 0 = 0 = T A, SATA
 If context is in data file then exclude
 Number of data items: 173
@@ -2539,11 +2539,11 @@ HUOLTA    4    0.579%
         691
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 45
-Time: 21:26:04
+Time: 18:32:31
 S I V E 0 = 0 = T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  S I V E 0 = 0 = T a, SIETa
 If context is in data file then exclude
 Number of data items: 173
@@ -2559,11 +2559,11 @@ HUOLTA  220   62.147%
         354
 Expected outcome: ELa
 Incorrect outcome predicted
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 44
-Time: 21:26:04
+Time: 18:32:31
 S I V I S R 0 = T a
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  S I V I S R 0 = T a, SIIRTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2579,11 +2579,11 @@ HUOLTA  1512   85.520%
         1768
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 43
-Time: 21:26:04
+Time: 18:32:31
 S O V I 0 = O T T A
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  S O V I 0 = O T T A, SOITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2599,11 +2599,11 @@ ELa     6267   99.745%
         6283
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 42
-Time: 21:26:04
+Time: 18:32:31
 S O 0 = 0 = O T K E
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  S O 0 = 0 = O T K E, SOTKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2618,11 +2618,11 @@ ELa     6916  100.000%
         6916
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 41
-Time: 21:26:04
+Time: 18:32:31
 S O V U 0 = 0 = T A
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  S O V U 0 = 0 = T A, SOUTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2638,11 +2638,11 @@ ELa     3476   99.942%
         3478
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 40
-Time: 21:26:04
+Time: 18:32:31
 S U V I 0 = O S T A
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  S U V I 0 = O S T A, SUISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2657,11 +2657,11 @@ ELa     1281  100.000%
         1281
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:04
+1/1  18:32:31
 Test items left: 39
-Time: 21:26:04
+Time: 18:32:31
 S U 0 = 0 = 0 = L A
-0/1  21:26:04
+0/1  18:32:31
 Given Context:  S U 0 = 0 = 0 = L A, SULA
 If context is in data file then exclude
 Number of data items: 173
@@ -2678,11 +2678,11 @@ HUOLTA    6    1.923%
         312
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:31
 Test items left: 38
-Time: 21:26:05
+Time: 18:32:31
 S U 0 = S L 0 = K E
-0/1  21:26:05
+0/1  18:32:31
 Given Context:  S U 0 = S L 0 = K E, SULKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2697,11 +2697,11 @@ ELa     2020  100.000%
         2020
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:31
 Test items left: 37
-Time: 21:26:05
+Time: 18:32:31
 S U 0 = 0 = 0 = R E
-0/1  21:26:05
+0/1  18:32:31
 Given Context:  S U 0 = 0 = 0 = R E, SURE
 If context is in data file then exclude
 Number of data items: 173
@@ -2716,11 +2716,11 @@ ELa     3577  100.000%
         3577
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 36
-Time: 21:26:05
+Time: 18:32:32
 S Y V Y 0 = O T T a
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  S Y V Y 0 = O T T a, SYYTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2735,11 +2735,11 @@ ELa     11544  100.000%
         11544
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 35
-Time: 21:26:05
+Time: 18:32:32
 S Y V Y 0 = 0 = T a
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  S Y V Y 0 = 0 = T a, SYYTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2755,11 +2755,11 @@ HUOLTA   86   25.595%
         336
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 34
-Time: 21:26:05
+Time: 18:32:32
 S Y V o 0 = O K S E
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  S Y V o 0 = O K S E, SYoKSE
 If context is in data file then exclude
 Number of data items: 173
@@ -2774,11 +2774,11 @@ ELa     2725  100.000%
         2725
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 33
-Time: 21:26:05
+Time: 18:32:32
 S Y V o 0 = O T T a
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  S Y V o 0 = O T T a, SYoTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2793,11 +2793,11 @@ ELa     11412  100.000%
         11412
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 32
-Time: 21:26:05
+Time: 18:32:32
 S a 0 = S R 0 = K E
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  S a 0 = S R 0 = K E, SaRKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2813,11 +2813,11 @@ HUOLTA     8    0.512%
         1564
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 31
-Time: 21:26:05
+Time: 18:32:32
 S a V a 0 = O S T a
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  S a V a 0 = O S T a, SaaSTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2832,11 +2832,11 @@ ELa     8528  100.000%
         8528
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 30
-Time: 21:26:05
+Time: 18:32:32
 S a V a 0 = 0 = T a
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  S a V a 0 = 0 = T a, SaaTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2852,11 +2852,11 @@ HUOLTA    48    4.138%
         1160
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 29
-Time: 21:26:05
+Time: 18:32:32
 T A V I 0 = 0 = T A
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T A V I 0 = 0 = T A, TAITA
 If context is in data file then exclude
 Number of data items: 173
@@ -2873,11 +2873,11 @@ HUOLTA    20    0.333%
         6002
 Expected outcome: HUOLTA
 Incorrect outcome predicted
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 28
-Time: 21:26:05
+Time: 18:32:32
 T A V I 0 = O T T A
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T A V I 0 = O T T A, TAITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2894,11 +2894,11 @@ HUOLTA    28    0.689%
         4064
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 27
-Time: 21:26:05
+Time: 18:32:32
 T A 0 = 0 = O P P A
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T A 0 = 0 = O P P A, TAPPA
 If context is in data file then exclude
 Number of data items: 173
@@ -2914,11 +2914,11 @@ ELa       11    0.905%
         1216
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 26
-Time: 21:26:05
+Time: 18:32:32
 T E V E 0 = O T T a
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T E V E 0 = O T T a, TEETTa
 If context is in data file then exclude
 Number of data items: 173
@@ -2934,11 +2934,11 @@ HUOLTA     16    0.138%
         11603
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 25
-Time: 21:26:05
+Time: 18:32:32
 T E 0 = 0 = 0 = K E
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T E 0 = 0 = 0 = K E, TEKE
 If context is in data file then exclude
 Number of data items: 173
@@ -2953,11 +2953,11 @@ ELa     5267  100.000%
         5267
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 24
-Time: 21:26:05
+Time: 18:32:32
 T I V E 0 = 0 = T a
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T I V E 0 = 0 = T a, TIETa
 If context is in data file then exclude
 Number of data items: 173
@@ -2973,11 +2973,11 @@ HUOLTA    24    1.226%
         1957
 Expected outcome: HUOLTA
 Incorrect outcome predicted
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 23
-Time: 21:26:05
+Time: 18:32:32
 T O V I 0 = O S T A
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T O V I 0 = O S T A, TOISTA
 If context is in data file then exclude
 Number of data items: 173
@@ -2993,11 +2993,11 @@ ELa     6687   99.761%
         6703
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 22
-Time: 21:26:05
+Time: 18:32:32
 T U 0 = 0 = 0 = K E
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T U 0 = 0 = 0 = K E, TUKE
 If context is in data file then exclude
 Number of data items: 173
@@ -3012,11 +3012,11 @@ ELa     5742  100.000%
         5742
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 21
-Time: 21:26:05
+Time: 18:32:32
 T U 0 = 0 = 0 = L E
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T U 0 = 0 = 0 = L E, TULE
 If context is in data file then exclude
 Number of data items: 173
@@ -3031,11 +3031,11 @@ ELa     3878  100.000%
         3878
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 20
-Time: 21:26:05
+Time: 18:32:32
 T U 0 = S n 0 = K E
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T U 0 = S n 0 = K E, TUnKE
 If context is in data file then exclude
 Number of data items: 173
@@ -3051,11 +3051,11 @@ HUOLTA    22    1.249%
         1762
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 19
-Time: 21:26:05
+Time: 18:32:32
 T U 0 = S N 0 = T E
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T U 0 = S N 0 = T E, TUNTE
 If context is in data file then exclude
 Number of data items: 173
@@ -3072,11 +3072,11 @@ HUOLTA    73    1.163%
         6275
 Expected outcome: HUOLTA
 Incorrect outcome predicted
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 18
-Time: 21:26:05
+Time: 18:32:32
 T U V O 0 = O T T A
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T U V O 0 = O T T A, TUOTTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3093,11 +3093,11 @@ HUOLTA     1    0.081%
         1235
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 17
-Time: 21:26:05
+Time: 18:32:32
 T Y V o S N 0 = T a
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T Y V o S N 0 = T a, TYoNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3112,11 +3112,11 @@ HUOLTA  1399  100.000%
         1399
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 16
-Time: 21:26:05
+Time: 18:32:32
 T a V Y 0 = O T T a
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  T a V Y 0 = O T T a, TaYTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3131,11 +3131,11 @@ ELa     13581  100.000%
         13581
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:32
 Test items left: 15
-Time: 21:26:05
+Time: 18:32:32
 U U V I 0 = O T T A
-0/1  21:26:05
+0/1  18:32:32
 Given Context:  U U V I 0 = O T T A, UITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3151,11 +3151,11 @@ ELa     1474   90.208%
         1634
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 14
-Time: 21:26:05
+Time: 18:32:33
 V A V I 0 = O H T A
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V A V I 0 = O H T A, VAIHTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3171,11 +3171,11 @@ ELa      511   13.242%
         3859
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 13
-Time: 21:26:05
+Time: 18:32:33
 V A 0 = 0 = 0 = L A
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V A 0 = 0 = 0 = L A, VALA
 If context is in data file then exclude
 Number of data items: 173
@@ -3191,11 +3191,11 @@ ELa      18    3.564%
         505
 Expected outcome: AJA
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 12
-Time: 21:26:05
+Time: 18:32:33
 V E 0 = 0 = 0 = T a
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V E 0 = 0 = 0 = T a, VETa
 If context is in data file then exclude
 Number of data items: 173
@@ -3212,11 +3212,11 @@ HUOLTA    6    0.995%
         603
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 11
-Time: 21:26:05
+Time: 18:32:33
 V I V E 0 = O T T a
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V I V E 0 = O T T a, VIETTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3232,11 +3232,11 @@ HUOLTA     12    0.095%
         12689
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 10
-Time: 21:26:05
+Time: 18:32:33
 V I V I 0 = O S T a
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V I V I 0 = O S T a, VIISTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3251,11 +3251,11 @@ ELa     10995  100.000%
         10995
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 9
-Time: 21:26:05
+Time: 18:32:33
 V I 0 = S R O K K A
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V I 0 = S R O K K A, VIRKKA
 If context is in data file then exclude
 Number of data items: 173
@@ -3272,11 +3272,11 @@ HUOLTA   43   10.412%
         413
 Expected outcome: AJA
 Incorrect outcome predicted
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 8
-Time: 21:26:05
+Time: 18:32:33
 V O V I 0 = O T T A
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V O V I 0 = O T T A, VOITTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3292,11 +3292,11 @@ ELa     6399   99.580%
         6426
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 7
-Time: 21:26:05
+Time: 18:32:33
 V U V O 0 = 0 = L E
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V U V O 0 = 0 = L E, VUOLE
 If context is in data file then exclude
 Number of data items: 173
@@ -3312,11 +3312,11 @@ ELa     3513   99.886%
         3517
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 6
-Time: 21:26:05
+Time: 18:32:33
 V U V O 0 = 0 = T A
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V U V O 0 = 0 = T A, VUOTA
 If context is in data file then exclude
 Number of data items: 173
@@ -3333,11 +3333,11 @@ HUOLTA   86   28.477%
         302
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 5
-Time: 21:26:05
+Time: 18:32:33
 V Y V o 0 = O T T a
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V Y V o 0 = O T T a, VYoTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3352,11 +3352,11 @@ ELa     11496  100.000%
         11496
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 4
-Time: 21:26:05
+Time: 18:32:33
 V a V I 0 = O T T a
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V a V I 0 = O T T a, VaITTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3372,11 +3372,11 @@ HUOLTA      4    0.026%
         15557
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 3
-Time: 21:26:05
+Time: 18:32:33
 V a 0 = S L O T T a
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V a 0 = S L O T T a, VaLTTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3393,11 +3393,11 @@ HUOLTA    19    0.439%
         4331
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 2
-Time: 21:26:05
+Time: 18:32:33
 V a V a S N 0 = T a
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  V a V a S N 0 = T a, VaaNTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3413,11 +3413,11 @@ HUOLTA  1203   89.442%
         1345
 Expected outcome: HUOLTA
 Correct outcome predicted.
-1/1  21:26:05
+1/1  18:32:33
 Test items left: 1
-Time: 21:26:05
+Time: 18:32:33
 Y Y 0 = S L 0 = T a
-0/1  21:26:05
+0/1  18:32:33
 Given Context:  Y Y 0 = S L 0 = T a, YLTa
 If context is in data file then exclude
 Number of data items: 173
@@ -3433,5 +3433,5 @@ HUOLTA   20    7.663%
         261
 Expected outcome: ELa
 Correct outcome predicted.
-1/1  21:26:05
-Time: 21:26:05
+1/1  18:32:33
+Time: 18:32:33

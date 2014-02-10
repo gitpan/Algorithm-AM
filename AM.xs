@@ -5,8 +5,45 @@
 
 #include "ppport.h"
 
+/*
+ * This program must deal with integers that are too big to be
+ * represented by 32 bits.
+ *
+ * They are represented by AM_BIG_INT, which is typedef'd to
+ *
+ * unsigned long a[8]
+ *
+ * where each a[i] < 2*16.  Such an array represents the integer
+ *
+ * a[0] + a[1] * 2^16 + ... + a[7] * 2^(7*16).
+ *
+ * We only use 16 bits of the unsigned long instead of 32, so that
+ * when we add or multiply two large integers, we have room for overflow.
+ * After any addition or multiplication, the result is carried so that
+ * each element of the array is again < 2*16.
+ *
+ * Someday I may rewrite this in assembler.
+ *
+ */
 typedef unsigned short AM_SHORT;
 typedef unsigned long AM_LONG;
+typedef AM_LONG AM_BIG_INT[8];
+
+#define high_bits(x) x >> 16
+#define low_bits(x) x & 0xffff
+
+#define carry(var, ind) \
+  var[ind + 1] += high_bits(var[ind]); \
+  var[ind] = low_bits(var[ind])
+
+/* carry macro for AM_BIG_INT pointers */
+#define carry_pointer(p) \
+  *(p + 1) += high_bits(*(p + 1)); \
+  *(p) = low_bits(*(p))
+
+#define carry_replace(var, ind) \
+  var[ind + 1] = high_bits(var[ind]); \
+  var[ind] = low_bits(var[ind])
 
 /*
  * structure for the supracontexts
@@ -169,27 +206,6 @@ MGVTBL AMguts_vtab = {
   NULL,
   AMguts_mgFree
 };
-
-/*
- * This program must deal with integers that are too big to be
- * represented by 32 bits.
- *
- * They are represented by arrays as
- *
- * unsigned long a[8]
- *
- * where each a[i] < 2*16.  Such an array represents the integer
- *
- * a[0] + a[1] * 2^16 + ... + a[7] * 2^(7*16).
- *
- * We only use 16 bits of the unsigned long instead of 32, so that
- * when we add or multiply two large integers, we have room for overflow.
- * After any addition or multiplication, the result is normalized so that
- * each element of the array is again < 2*16.
- *
- * Someday I may rewrite this in assembler.
- *
- */
 
 /*
  * arrays used in the change-of-base portion of normalize(SV *s)
@@ -449,7 +465,7 @@ _fillandcount(...)
   HV *itemcontextchainhead, *subtooutcome, *contextsize, *pointers, *gang;
   IV numoutcomes;
   HE *he;
-  AM_LONG grandtotal[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+  AM_BIG_INT grandtotal = {0, 0, 0, 0, 0, 0, 0, 0};
   SV *tempsv;
   int chunk, i;
   AM_SHORT gaps[16];
@@ -817,31 +833,25 @@ _fillandcount(...)
 	    if (length) {
 	      AM_SHORT i;
 	      AM_LONG pointercount = 0;
-	      AM_LONG count[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+	      AM_BIG_INT count = {0, 0, 0, 0, 0, 0, 0, 0};
 	      AM_LONG mask = 0xffff;
 
 	      count[0]  = p0->count;
 
 	      count[0] *= p1->count;
-	      count[1] += count[0] >> 16;
-	      count[0] &= mask;
+        carry(count, 0);
 
 	      count[0] *= p2->count;
 	      count[1] *= p2->count;
-	      count[1] += count[0] >> 16;
-	      count[2] += count[1] >> 16;
-	      count[0] &= mask;
-	      count[1] &= mask;
+        carry(count, 0);
+        carry(count, 1);
 
 	      count[0] *= p3->count;
 	      count[1] *= p3->count;
 	      count[2] *= p3->count;
-	      count[1] += count[0] >> 16;
-	      count[2] += count[1] >> 16;
-	      count[3] += count[2] >> 16;
-	      count[0] &= mask;
-	      count[1] &= mask;
-	      count[2] &= mask;
+        carry(count, 0);
+        carry(count, 1);
+        carry(count, 2);
 
 	      for (i = 0; i < length; ++i)
 		pointercount += (AM_LONG)
@@ -849,8 +859,8 @@ _fillandcount(...)
 				 (char *) (subcontext + (4 * intersectlist[i])),
 				 8, 0));
 	      if (pointercount & 0xffff0000) {
-		AM_SHORT pchi = (AM_SHORT) (pointercount >> 16);
-		AM_SHORT pclo = (AM_SHORT) (pointercount & 0xffff);
+		AM_SHORT pchi = (AM_SHORT) (high_bits(pointercount));
+		AM_SHORT pclo = (AM_SHORT) (low_bits(pointercount));
 		AM_LONG hiprod[6];
 		hiprod[1] = pchi * count[0];
 		hiprod[2] = pchi * count[1];
@@ -860,44 +870,34 @@ _fillandcount(...)
 		count[1] *= pclo;
 		count[2] *= pclo;
 		count[3] *= pclo;
-		count[1] += count[0] >> 16;
-		count[2] += count[1] >> 16;
-		count[3] += count[2] >> 16;
-		count[4] += count[3] >> 16;
-		count[0] &= mask;
-		count[1] &= mask;
-		count[2] &= mask;
-		count[3] &= mask;
+    carry(count, 0);
+    carry(count, 1);
+    carry(count, 2);
+    carry(count, 3);
+
 		count[1] += hiprod[1];
 		count[2] += hiprod[2];
 		count[3] += hiprod[3];
 		count[4] += hiprod[4];
-		count[2] += count[1] >> 16;
-		count[3] += count[2] >> 16;
-		count[4] += count[3] >> 16;
-		count[5] += count[4] >> 16;
-		count[1] &= mask;
-		count[2] &= mask;
-		count[3] &= mask;
-		count[4] &= mask;
+    carry(count, 1);
+    carry(count, 2);
+    carry(count, 3);
+    carry(count, 4);
 	      } else {
 		count[0] *= pointercount;
 		count[1] *= pointercount;
 		count[2] *= pointercount;
 		count[3] *= pointercount;
-		count[1] += count[0] >> 16;
-		count[2] += count[1] >> 16;
-		count[3] += count[2] >> 16;
-		count[4] += count[3] >> 16;
-		count[0] &= mask;
-		count[1] &= mask;
-		count[2] &= mask;
-		count[3] &= mask;
+    carry(count, 0);
+    carry(count, 1);
+    carry(count, 2);
+    carry(count, 3);
 	      }
 	      for (i = 0; i < length; ++i) {
 		int j;
 		SV *tempsv;
 		AM_LONG *p;
+    /* TODO: explain this */
 		tempsv = *hv_fetch(pointers,
 				   (char *) (subcontext + (4 * intersectlist[i])),
 				   8, 1);
@@ -911,8 +911,7 @@ _fillandcount(...)
 		p = (AM_LONG *) SvPVX(tempsv);
 		for (j = 0; j < 7; ++j) {
 		  *(p + j) += count[j];
-		  *(p + j + 1) += *(p + j) >> 16;
-		  *(p + j) &= mask;
+      carry_pointer(p + j);
 		}
 	      }
 	    }
@@ -1025,31 +1024,25 @@ _fillandcount(...)
        /* count occurrences */
 	    if (length) {
 	      AM_SHORT i;
-	      AM_LONG count[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+	      AM_BIG_INT count = {0, 0, 0, 0, 0, 0, 0, 0};
 	      AM_LONG mask = 0xffff;
 
 	      count[0]  = p0->count;
 
 	      count[0] *= p1->count;
-	      count[1] += count[0] >> 16;
-	      count[0] &= mask;
+        carry(count, 0);
 
 	      count[0] *= p2->count;
 	      count[1] *= p2->count;
-	      count[1] += count[0] >> 16;
-	      count[2] += count[1] >> 16;
-	      count[0] &= mask;
-	      count[1] &= mask;
+        carry(count, 0);
+        carry(count, 1);
 
 	      count[0] *= p3->count;
 	      count[1] *= p3->count;
 	      count[2] *= p3->count;
-	      count[1] += count[0] >> 16;
-	      count[2] += count[1] >> 16;
-	      count[3] += count[2] >> 16;
-	      count[0] &= mask;
-	      count[1] &= mask;
-	      count[2] &= mask;
+        carry(count, 0);
+        carry(count, 1);
+        carry(count, 2);
 
 	      for (i = 0; i < length; ++i) {
 		int j;
@@ -1068,8 +1061,7 @@ _fillandcount(...)
 		p = (AM_LONG *) SvPVX(tempsv);
 		for (j = 0; j < 7; ++j) {
 		  *(p + j) += count[j];
-		  *(p + j + 1) += *(p + j) >> 16;
-		  *(p + j) &= mask;
+      carry_pointer(p + j);
 		}
 	      }
 	    }
@@ -1113,32 +1105,34 @@ _fillandcount(...)
   while (he = hv_iternext(pointers)) {
     AM_LONG count;
     AM_SHORT counthi, countlo;
-    AM_LONG p[8];
-    AM_LONG gangcount[8];
+    AM_BIG_INT p;
+    AM_BIG_INT gangcount;
     AM_SHORT thisoutcome;
     SV *dataitem;
     Copy(SvPVX(HeVAL(he)), p, 8, AM_LONG);
+
+    fprintf(stderr, "value of p for %s:\n", HeKEY(he));
+    for(i = 0; i < 8; i++)
+      fprintf(stderr, "%lu\n", p[i]);
+
     tempsv = *hv_fetch(contextsize, HeKEY(he), 4 * sizeof(AM_SHORT), 0);
     count = (AM_LONG) SvUVX(tempsv);
-    counthi = (AM_SHORT) (count >> 16);
-    countlo = (AM_SHORT) (count & 0xffff);
+    counthi = (AM_SHORT) (high_bits(count));
+    countlo = (AM_SHORT) (low_bits(count));
     gangcount[0] = 0;
     for (i = 0; i < 6; ++i) {
       gangcount[i] += countlo * p[i];
-      gangcount[i + 1] = gangcount[i] >> 16;
-      gangcount[i] &= 0xffff;
+      carry_replace(gangcount, i);
     }
     if (counthi) {
       for (i = 0; i < 6; ++i) {
 	gangcount[i + 1] += counthi * p[i];
-	gangcount[i + 2] += gangcount[i + 1] >> 16;
-	gangcount[i + 1] &= 0xffff;
+  carry(gangcount, i + 1);
       }
     }
     for (i = 0; i < 7; ++i) {
       grandtotal[i] += gangcount[i];
-      grandtotal[i + 1] += grandtotal[i] >> 16;
-      grandtotal[i] &= 0xffff;
+      carry(gangcount, i);
     }
     grandtotal[7] += gangcount[7];
     tempsv = *hv_fetch(gang, HeKEY(he), 4 * sizeof(AM_SHORT), 1);
@@ -1153,8 +1147,7 @@ _fillandcount(...)
       AM_LONG *s = (AM_LONG *) SvPVX(sum[thisoutcome]);
       for (i = 0; i < 7; ++i) {
 	*(s + i) += gangcount[i];
-	*(s + i + 1) += *(s + i) >> 16;
-	*(s + i) &= 0xffff;
+  carry_pointer(s + i);
       }
     } else {
       dataitem = *hv_fetch(itemcontextchainhead, HeKEY(he), 4 * sizeof(AM_SHORT), 0);
@@ -1164,8 +1157,7 @@ _fillandcount(...)
 	AM_LONG *s = (AM_LONG *) SvPVX(sum[ocnum]);
 	for (i = 0; i < 7; ++i) {
 	  *(s + i) += p[i];
-	  *(s + i + 1) += *(s + i) >> 16;
-	  *(s + i) &= 0xffff;
+    carry_pointer(s + i);
 	  dataitem = itemcontextchain[datanum];
 	}
       }
