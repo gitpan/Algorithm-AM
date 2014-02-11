@@ -10,7 +10,7 @@ package Algorithm::AM;
 use strict;
 use warnings;
 # ABSTRACT: Perl extension for Analogical Modeling using a parallel algorithm
-our $VERSION = '2.42'; # TRIAL VERSION;
+our $VERSION = '2.43'; # VERSION;
 use feature 'state';
 use Path::Tiny;
 use Exporter::Easy (
@@ -21,7 +21,6 @@ our @CARP_NOT = qw(Algorithm::AM);
 use IO::Handle;
 use Data::Dumper;
 use Algorithm::AM::Project;
-use Devel::Peek 'Dump';
 
 require XSLoader;
 XSLoader::load();
@@ -215,7 +214,7 @@ sub _create_classify_sub {
 
         #check all input parameters and then save them in $self
         my $opts = _check_classify_opts(@_);
-        for my $opt_name(keys $opts){
+        for my $opt_name(keys %$opts){
             $self->{$opt_name} = $opts->{$opt_name};
         }
 
@@ -348,7 +347,7 @@ Algorithm::AM - Perl extension for Analogical Modeling using a parallel algorith
 
 =head1 VERSION
 
-version 2.42
+version 2.43
 
 =head1 AUTHOR
 
@@ -504,9 +503,6 @@ foreach my $item_number (0 .. $project->num_test_items - 1) {
 # line 1600 "call XS"
         $self->_fillandcount(X);
         $grandtotal = $self->{pointers}->{'grandtotal'};
-
-        # DEBUG
-        Dump($grandtotal);
 
         unless ($grandtotal) {
             #TODO: is this tested yet?
