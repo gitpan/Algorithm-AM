@@ -16,7 +16,7 @@ Algorithm::AM::lattice - How to store and manipulate large lattices in C
 
 =head1 VERSION
 
-version 2.44
+version 2.45
 
 =head1 DESCRIPTION
 

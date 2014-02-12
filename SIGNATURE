@@ -14,26 +14,26 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 5f20a7f3362d8caa52173932efab24c56bc84da2 AM.xs
-SHA1 1d8fbd43cc1656959a60175d10898b387d92b309 Changes
+SHA1 6f6cc180b4c669aec35e3be2d84e96b5429d7072 AM.xs
+SHA1 7d8b2c38bbde1845613362c3bc13fafcd3294552 Changes
 SHA1 d6c57d8b2f151c8ba9b5ac0c69c825659742e4c8 INSTALL
 SHA1 984d6fd9c87297f3906143f8f27149fc381a77db LICENSE
 SHA1 4a4c86fb1cc074c94eff4c0ac71d63ccb37a0575 MANIFEST
 SHA1 86e5d027db8b2a0c15d8b5d7739ab3fa35c27366 MANIFEST.SKIP
-SHA1 97c80e31f00e8307992e70a03294b27672a6ce3a META.json
-SHA1 0a96d93b6ff4dc861408b2890399018040d4d1dd META.yml
-SHA1 d6cc9c737b7a92c16f409fc02f2d6f7ae02952a6 Makefile.PL
-SHA1 28540c9cd10d26530add7237f18683322530a693 README
-SHA1 246544451ce57e6e326329fbbbe02fd259c8e3da cpanfile
-SHA1 fb7aa55da06071ba9c99f10e91765f0f2ba544a1 dist.ini
-SHA1 8819cef6241dc3bafe9d431fd47a63a6bb1f35e2 lib/Algorithm/AM.pm
-SHA1 16d8c694029dde22745f8552574df8f59a9c9bc8 lib/Algorithm/AM/Project.pm
-SHA1 3b145184ea56e589d581ad0c655bb540b8be85c6 lib/Algorithm/AM/algorithm.pod
-SHA1 b23a24cf0e1a54a8196b515bdb207ed79087ca28 lib/Algorithm/AM/lattice.pod
+SHA1 d79e6a0e96e72f8d7a0760ddcccdbc23ae653eb2 META.json
+SHA1 3051656b283146a7d36513b3f80a8b0a31be44c7 META.yml
+SHA1 a72d37698c777295d629e01b3deed520f01a75a2 Makefile.PL
+SHA1 3c3cf8854b9b1ead86a0e3693dadaab7e3281e2d README
+SHA1 499b44197e81744935acc55b3e4f3c7f7270a7aa cpanfile
+SHA1 1de2770b4c4c36fe414b7de0ae9db06f2be2ea5e dist.ini
+SHA1 8be107e037a580a5d0d4fab9aa2b14299809725d lib/Algorithm/AM.pm
+SHA1 8a99b742e1412f6720da19eb93f22aa2d35f4d0f lib/Algorithm/AM/Project.pm
+SHA1 7d842c9583245add0cc26531fc4b380ca77174fc lib/Algorithm/AM/algorithm.pod
+SHA1 42d2f7e62f843b2353e1a5252a4c97a0caf96d20 lib/Algorithm/AM/lattice.pod
 SHA1 c054a2091499b95ffe8d55ac21f6d9637c2ca8e5 ppport.h
 SHA1 0365fd20ade4e407ba91d5c1f594a66bb2ef37e7 t/0-use.t
 SHA1 98c4d822e259e84b02c0efff431a66ef05eaa0a0 t/00-compile.t
-SHA1 dd2bf4988f1b3a1aba6addae3b76ab8e864c176c t/000-report-versions-tiny.t
+SHA1 a0e5a6e9c08717473a89338de11dee83287d1e9f t/000-report-versions-tiny.t
 SHA1 f66cb20f7305dbdb3bc91464afa69a9e691a8fa4 t/01-classify.t
 SHA1 827d1c8f9ab3b2c87cd6c5a9147720023d1978cd t/02-commas.t
 SHA1 9ed72b2a652572b06f8a050fd2bae1d77a1401a0 t/03-repeat.t
@@ -68,7 +68,7 @@ SHA1 dc4ce6650b094a49e86ce22a51fa1c6ad11f6c9c t/data/chapter3_null_feat/test
 SHA1 79e665c52df5bbb83f30a8e4ca7f259c6142f488 t/data/chapter3_outcomes/data
 SHA1 841aa3595b171019d0113e468bbea04edc4e7788 t/data/chapter3_outcomes/outcome
 SHA1 bcc0876b26133c7014c0047d8bb50f6548b18b38 t/data/chapter3_outcomes/test
-SHA1 95cac6813a173a8bb50ce63af19421d2e918faab t/data/finnverb/amcpresults
+SHA1 4a713b98264bab9e0441e0dd980045838b747605 t/data/finnverb/amcpresults
 SHA1 c715612630d22da8152e2996304db433d504c34a t/data/finnverb/data
 SHA1 b439aeca6841eb485e48f907fbe854b71debe2b0 t/data/finnverb/outcome
 SHA1 c715612630d22da8152e2996304db433d504c34a t/data/finnverb/test
@@ -94,11 +94,11 @@ SHA1 78f94f50ec5c73e0c66ad2c7bd3ecce870d99c5b xt/release/unused-vars.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2.0.17 (MingW32)
 
-iQEcBAEBAgAGBQJS+rzaAAoJEF8b+BZrlpb0U0MH/jsgoOeFFpmDAtA3eRaYMKet
-MrYzVVTiR6xLQM1+hwHeG+49EXUzjKk00PpVQnaJmb1rrrKu2NRlhT1iJkR8OI/y
-JwAaejTA11d6nbozasy9oJ9y+bS8qcxNNbzNMBqmSGxKKwhrwAZLrpXkqKYL4Sn6
-/QU+EziAN5U1r0C7KlSRfA7t0OQSYhbq11QoiQrLFMNd4h83VmmZe+avAjX011qt
-nhpclmFIXHCMMd5/KTRRePO4pyjLQh+aWx9NbZk0TVMtHc3r59gymUZzM1iCOLq3
-Lj6mqqsmY8EvNYlsgmbc1I0P9Yfpa1u4lZNfeGCcM9LJNjznV+sT3rAnjnCFkJo=
-=vjXC
+iQEcBAEBAgAGBQJS+wY6AAoJEF8b+BZrlpb0GGcH/i9incdZ4/AgDIOQxrCBrrWu
+ChMkVfy0vtJPdaacoIq2/v1iFwIrUGDhHMJA05JR7nLU+dIgxQZ2RPzi0tMK5xCP
+2Buyrm4A4/necgZSI+8eGBBP7eVGYHCWxTJpAZHcaCPr86JHFmyxg02mqveTMS+k
+hYO3ivGsz/fdxEoMKg2PrAOdLZIW9yvUrBq5sFb07VTuOErfh9PTLBZ1O4NezzSf
+HP+zhrrF5O+Jv8l/Yi2zkPeVFVyKBM/w5VQfBbKUVBk3fIj9+/xU7MSjlZPWcgNT
+GA3E2um3pMX4Tbso1g1uL4saWMw/bRttv0M4mroAPJ+MQGihVgK/6teO1qPRSDI=
+=84sg
 -----END PGP SIGNATURE-----

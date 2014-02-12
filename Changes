@@ -1,8 +1,11 @@
 Revision history for AM-Algorithm
 
 
+2.45      2014-02-11 21:27:02 America/Los_Angeles
+    Fixed gang/grandtotal calculation bugs
+    removed debug print statements!
 2.44      2014-02-11 16:13:54 America/Los_Angeles
-    Fix gangcount updating (2.42 was correct)
+    Fix gangcount updating (bad loop bound)
 2.43      2014-02-11 12:22:57 America/Los_Angeles
     reverse 2.42 (think I was wrong)
     More debug printing

@@ -29,16 +29,16 @@ no_index:
 provides:
   Algorithm::AM:
     file: lib/Algorithm/AM.pm
-    version: 2.44
+    version: 2.45
   Algorithm::AM::Project:
     file: lib/Algorithm/AM/Project.pm
-    version: 2.44
+    version: 2.45
   Algorithm::AM::algorithm:
     file: lib/Algorithm/AM/algorithm.pod
-    version: 2.44
+    version: 2.45
   Algorithm::AM::lattice:
     file: lib/Algorithm/AM/lattice.pod
-    version: 2.44
+    version: 2.45
 requires:
   Carp: 0
   Data::Dumper: 0
@@ -59,7 +59,7 @@ resources:
   homepage: https://github.com/garfieldnate/Algorithm-AM
   license: http://dev.perl.org/licenses/
   repository: https://github.com/garfieldnate/Algorithm-AM.git
-version: 2.44
+version: 2.45
 x_BuiltWith:
   modules:
     Carp: 1.26
@@ -99,7 +99,7 @@ x_BuiltWith:
     Dist::Zilla::Plugin::MinimumPerl: 1.003
     Dist::Zilla::Plugin::MojibakeTests: 0.5
     Dist::Zilla::Plugin::NextRelease: 4.300039
-    Dist::Zilla::Plugin::OurPkgVersion: 0.004000
+    Dist::Zilla::Plugin::OverridePkgVersion: 0.001
     Dist::Zilla::Plugin::PodCoverageTests: 4.300039
     Dist::Zilla::Plugin::PodSyntaxTests: 4.300039
     Dist::Zilla::Plugin::PodWeaver: 3.101641
@@ -278,9 +278,9 @@ x_Dist_Zilla:
       name: Prepender
       version: 1.112280
     -
-      class: Dist::Zilla::Plugin::OurPkgVersion
-      name: OurPkgVersion
-      version: 0.004000
+      class: Dist::Zilla::Plugin::OverridePkgVersion
+      name: OverridePkgVersion
+      version: 0.001
     -
       class: Dist::Zilla::Plugin::PodWeaver
       name: PodWeaver
@@ -457,5 +457,5 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: 1
+      is_trial: 0
     version: 4.300039
