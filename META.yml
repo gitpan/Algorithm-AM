@@ -29,16 +29,16 @@ no_index:
 provides:
   Algorithm::AM:
     file: lib/Algorithm/AM.pm
-    version: 2.45
+    version: 2.46
   Algorithm::AM::Project:
     file: lib/Algorithm/AM/Project.pm
-    version: 2.45
+    version: 2.46
   Algorithm::AM::algorithm:
     file: lib/Algorithm/AM/algorithm.pod
-    version: 2.45
+    version: 2.46
   Algorithm::AM::lattice:
     file: lib/Algorithm/AM/lattice.pod
-    version: 2.45
+    version: 2.46
 requires:
   Carp: 0
   Data::Dumper: 0
@@ -59,7 +59,7 @@ resources:
   homepage: https://github.com/garfieldnate/Algorithm-AM
   license: http://dev.perl.org/licenses/
   repository: https://github.com/garfieldnate/Algorithm-AM.git
-version: 2.45
+version: 2.46
 x_BuiltWith:
   modules:
     Carp: 1.26
@@ -457,5 +457,5 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: 0
+      is_trial: 1
     version: 4.300039
