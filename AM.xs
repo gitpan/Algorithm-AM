@@ -116,30 +116,30 @@ typedef struct AM_supra {
 } AM_SUPRA;
 
 /*
- * There is quite a bit of data that must pass between Parallel.pm and
- * Parallel.xs.  Instead of repeatedly passing it back and forth on
- * the argument stack, Parallel.pm sends references to the variables
- * holding this shared data, by calling _initialize() (defined later
+ * There is quite a bit of data that must pass between AM.pm and
+ * AM.xs.  Instead of repeatedly passing it back and forth on
+ * the argument stack, AM.pm sends references to the variables
+ * holding this shared data, by calling _xs_initialize() (defined later
  * on).  These pointers are then stored in the following structure,
  * which is put into the magic part of $self (since $self is an HV,
  * it is perforce an SvPVMG as well).
  *
  * Note that for arrays, we store a pointer to the array data itself,
- * not the AV*.  That means that in Parallel.pm, we have to be careful
+ * not the AV*.  That means that in AM.pm, we have to be careful
  * how we make assignments to array variables; a reassignment such as
  *
  * @sum = (pack "L!8", 0, 0, 0, 0, 0, 0, 0, 0) x @sum;
  *
  * breaks everything because the pointer stored here then won't point
  * to the actual data anymore.  That's why the appropriate line in
- * Parallel.pm is
+ * AM.pm is
  *
  * foreach (@sum) {
  *   $_ = pack "L!8", 0, 0, 0, 0, 0, 0, 0, 0;
  * }
  *
  * Most of the identifiers in the struct have the same names as the
- * variables created in Parallel.pm and are documented there.  Those
+ * variables created in AM.pm and are documented there.  Those
  * that don't are documented below.
  *
  * This trick of storing pointers like this is borrowed from the
@@ -164,23 +164,45 @@ typedef struct AM_guts {
   AM_SHORT *lptr[4];
   AM_SUPRA *sptr[4];
 
-  /* The rest of these come from Parallel.pm -- look there */
-
-  SV **activeVar;
-  SV **outcome;
-  SV **itemcontextchain;
-  HV *itemcontextchainhead;
-  HV *subtooutcome;
-  HV *contextsize;
-  HV *pointers;
-  HV *gang;
-  SV **sum;
-
-  /*
-   * contains the total number of possible outcomes;
-   * used below for computing gang effects
+  /* array ref containing number of active variables in
+   * each lattice (currently we us four lattices)
    */
-  IV numoutcomes;
+  SV **activeVar;
+  /* array ref containing class labels for whole data set;
+   * array index is data item index in data set.
+   */
+  SV **classes;
+  /* ??? */
+  SV **itemcontextchain;
+  /* ??? */
+  HV *itemcontextchainhead;
+  /* Maps subcontext binary labels to class indices */
+  HV *context_to_class;
+  /* Maps binary context labels to the number of exemplars contained
+   * in that subcontext
+   */
+  HV *contextsize;
+  /* Maps binary context labels to the number of pointers to each,
+   * or to the number of pointers to class label if heterogenous.
+   * The key 'grandtotal' maps to the total number of pointers.
+   */
+  HV *pointers;
+  /* Maps binary context labels to the size of the gang effect of
+   * that context. A gang effect is the number of pointers in
+   * the given context multiplied by the number exemplars contained
+   * in the context.
+   */
+  HV *gang;
+  /* number of pointers to each class label;
+   * keys are class indices and values are numbers
+   * of pointers (AM_BIG_INT).
+   */
+  SV **sum;
+  /*
+   * contains the total number of possible class labels;
+   * used for computing gang effects.
+   */
+  IV num_classes;
 } AM_GUTS;
 
 /*
@@ -241,8 +263,7 @@ normalize(SV *s) {
   AM_LONG *dividend, *quotient, *dptr, *qptr;
   char *outptr;
   unsigned int outlength = 0;
-  AM_BIG_INT p;
-  Copy(SvPVX(s), p, 8, AM_LONG);
+  AM_LONG *p = (AM_LONG *) SvPVX(s);
   STRLEN length = SvCUR(s) / sizeof(AM_LONG);
   /* TODO: is this required to be a certain number of bits?*/
   long double nn = 0;
@@ -254,7 +275,7 @@ normalize(SV *s) {
    */
   for (j = 8; j; --j){
     /*   2^16    * nn +           p[j-1] */
-    nn = 65536.0 * nn + (double) p[j-1];
+    nn = 65536.0 * nn + (double) *(p + j - 1);
   }
 
   dividend = &dspace[0];
@@ -318,7 +339,7 @@ BOOT:
   }
 
   /*
-   * This function is called by from Parallel.pm right after creating
+   * This function is called by from AM.pm right after creating
    * a blessed reference to Algorithm::AM. It stores the necessary
    * pointers in the AM_GUTS structure and attaches it to the magic
    * part of thre reference.
@@ -326,7 +347,7 @@ BOOT:
    */
 
 void
-_initialize(...)
+_xs_initialize(...)
  PREINIT:
   HV *project;
   AM_GUTS guts; /* NOT A POINTER THIS TIME! (let memory allocate automatically) */
@@ -334,29 +355,20 @@ _initialize(...)
   MAGIC *mg;
   int i;
  PPCODE:
-  /* 9 arguments are passed to the _initialize method: */
+  /* 9 arguments are passed to the _xs_initialize method: */
   /* $self, the AM object */
   project = (HV *) SvRV(ST(0));
-  /* number of active variables in each lattice*/
+  /* For explanations on these, see the comments on AM_guts */
   guts.activeVar = AvARRAY((AV *) SvRV(ST(1)));
-  /* array ref of "short" outcomes for whole data set*/
-  guts.outcome = AvARRAY((AV *) SvRV(ST(2)));
-  /* ??? */
+  guts.classes = AvARRAY((AV *) SvRV(ST(2)));
   guts.itemcontextchain = AvARRAY((AV *) SvRV(ST(3)));
-  /* ??? */
   guts.itemcontextchainhead = (HV *) SvRV(ST(4));
-  /* ??? */
-  guts.subtooutcome = (HV *) SvRV(ST(5));
-  /* ??? */
+  guts.context_to_class = (HV *) SvRV(ST(5));
   guts.contextsize = (HV *) SvRV(ST(6));
-  /* ??? */
   guts.pointers = (HV *) SvRV(ST(7));
-  /* ??? */
   guts.gang = (HV *) SvRV(ST(8));
-  /* number of pointers to each outcome */
   guts.sum = AvARRAY((AV *) SvRV(ST(9)));
-  /* ??? */
-  guts.numoutcomes = av_len((AV *) SvRV(ST(9)));
+  guts.num_classes = av_len((AV *) SvRV(ST(9)));
 
   /*
    * Since the sublattices are small, we just take a chunk of memory
@@ -386,6 +398,7 @@ void
 _fillandcount(...)
  PREINIT:
   HV *project;
+  UV linear_flag;
   AM_GUTS *guts;
   MAGIC *mg;
   AM_SHORT activeVar[4];
@@ -394,10 +407,10 @@ _fillandcount(...)
   AM_SHORT nptr[4];/* this helps us manage the free list in sptr[i] */
   AM_SHORT subcontextnumber;
   AM_SHORT *subcontext;
-  AM_SHORT *suboutcome;
-  SV **outcome, **itemcontextchain, **sum;
-  HV *itemcontextchainhead, *subtooutcome, *contextsize, *pointers, *gang;
-  IV numoutcomes;
+  AM_SHORT *subcontext_class;
+  SV **classes, **itemcontextchain, **sum;
+  HV *itemcontextchainhead, *context_to_class, *contextsize, *pointers, *gang;
+  IV num_classes;
   HE *he;
   AM_BIG_INT grandtotal = {0, 0, 0, 0, 0, 0, 0, 0};
   SV *tempsv;
@@ -406,7 +419,12 @@ _fillandcount(...)
   AM_SHORT *intersect, *intersectlist;
   AM_SHORT *intersectlist2, *intersectlist3, *ilist2top, *ilist3top;
  PPCODE:
+  /* Input args are the AM object ($self) and a flag
+   * to indicate whether to count pointers linearly or
+   * quadratically.
+   */
   project = (HV *) SvRV(ST(0));
+  linear_flag = SvUVX(ST(1));
   mg = mg_find((SV *) project, PERL_MAGIC_ext);
   guts = (AM_GUTS *) SvPVX(mg->mg_obj);
 
@@ -437,26 +455,26 @@ _fillandcount(...)
    *
    * The index into the array is called subcontextnumber.
    *
-   * The array of matching outcomes is called suboutcome.
+   * The array of matching classes is called subcontext_class.
    *
    */
 
-  subtooutcome = guts->subtooutcome;
-  subcontextnumber = (AM_SHORT) HvUSEDKEYS(subtooutcome);
+  context_to_class = guts->context_to_class;
+  subcontextnumber = (AM_SHORT) HvUSEDKEYS(context_to_class);
   Newz(0, subcontext, 4 * (subcontextnumber + 1), AM_SHORT);
   subcontext += 4 * subcontextnumber;
-  Newz(0, suboutcome, subcontextnumber + 1, AM_SHORT);
-  suboutcome += subcontextnumber;
+  Newz(0, subcontext_class, subcontextnumber + 1, AM_SHORT);
+  subcontext_class += subcontextnumber;
   Newz(0, intersectlist, subcontextnumber + 1, AM_SHORT);
   Newz(0, intersectlist2, subcontextnumber + 1, AM_SHORT);
   ilist2top = intersectlist2 + subcontextnumber;
   Newz(0, intersectlist3, subcontextnumber + 1, AM_SHORT);
   ilist3top = intersectlist3 + subcontextnumber;
 
-  hv_iterinit(subtooutcome);
-  while (he = hv_iternext(subtooutcome)) {
+  hv_iterinit(context_to_class);
+  while (he = hv_iternext(context_to_class)) {
     AM_SHORT *contextptr = (AM_SHORT *) HeKEY(he);
-    AM_SHORT outcome = (AM_SHORT) SvUVX(HeVAL(he));
+    AM_SHORT class = (AM_SHORT) SvUVX(HeVAL(he));
     for (chunk = 0; chunk < 4; ++chunk, ++contextptr) {
       AM_SHORT active = activeVar[chunk];
       AM_SHORT *lattice = lptr[chunk];
@@ -645,8 +663,8 @@ _fillandcount(...)
       nptr[chunk] = nextsupra;
     }
     subcontext -= 4;
-    *suboutcome = outcome;
-    --suboutcome;
+    *subcontext_class = class;
+    --subcontext_class;
     --subcontextnumber;
   }
 
@@ -672,10 +690,10 @@ _fillandcount(...)
    *
    */
 
-  if (SvUVX(ST(1))) {
+  if (linear_flag) {
     /* squared */
     AM_SUPRA *p0, *p1, *p2, *p3;
-    AM_SHORT outcome;
+    AM_SHORT class;
     AM_SHORT length;
     unsigned short *temp, *i, *j, *k;
 
@@ -726,7 +744,7 @@ _fillandcount(...)
 	  *k = 0;
 
 	  for (p3 = sptr[3] + sptr[3]->next; p3 != sptr[3]; p3 = sptr[3] + p3->next) {
-	    outcome = 0;
+	    class = 0;
 	    length = 0;
 	    intersect = intersectlist;
 
@@ -746,15 +764,15 @@ _fillandcount(...)
 	      ++length;
 
          /* determine heterogeneity */
-	      if (outcome == 0) {
+	      if (class == 0) {
 		if (length > 1) {
 		  length = 0;
 		  break;
 		} else {
-		  outcome = suboutcome[*i];
+		  class = subcontext_class[*i];
 		}
 	      } else {
-		if (outcome != suboutcome[*i]) {
+		if (class != subcontext_class[*i]) {
 		  length = 0;
 		  break;
 		}
@@ -867,7 +885,7 @@ _fillandcount(...)
   {
     /* linear */
     AM_SUPRA *p0, *p1, *p2, *p3;
-    AM_SHORT outcome;
+    AM_SHORT class;
     AM_SHORT length;
     unsigned short *temp, *i, *j, *k;
 
@@ -918,7 +936,7 @@ _fillandcount(...)
 	  *k = 0;
 
 	  for (p3 = sptr[3] + sptr[3]->next; p3 != sptr[3]; p3 = sptr[3] + p3->next) {
-	    outcome = 0;
+	    class = 0;
 	    length = 0;
 	    intersect = intersectlist;
 
@@ -938,15 +956,15 @@ _fillandcount(...)
 	      ++length;
 
          /* determine heterogeneity */
-	      if (outcome == 0) {
+	      if (class == 0) {
 		if (length > 1) {
 		  length = 0;
 		  break;
 		} else {
-		  outcome = suboutcome[*i];
+		  class = subcontext_class[*i];
 		}
 	      } else {
-		if (outcome != suboutcome[*i]) {
+		if (class != subcontext_class[*i]) {
 		  length = 0;
 		  break;
 		}
@@ -1025,23 +1043,23 @@ _fillandcount(...)
    * will have the same number of pointers/occurrences.
    *
    * If the user wants the detailed analogical set, it will be created
-   * in Parallel.pm.
+   * in AM.pm.
    *
    */
 
   gang = guts->gang;
-  outcome = guts->outcome;
+  classes = guts->classes;
   itemcontextchain = guts->itemcontextchain;
   itemcontextchainhead = guts->itemcontextchainhead;
   sum = guts->sum;
-  numoutcomes = guts->numoutcomes;
+  num_classes = guts->num_classes;
   hv_iterinit(pointers);
   while (he = hv_iternext(pointers)) {
     AM_LONG count;
     AM_SHORT counthi, countlo;
     AM_BIG_INT p;
     AM_BIG_INT gangcount;
-    AM_SHORT thisoutcome;
+    AM_SHORT this_class;
     SV *dataitem;
     Copy(SvPVX(HeVAL(he)), p, 8, AM_LONG);
 
@@ -1065,8 +1083,8 @@ _fillandcount(...)
     /* TODO: why is element 0 not considered here? */
     if (counthi) {
       for (i = 0; i < 6; ++i) {
-  gangcount[i + 1] += counthi * p[i];
-  carry(gangcount, i + 1);
+        gangcount[i + 1] += counthi * p[i];
+        carry(gangcount, i + 1);
       }
     }
     for (i = 0; i < 7; ++i) {
@@ -1074,42 +1092,43 @@ _fillandcount(...)
       carry(grandtotal, i);
     }
     grandtotal[7] += gangcount[7];
+
     tempsv = *hv_fetch(gang, HeKEY(he), 4 * sizeof(AM_SHORT), 1);
     SvUPGRADE(tempsv, SVt_PVNV);
     sv_setpvn(tempsv, (char *) gangcount, 8 * sizeof(AM_LONG));
     normalize(tempsv);
     normalize(HeVAL(he));
 
-    tempsv = *hv_fetch(subtooutcome, HeKEY(he), 4 * sizeof(AM_SHORT), 0);
-    thisoutcome = (AM_SHORT) SvUVX(tempsv);
-    if (thisoutcome) {
-      AM_LONG *s = (AM_LONG *) SvPVX(sum[thisoutcome]);
+    tempsv = *hv_fetch(context_to_class, HeKEY(he), 4 * sizeof(AM_SHORT), 0);
+    this_class = (AM_SHORT) SvUVX(tempsv);
+    if (this_class) {
+      AM_LONG *s = (AM_LONG *) SvPVX(sum[this_class]);
       for (i = 0; i < 7; ++i) {
-	*(s + i) += gangcount[i];
-  carry_pointer(s + i);
+      	*(s + i) += gangcount[i];
+        carry_pointer(s + i);
       }
     } else {
       dataitem = *hv_fetch(itemcontextchainhead, HeKEY(he), 4 * sizeof(AM_SHORT), 0);
       while (SvIOK(dataitem)) {
-	IV datanum = SvIVX(dataitem);
-	IV ocnum = SvIVX(outcome[datanum]);
-	AM_LONG *s = (AM_LONG *) SvPVX(sum[ocnum]);
-	for (i = 0; i < 7; ++i) {
-	  *(s + i) += p[i];
-    carry_pointer(s + i);
-	  dataitem = itemcontextchain[datanum];
-	}
+      	IV datanum = SvIVX(dataitem);
+      	IV ocnum = SvIVX(classes[datanum]);
+      	AM_LONG *s = (AM_LONG *) SvPVX(sum[ocnum]);
+      	for (i = 0; i < 7; ++i) {
+      	  *(s + i) += p[i];
+          carry_pointer(s + i);
+      	  dataitem = itemcontextchain[datanum];
+      	}
       }
     }
   }
-  for (i = 1; i <= numoutcomes; ++i) normalize(sum[i]);
+  for (i = 1; i <= num_classes; ++i) normalize(sum[i]);
   tempsv = *hv_fetch(pointers, "grandtotal", 10, 1);
   SvUPGRADE(tempsv, SVt_PVNV);
   sv_setpvn(tempsv, (char *) grandtotal, 8 * sizeof(AM_LONG));
   normalize(tempsv);
 
   Safefree(subcontext);
-  Safefree(suboutcome);
+  Safefree(subcontext_class);
   Safefree(intersectlist);
   Safefree(intersectlist2);
   Safefree(intersectlist3);

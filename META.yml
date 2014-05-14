@@ -1,17 +1,15 @@
 ---
-abstract: 'Perl extension for Analogical Modeling using a parallel algorithm'
+abstract: 'Classify data with Analogical Modeling'
 author:
   - 'Theron Stanford <shixilun@yahoo.com>, Nathan Glenn <garfieldnate@gmail.com>'
 build_requires:
   File::Find: 0
-  File::Slurp: 0
   File::Temp: 0
   FindBin: 0
   Test::Exception: 0
   Test::LongString: 0
   Test::More: 0.88
   Test::NoWarnings: 0
-  Test::Warn: 0
   subs: 0
   vars: 0
 configure_requires:
@@ -29,29 +27,40 @@ no_index:
 provides:
   Algorithm::AM:
     file: lib/Algorithm/AM.pm
-    version: 2.46
-  Algorithm::AM::Project:
-    file: lib/Algorithm/AM/Project.pm
-    version: 2.46
+    version: 3.00
+  Algorithm::AM::Batch:
+    file: lib/Algorithm/AM/Batch.pm
+    version: 3.00
+  Algorithm::AM::BigInt:
+    file: lib/Algorithm/AM/BigInt.pm
+    version: 3.00
+  Algorithm::AM::DataSet:
+    file: lib/Algorithm/AM/DataSet.pm
+    version: 3.00
+  Algorithm::AM::DataSet::Item:
+    file: lib/Algorithm/AM/DataSet/Item.pm
+    version: 3.00
+  Algorithm::AM::Result:
+    file: lib/Algorithm/AM/Result.pm
+    version: 3.00
   Algorithm::AM::algorithm:
     file: lib/Algorithm/AM/algorithm.pod
-    version: 2.46
+    version: 3.00
   Algorithm::AM::lattice:
     file: lib/Algorithm/AM/lattice.pod
-    version: 2.46
+    version: 3.00
 requires:
   Carp: 0
-  Data::Dumper: 0
+  Class::Tiny: 0
   Exporter::Easy: 0
-  IO::Handle: 0
+  Import::Into: 0
   Log::Any: 0
-  Log::Dispatch: 0
-  Log::Dispatch::File: 0
   Path::Tiny: 0
+  Text::Table: 0
   XSLoader: 0
   feature: 0
   integer: 0
-  perl: 5.010
+  perl: 5.014
   strict: 0
   warnings: 0
 resources:
@@ -59,11 +68,11 @@ resources:
   homepage: https://github.com/garfieldnate/Algorithm-AM
   license: http://dev.perl.org/licenses/
   repository: https://github.com/garfieldnate/Algorithm-AM.git
-version: 2.46
+version: 3.00
 x_BuiltWith:
   modules:
     Carp: 1.26
-    Data::Dumper: 2.145
+    Class::Tiny: 0.014
     Dist::Zilla: 4.300039
     Dist::Zilla::Plugin::ArchiveRelease: 4.00
     Dist::Zilla::Plugin::AutoPrereqs: 4.300039
@@ -131,13 +140,10 @@ x_BuiltWith:
     Exporter::Easy: 0.16
     ExtUtils::MakeMaker: 6.66
     File::Find: 1.20
-    File::Slurp: 9999.19
     File::Temp: 0.2301
     FindBin: 1.51
-    IO::Handle: 1.33
+    Import::Into: 1.002000
     Log::Any: 0.15
-    Log::Dispatch: 2.39
-    Log::Dispatch::File: 2.39
     Path::Tiny: 0.052
     Pod::Coverage::TrustPod: 0.100002
     Test::CPAN::Meta: 0.23
@@ -147,7 +153,7 @@ x_BuiltWith:
     Test::NoWarnings: 1.04
     Test::Pod: 1.45
     Test::Pod::Coverage: 1.08
-    Test::Warn: 0.24
+    Text::Table: 1.130
     XSLoader: 0.16
     feature: 1.27
     integer: 1.00
@@ -457,5 +463,5 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: 1
+      is_trial: 0
     version: 4.300039
