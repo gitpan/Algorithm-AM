@@ -109,7 +109,7 @@
             "XSLoader" : "0",
             "feature" : "0",
             "integer" : "0",
-            "perl" : "5.014",
+            "perl" : "5.010",
             "strict" : "0",
             "warnings" : "0"
          }
@@ -119,6 +119,7 @@
             "File::Find" : "0",
             "File::Temp" : "0",
             "FindBin" : "0",
+            "Test::Deep" : "0",
             "Test::Exception" : "0",
             "Test::LongString" : "0",
             "Test::More" : "0.88",
@@ -131,35 +132,35 @@
    "provides" : {
       "Algorithm::AM" : {
          "file" : "lib/Algorithm/AM.pm",
-         "version" : "3.00"
+         "version" : "3.01"
       },
       "Algorithm::AM::Batch" : {
          "file" : "lib/Algorithm/AM/Batch.pm",
-         "version" : "3.00"
+         "version" : "3.01"
       },
       "Algorithm::AM::BigInt" : {
          "file" : "lib/Algorithm/AM/BigInt.pm",
-         "version" : "3.00"
+         "version" : "3.01"
       },
       "Algorithm::AM::DataSet" : {
          "file" : "lib/Algorithm/AM/DataSet.pm",
-         "version" : "3.00"
+         "version" : "3.01"
       },
       "Algorithm::AM::DataSet::Item" : {
          "file" : "lib/Algorithm/AM/DataSet/Item.pm",
-         "version" : "3.00"
+         "version" : "3.01"
       },
       "Algorithm::AM::Result" : {
          "file" : "lib/Algorithm/AM/Result.pm",
-         "version" : "3.00"
+         "version" : "3.01"
       },
       "Algorithm::AM::algorithm" : {
          "file" : "lib/Algorithm/AM/algorithm.pod",
-         "version" : "3.00"
+         "version" : "3.01"
       },
       "Algorithm::AM::lattice" : {
          "file" : "lib/Algorithm/AM/lattice.pod",
-         "version" : "3.00"
+         "version" : "3.01"
       }
    },
    "release_status" : "stable",
@@ -178,7 +179,7 @@
          "web" : "https://github.com/garfieldnate/Algorithm-AM"
       }
    },
-   "version" : "3.00",
+   "version" : "3.01",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.26",
@@ -257,6 +258,7 @@
          "Path::Tiny" : "0.052",
          "Pod::Coverage::TrustPod" : "0.100002",
          "Test::CPAN::Meta" : "0.23",
+         "Test::Deep" : "0.11",
          "Test::Exception" : "0.31",
          "Test::LongString" : "0.15",
          "Test::More" : "0.98",

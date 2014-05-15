@@ -12,14 +12,14 @@ use strict;
 use warnings;
 use Text::Table;
 # ABSTRACT: Store results of an AM classification
-our $VERSION = '3.00'; # VERSION;
+our $VERSION = '3.01'; # VERSION;
 
 
 ## TODO: variables consider exporting someday
 ## @itemcontextchain
 ## %itemcontextchainhead
 ## @datatocontext
-## %context_to_outcome
+## %context_to_class
 ## %contextsize
 use Class::Tiny qw(
     exclude_nulls
@@ -67,48 +67,48 @@ sub config_info {
     return \$info;
 }
 
-# input several variables from AM's guts (grandtotal, sum,
-# expected outcome integer, pointers, itemcontextchainhead and
-# itemcontextchain). Calculate the prediction statistics, and
+# input several variables from AM's guts (sum, pointers,
+# itemcontextchainhead and itemcontextchain). Calculate the
+# prediction statistics, and
 # store information needed for computing analogical sets.
-# Set result to tie/correct/incorrect if expected outcome is
-# provided, and set is_tie, high_score, scores, winners, and
+# Set result to tie/correct/incorrect and also is_tie if
+# expected class is provided, and high_score, scores, winners, and
 # total_pointers.
 sub _process_stats {
     my ($self, $sum, $pointers,
-        $itemcontextchainhead, $itemcontextchain, $context_to_outcome,
+        $itemcontextchainhead, $itemcontextchain, $context_to_class,
         $gang, $active_vars, $contextsize) = @_;
     my $total_pointers = $pointers->{grandtotal};
     my $max = '';
     my @winners;
     my %scores;
 
-    # iterate all possible outcomes and store the ones that have a
+    # iterate all possible classes and store the ones that have a
     # non-zero score. Store the high-scorers, as well.
     # 1) find which one(s) has the highest score (the prediction) and
     # 2) print out the ones with scores (probability of prediction)
-    for my $outcome_index (1 .. $self->training_set->num_classes) {
-        my $outcome_pointers;
-        # skip outcomes with no score
-        next unless $outcome_pointers = $sum->[$outcome_index];
+    for my $class_index (1 .. $self->training_set->num_classes) {
+        my $class_score;
+        # skip classes with no score
+        next unless $class_score = $sum->[$class_index];
 
-        my $outcome = $self->training_set->_class_for_index($outcome_index);
-        $scores{$outcome} = $outcome_pointers;
+        my $class = $self->training_set->_class_for_index($class_index);
+        $scores{$class} = $class_score;
 
-        # check if the outcome has the highest score, or ties for it
+        # check if the class has the highest score, or ties for it
         do {
-            my $cmp = bigcmp($outcome_pointers, $max);
+            my $cmp = bigcmp($class_score, $max);
             if ($cmp > 0){
-                @winners = ($outcome);
-                $max = $outcome_pointers;
+                @winners = ($class);
+                $max = $class_score;
             }elsif($cmp == 0){
-                push @winners, $outcome;
+                push @winners, $class;
             }
         };
     }
 
     # set result to tie/correct/incorrect after comparing
-    # expected/actual outcomes. Only do this if the expected
+    # expected/actual class labels. Only do this if the expected
     # class label is known.
     if(my $expected = $self->test_item->class){
         if(exists $scores{$expected} &&
@@ -132,7 +132,7 @@ sub _process_stats {
     $self->{pointers} = $pointers;
     $self->{itemcontextchainhead} = $itemcontextchainhead;
     $self->{itemcontextchain} = $itemcontextchain;
-    $self->{context_to_outcome} = $context_to_outcome;
+    $self->{context_to_class} = $context_to_class;
     $self->{gang} = $gang;
     $self->{active_vars} = $active_vars;
     $self->{contextsize} = $contextsize;
@@ -145,18 +145,18 @@ sub statistical_summary {
     my $grand_total = $self->total_points;
 
     # Make a table with information about predictions for different
-    # outcomes. Each row contains an outcome name, the score,
+    # classes. Each row contains a class name, the score,
     # and the percentage predicted.
     my @rows;
-    for my $outcome(sort keys %scores){
-        push @rows, [ $outcome, $scores{$outcome},
+    for my $class (sort keys %scores){
+        push @rows, [ $class, $scores{$class},
             sprintf($percentage_format,
-                100 * $scores{$outcome} / $grand_total) ];
+                100 * $scores{$class} / $grand_total) ];
     }
     # add a Total row
     push @rows, [ 'Total', $grand_total ];
 
-    my @table = _make_table(['Outcome', 'Score', 'Percentage'],
+    my @table = _make_table(['Class', 'Score', 'Percentage'],
         \@rows);
     # copy the rule from the first row into the second to last row
     # to separate the Total row
@@ -164,20 +164,20 @@ sub statistical_summary {
 
     my $info = "Statistical Summary\n";
     $info .= join '', @table;
-    # the predicted outcome (the one with the highest score)
+    # the predicted class (the one with the highest score)
     # and the result (correct/incorrect/tie).
-    if ( defined (my $outcome = $self->test_item->class) ) {
-        $info .= "Expected outcome: $outcome\n";
+    if ( defined (my $expected = $self->test_item->class) ) {
+        $info .= "Expected class: $expected\n";
         my $result = $self->result;
         if ( $result eq 'correct') {
-            $info .= "Correct outcome predicted.\n";
+            $info .= "Correct class predicted.\n";
         }elsif($result eq 'tie'){
-            $info .= "Outcome is a tie.\n";
+            $info .= "Prediction is a tie.\n";
         }else {
-            $info .= "Incorrect outcome predicted.\n";
+            $info .= "Incorrect class predicted.\n";
         }
     }else{
-        $info .= "Expected outcome unknown\n";
+        $info .= "Expected class unknown\n";
     }
     return \$info;
 }
@@ -195,24 +195,24 @@ sub analogical_set {
 sub analogical_set_summary {
     my ($self) = @_;
     my $set = $self->analogical_set;
-    my $train = $self->training_set;
     my $total_pointers = $self->total_points;
 
     # Make a table for the analogical set. Each row contains an
-    # exemplar with its outcome, spec, score, and the percentage
+    # item with its class, comment, score, and the percentage
     # of total score contributed.
     my @rows;
-    foreach my $data_index (sort keys %$set){
-        my $score = $set->{$data_index};
+    foreach my $id (sort keys %$set){
+        my $entry = $set->{$id};
+        my $score = $entry->{score};
         push @rows, [
-            $train->get_item($data_index)->class,
-            $train->get_item($data_index)->comment,
+            $entry->{item}->class,
+            $entry->{item}->comment,
             $score,
             sprintf($percentage_format, 100 * $score / $total_pointers)
         ];
     }
     my @table = _make_table(
-        ['Outcome', 'Exemplar', 'Score', 'Percentage'], \@rows);
+        ['Class', 'Item', 'Score', 'Percentage'], \@rows);
     my $info = "Analogical Set\nTotal Frequency = $total_pointers\n";
     $info .= join '', @table;
     return \$info;
@@ -221,17 +221,22 @@ sub analogical_set_summary {
 # calculate and store analogical effects in $self->{_analogical_set}
 sub _calculate_analogical_set {
     my ($self) = @_;
+    my $train = $self->training_set;
     my %set;
     foreach my $context ( keys %{$self->{pointers}} ) {
         next unless
             exists $self->{itemcontextchainhead}->{$context};
         for (
-            my $data_index = $self->{itemcontextchainhead}->{$context};
-            defined $data_index;
-            $data_index = $self->{itemcontextchain}->[$data_index]
+            my $index = $self->{itemcontextchainhead}->{$context};
+            defined $index;
+            $index = $self->{itemcontextchain}->[$index]
         )
         {
-            $set{$data_index} = $self->{pointers}->{$context};
+            my $item = $train->get_item($index);
+            $set{$item->id} = {
+                item => $item,
+                score => $self->{pointers}->{$context}
+            };
         }
     }
     $self->{_analogical_set} = \%set;
@@ -248,7 +253,6 @@ sub gang_effects {
 
 sub gang_summary {
     my ($self, $print_list) = @_;
-    my $train = $self->training_set;
     my $test_item = $self->test_item;
 
     my $gangs = $self->gang_effects;
@@ -257,7 +261,7 @@ sub gang_summary {
     #   Percentage
     #   Score
     #   Num
-    #   Outcome
+    #   Class
     #   Features
     #   (if $print_list is true) Data comment
     my @rows;
@@ -276,8 +280,7 @@ sub gang_summary {
     my $current_row = -1;
     # add information for each gang; sort by order of highest to
     # lowest effect
-    foreach my $gang (
-            sort {bigcmp($b->{score}, $a->{score})} values $gangs){
+    foreach my $gang (sort _sort_gangs values %$gangs){
         $current_row++;
         $gang_rows[$current_row]++;
         my $variables = $gang->{vars};
@@ -290,29 +293,29 @@ sub gang_summary {
             # print undefined variable slots as asterisks
             map {$_ || '*'} @$variables
         ];
-        # add each outcome in the gang, along with the total number
+        # add each class in the gang, along with the total number
         # and effect of the gang items supporting it
-        for my $outcome (keys %{ $gang->{outcome} }){
+        for my $class (sort keys %{ $gang->{class} }){
             $gang_rows[$current_row]++;
             push @rows, [
                 sprintf($percentage_format,
-                    100 * $gang->{outcome}->{$outcome}->{effect}),
-                $gang->{outcome}->{$outcome}->{score},
-                scalar @{ $gang->{data}->{$outcome} },
-                $outcome,
+                    100 * $gang->{class}->{$class}->{effect}),
+                $gang->{class}->{$class}->{score},
+                scalar @{ $gang->{data}->{$class} },
+                $class,
                 undef
             ];
             if($print_list){
                 # add the list of items in the given context
-                for my $data_index (@{ $gang->{data}->{$outcome} }){
+                for my $item (@{ $gang->{data}->{$class} }){
                     $gang_rows[$current_row]++;
                     push @rows, [
                         undef,
                         undef,
                         undef,
                         undef,
-                        @{ $train->get_item($data_index)->features },
-                        $train->get_item($data_index)->comment,
+                        @{ $item->features },
+                        $item->comment,
                     ];
                 }
             }
@@ -325,7 +328,7 @@ sub gang_summary {
         'Percentage' => \' | ',
         'Score' => \' | ',
         'Num Items' => \' | ',
-        'Outcome' => \' | ',
+        'Class' => \' | ',
         ('' => \' ') x @{$test_item->features}
     );
     pop @headers;
@@ -359,6 +362,15 @@ sub gang_summary {
     return \$return;
 }
 
+# for sorting gangs during report printing;
+# sort first by score and then by class labels
+sub _sort_gangs {## no critic (RequireArgUnpacking)
+    return bigcmp($b->{score}, $a->{score}) ||
+        (join '', sort keys %{ $b->{class} })
+        cmp
+        (join '', sort keys %{ $a->{class} });
+}
+
 sub _calculate_gangs {
     my ($self) = @_;
     my $train = $self->training_set;
@@ -377,52 +389,53 @@ sub _calculate_gangs {
 
         my $p = $self->{pointers}->{$context};
         # if the supracontext is homogenous
-        if ( my $outcome_index = $self->{context_to_outcome}->{$context} ) {
+        if ( my $class_index = $self->{context_to_class}->{$context} ) {
             # store a 'homogenous' key that indicates this, besides
-            # indicating the unanimous outcome.
-            my $outcome = $train->_class_for_index($outcome_index);
-            $gangs->{$key}->{homogenous} = $outcome;
+            # indicating the unanimous class prediction.
+            my $class = $train->_class_for_index($class_index);
+            $gangs->{$key}->{homogenous} = $class;
             my @data;
             for (
-                my $i = $self->{itemcontextchainhead}->{$context};
-                defined $i;
-                $i = $self->{itemcontextchain}->[$i]
+                my $index = $self->{itemcontextchainhead}->{$context};
+                defined $index;
+                $index = $self->{itemcontextchain}->[$index]
               )
             {
-                push @data, $i;
+                push @data, $train->get_item($index);
             }
-            $gangs->{$key}->{data}->{$outcome} = \@data;
+            $gangs->{$key}->{data}->{$class} = \@data;
             $gangs->{$key}->{size} = scalar @data;
-            $gangs->{$key}->{outcome}->{$outcome}->{score} = $p;
-            $gangs->{$key}->{outcome}->{$outcome}->{effect} =
+            $gangs->{$key}->{class}->{$class}->{score} = $p;
+            $gangs->{$key}->{class}->{$class}->{effect} =
                 $gangs->{$key}->{effect};
         }
         # for heterogenous supracontexts we have to store data for
-        # each outcome
+        # each class
         else {
             $gangs->{$key}->{homogenous} = 0;
-            # first loop through the data and sort by outcome, also
+            # first loop through the data and sort by class, also
             # finding the total gang size
             my $size = 0;
             my %data;
             for (
-                my $i = $self->{itemcontextchainhead}->{$context};
-                defined $i;
-                $i = $self->{itemcontextchain}->[$i]
+                my $index = $self->{itemcontextchainhead}->{$context};
+                defined $index;
+                $index = $self->{itemcontextchain}->[$index]
               )
             {
-                push @{ $data{$train->get_item($i)->class} }, $i;
+                my $item = $train->get_item($index);
+                push @{ $data{$item->class} }, $item;
                 $size++;
             }
             $gangs->{$key}->{data} = \%data;
             $gangs->{$key}->{size} = $size;
 
-            # then store aggregate statistics for each outcome
-            for my $outcome (keys %data){
-                $gangs->{$key}->{outcome}->{$outcome}->{score} = $p;
-                $gangs->{$key}->{outcome}->{$outcome}->{effect} =
+            # then store aggregate statistics for each class
+            for my $class (keys %data){
+                $gangs->{$key}->{class}->{$class}->{score} = $p;
+                $gangs->{$key}->{class}->{$class}->{effect} =
                     # score*num_data/total
-                    @{ $data{$outcome} } * $p / $total_pointers;
+                    @{ $data{$class} } * $p / $total_pointers;
             }
         }
     }
@@ -497,7 +510,7 @@ Algorithm::AM::Result - Store results of an AM classification
 
 =head1 VERSION
 
-version 3.00
+version 3.01
 
 =head2 SYNOPSIS
 
@@ -543,38 +556,42 @@ following accessors is included:
 
 Returns a scalar reference (string) containing a statistical summary
 of the classification results. The summary includes all possible
-predicted outcomes with their scores and percentage scores and the
-total score for all outcomes. Whether the predicted outcome
+predicted classes with their scores and percentage scores and the
+total score for all classes. Whether the predicted class
 is correct/incorrect/a tie of some sort is also included, if the
-expected outcome has been provided.
+test item had a known class.
 
 =head2 C<analogical_set>
 
-Returns the analogical set in the form of a hash ref mapping exemplar
-indices to score contributed by the item towards
-the final classification outcome. Further information about each
-exemplar can be retrieved from the project object using
-C<get_exemplar_(data|spec|outcome)> methods.
+Returns the analogical set in the form of a hash ref containing
+its items and the scores contributed by each towards a classification
+matching its own class label. The hash structure is like so:
+
+ { 'item_id' => {'item' => item, 'score' => score}
+
+where C<item> is the actual item object. The item_id is used so that
+the analogical effect of a particular item can be found quickly.
 
 =head2 C<analogical_set_summary>
 
 Returns a scalar reference (string) containing the analogical set,
-meaning all items that contributed to the predicted outcome, along
+meaning all items that contributed to the predicted class, along
 with the amount contributed by each item (score and
 percentage overall). Items are ordered by appearance in the data
 set.
 
 =head2 C<gang_effects>
 
-Return a hash describing gang effects.
-TODO: details, details! Maybe make a gang class to hold these.
+Return a hash describing gang effects. Gang effects are similar to
+analogical sets, but the total effects of entire subcontexts and
+supracontexts are also calculated and printed.
+
+TODO: details, details! Maybe make a gang class to hold this structure.
 
 =head2 C<gang_summary>
 
 Returns a scalar reference (string) containing the gang effects on the
-final outcome. Gang effects are basically the same as analogical sets,
-but the total effects of entire subcontexts and supracontexts
-are also calculated and printed.
+final class prediction.
 
 A single boolean parameter can be provided to turn on list printing,
 meaning gang items items are printed. This is false (off) by default.
@@ -629,8 +646,8 @@ the classification.
 =head2 C<result>
 
 If the class of the test item was known before classification, this
-returns "tie", "correct", or "incorrect", depending on the outcome of
-the classification. Otherwise this returns C<undef>.
+returns "tie", "correct", or "incorrect", depending on the label
+assigned by the classification. Otherwise this returns C<undef>.
 
 =head2 C<high_score>
 

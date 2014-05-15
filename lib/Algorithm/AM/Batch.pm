@@ -10,7 +10,7 @@ package Algorithm::AM::Batch;
 use strict;
 use warnings;
 # ABSTRACT: Classify items in batch mode
-our $VERSION = '3.00'; # VERSION
+our $VERSION = '3.01'; # VERSION
 use feature 'state';
 use Carp;
 our @CARP_NOT = qw(Algorithm::AM::Batch);
@@ -280,7 +280,7 @@ Algorithm::AM::Batch - Classify items in batch mode
 
 =head1 VERSION
 
-version 3.00
+version 3.01
 
 =head1 C<SYNOPSIS>
 

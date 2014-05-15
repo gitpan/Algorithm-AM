@@ -8,6 +8,7 @@ use Test::More 0.88;
 plan tests => 14;
 use Test::NoWarnings;
 use Test::Exception;
+use Test::Deep;
 use t::TestAM qw(chapter_3_train chapter_3_test);
 
 use FindBin qw($Bin);
@@ -92,7 +93,7 @@ sub test_quadratic_classification {
         is($result->count_method, 'squared',
             'counting configured to quadratic');
         is_deeply($result->scores, {'e' => 4, 'r' => 9},
-            'outcome scores') or
+            'class scores') or
             note explain $result->scores;
     };
     return;
@@ -111,7 +112,7 @@ sub test_linear_classification {
             or note $result->total_points;;
         is($result->count_method, 'linear',
             'counting configured to quadratic');
-        is_deeply($result->scores, {'e' => 2, 'r' => 5}, 'outcome scores')
+        is_deeply($result->scores, {'e' => 2, 'r' => 5}, 'class scores')
             or note explain $result->scores;
     };
     return;
@@ -137,7 +138,7 @@ sub test_nulls {
             or note $result->total_points;
         ok($result->exclude_nulls, 'exclude nulls is true');
         is_deeply($result->scores, {'e' => 3, 'r' => 7},
-            'outcome scores')
+            'class scores')
             or note explain $result->scores;
     };
 
@@ -148,7 +149,7 @@ sub test_nulls {
         is($result->total_points, 5, 'total pointers')
             or note $result->total_points;
         ok(!$result->exclude_nulls, 'exclude nulls is false');
-        is_deeply($result->scores, {'r' => 5}, 'outcome scores')
+        is_deeply($result->scores, {'r' => 5}, 'class scores')
             or note explain $result->scores;
     };
 
@@ -161,7 +162,7 @@ sub test_given {
     $train->add_item(
         features => [qw(3 1 2)],
         class => 'r',
-        comment => 'same as the test exemplar'
+        comment => 'same as the test item'
     );
     my $am = Algorithm::AM->new(
         training_set => $train,
@@ -174,7 +175,7 @@ sub test_given {
         is($result->total_points, 13, 'total pointers')
             or note $result->total_points;
         ok($result->given_excluded, 'given item was excluded');
-        is_deeply($result->scores, {'e' => 4, 'r' => 9}, 'outcome scores')
+        is_deeply($result->scores, {'e' => 4, 'r' => 9}, 'class scores')
             or note explain $result->scores;
     };
 
@@ -185,7 +186,7 @@ sub test_given {
         is($result->total_points, 15, 'total pointers')
             or note $result->total_points;
         ok(!$result->given_excluded, 'given was not excluded');
-        is_deeply($result->scores, {'r' => 15}, 'outcome scores')
+        is_deeply($result->scores, {'r' => 15}, 'class scores')
             or note explain $result->scores;
     };
     return;
@@ -197,8 +198,54 @@ sub test_analogical_set {
         plan tests => 5;
         my $set = $result->analogical_set();
 
-        is_deeply($set, {0 => 4, 2 => 2, 3 => 3, 4 => 4},
-            'data indices and pointer values') or note explain $set;
+        cmp_deeply([values %$set],
+          # use bag() and values so we can ignore the keys, which
+          # are id strings that might change
+          bag({
+            'item' => all(
+              isa('Algorithm::AM::DataSet::Item'),
+              methods(
+                features => [qw(3 1 0)],
+                class => 'e',
+                comment => 'myFirstCommentHere'
+              )
+            ),
+            'score' => '4'
+          },
+          {
+            'item' => all(
+              isa('Algorithm::AM::DataSet::Item'),
+              methods(
+                features => [qw(0 3 2)],
+                class => 'r',
+                comment => 'myThirdCommentHere'
+              )
+            ),
+            'score' => '2'
+          },
+          {
+            'item' => all(
+              isa('Algorithm::AM::DataSet::Item'),
+              methods(
+                features => [qw(2 1 2)],
+                class => 'r',
+                comment => 'myFourthCommentHere'
+              )
+            ),
+            'score' => '3'
+          },
+          {
+            'item' => all(
+              isa('Algorithm::AM::DataSet::Item'),
+              methods(
+                features => [qw(3 1 1)],
+                class => 'r',
+                comment => 'myFifthCommentHere'
+              )
+            ),
+            'score' => '4'
+          }),
+          'data indices and pointer values') or note explain $set;
         # now confirm that the referenced data really are what we think
         is($train->get_item(0)->comment, 'myFirstCommentHere',
             'confirm first item')
@@ -218,56 +265,99 @@ sub test_analogical_set {
 
 sub test_gang_effects {
     my ($result) = @_;
-    my $expected_effects = {
-      '- - 2' => {
-        'data' => {'r' => [2]},
-        'effect' => '0.153846153846154',
-        'homogenous' => 'r',
-        'outcome' => {
-          'r' => {
-            'effect' => '0.153846153846154',
-            'score' => '2'
-          }
-        },
-        'score' => 2,
-        'size' => 1,
-        'vars' => ['','','2']
-      },
-      '- 1 2' => {
-        'data' => {'r' => [3]},
-        'effect' => '0.230769230769231',
-        'homogenous' => 'r',
-        'outcome' => {
-          'r' => {
-            'effect' => '0.230769230769231',
-            'score' => '3'
-          }
-        },
-        'score' => 3,
-        'size' => 1,
-        'vars' => ['','1','2']
-      },
-      '3 1 -' => {
-        'data' => {'e' => [0], 'r' => [4]},
-        'effect' => '0.615384615384615',
-        'homogenous' => 0,
-        'outcome' => {
-          'e' => {
-            'effect' => '0.307692307692308',
-            'score' => 4
+    cmp_deeply($result->gang_effects,
+        {
+          '- - 2' => {
+            'data' => {
+              'r' => [
+                all(
+                  isa('Algorithm::AM::DataSet::Item'),
+                  methods(
+                    features => [qw(0 3 2)],
+                    class => 'r',
+                    comment => 'myThirdCommentHere'
+                  )
+                )
+              ]
+            },
+            'effect' => num(.1538, 0.001),
+            'homogenous' => 'r',
+            'class' => {
+              'r' => {
+                'effect' => num(0.1538, 0.001),
+                'score' => '2'
+              }
+            },
+            'score' => 2,
+            'size' => 1,
+            'vars' => ['','','2']
           },
-          'r' => {
-            'effect' => '0.307692307692308',
-            'score' => 4
+          '- 1 2' => {
+            'data' => {
+              'r' => [
+                all(
+                  isa('Algorithm::AM::DataSet::Item'),
+                  methods(
+                    features => [qw(2 1 2)],
+                    class => 'r',
+                    comment => 'myFourthCommentHere'
+                  )
+                )
+              ]
+            },
+            'effect' => num(0.2307, 0.001),
+            'homogenous' => 'r',
+            'class' => {
+              'r' => {
+                'effect' => num(0.2307, 0.001),
+                'score' => '3'
+              }
+            },
+            'score' => 3,
+            'size' => 1,
+            'vars' => ['','1','2']
+          },
+          '3 1 -' => {
+            'data' => {
+              'r' => [
+                all(
+                  isa('Algorithm::AM::DataSet::Item'),
+                  methods(
+                    features => [qw(3 1 1)],
+                    class => 'r',
+                    comment => 'myFifthCommentHere'
+                  )
+                )
+              ],
+              'e' => [
+                all(
+                  isa('Algorithm::AM::DataSet::Item'),
+                  methods(
+                    features => [qw(3 1 0)],
+                    class => 'e',
+                    comment => 'myFirstCommentHere'
+                  )
+                )
+              ]
+            },
+            'effect' => num(0.6154, 0.001),
+            'homogenous' => 0,
+            'class' => {
+              'e' => {
+                'effect' => num(0.3077, 0.001),
+                'score' => 4
+              },
+              'r' => {
+                'effect' => num(0.3077, 0.001),
+                'score' => 4
+              }
+            },
+            'score' => 8,
+            'size' => 2,
+            'vars' => ['3','1', '']
           }
         },
-        'score' => 8,
-        'size' => 2,
-        'vars' => ['3','1', '']
-      }
-    };
-    is_deeply($result->gang_effects, $expected_effects,
-        'correct reported gang effects') or
+    'correct reported gang effects') or
         note explain $result->gang_effects;
 
     return;

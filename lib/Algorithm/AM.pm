@@ -10,7 +10,7 @@ package Algorithm::AM;
 use strict;
 use warnings;
 # ABSTRACT: Classify data with Analogical Modeling
-our $VERSION = '3.00'; # VERSION
+our $VERSION = '3.01'; # VERSION
 use feature 'state';
 use Carp;
 our @CARP_NOT = qw(Algorithm::AM);
@@ -67,7 +67,7 @@ sub _initialize {
     # _initialize method
     $self->{activeVars} = _compute_lattice_sizes($train->cardinality);
 
-    # sum is intitialized to a list of zeros the same length as outcomelist
+    # sum is intitialized to a list of zeros
     @{$self->{sum}} = (0.0) x ($train->num_classes + 1);
 
     # preemptively allocate memory
@@ -79,7 +79,7 @@ sub _initialize {
     $self->{$_} = {} for (
         qw(
             itemcontextchainhead
-            context_to_outcome
+            context_to_class
             contextsize
             pointers
             gang
@@ -95,7 +95,7 @@ sub _initialize {
         $self->{save_this},
         $self->{itemcontextchain},
         $self->{itemcontextchainhead},
-        $self->{context_to_outcome},
+        $self->{context_to_class},
         $self->{contextsize},
         $self->{pointers},
         $self->{gang},
@@ -153,7 +153,7 @@ sub classify {
     # change it.
     %{$self->{contextsize}}             = ();
     %{$self->{itemcontextchainhead}}    = ();
-    %{$self->{context_to_outcome}}      = ();
+    %{$self->{context_to_class}}      = ();
     %{$self->{pointers}}                = ();
     %{$self->{gang}}                    = ();
     @{$self->{datatocontext}}           = ();
@@ -182,26 +182,26 @@ sub classify {
             $self->{itemcontextchainhead}->{$context};
         $self->{itemcontextchainhead}->{$context} = $data_index;
 
-        # store the outcome for the subcontext; if there
-        # is already a different outcome for this subcontext,
+        # store the class for the subcontext; if there
+        # is already a different class for this subcontext,
         # then store 0, signifying heterogeneity.
-        my $outcome = $training_set->_index_for_class(
+        my $class = $training_set->_index_for_class(
             $training_set->get_item($data_index)->class);
-        if ( defined $self->{context_to_outcome}->{$context} ) {
-            $self->{context_to_outcome}->{$context} = 0
-              if $self->{context_to_outcome}->{$context} != $outcome;
+        if ( defined $self->{context_to_class}->{$context} ) {
+            $self->{context_to_class}->{$context} = 0
+              if $self->{context_to_class}->{$context} != $class;
         }
         else {
-            $self->{context_to_outcome}->{$context} = $outcome;
+            $self->{context_to_class}->{$context} = $class;
         }
     }
     # $nullcontext is all 0's, which is a context label for
     # a data item that exactly matches the test item. Take note
     # of the item, and exclude it if required.
-    if ( exists $self->{context_to_outcome}->{$nullcontext} ) {
+    if ( exists $self->{context_to_class}->{$nullcontext} ) {
         $testindata = 1;
         if($self->exclude_given){
-           delete $self->{context_to_outcome}->{$nullcontext};
+           delete $self->{context_to_class}->{$nullcontext};
            $given_excluded = 1;
         }
     }
@@ -240,7 +240,7 @@ sub classify {
         $self->{pointers},
         $self->{itemcontextchainhead},
         $self->{itemcontextchain},
-        $self->{context_to_outcome},
+        $self->{context_to_class},
         $self->{gang},
         $self->{activeVars},
         $self->{contextsize}
@@ -278,7 +278,7 @@ sub _compute_lattice_sizes {
 sub _context_label {
     # inputs:
     # number of active variables in each lattice,
-    # exemplar (data) variables, item variables,
+    # training item features, test item features,
     # and boolean indicating if nulls should be excluded
     my ($active_vars, $train_feats, $test_feats, $skip_nulls) = @_;
 
@@ -329,7 +329,7 @@ Algorithm::AM - Classify data with Analogical Modeling
 
 =head1 VERSION
 
-version 3.00
+version 3.01
 
 =head1 SYNOPSIS
 

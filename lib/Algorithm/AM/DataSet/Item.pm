@@ -11,30 +11,35 @@ use strict;
 use warnings;
 use Carp;
 our @CARP_NOT = qw(Algorithm::AM::DataSet);
-use Class::Tiny qw(
-    features
-    class
-    comment
-), {
-    comment => sub {
-        # by default, the comment is just the data in a string, with
-        # empty strings for unknown values
-        join ',', @{ $_[0]->{features} }
-    },
-};
 use Exporter::Easy (
     OK => ['new_item']
 );
-# ABSTRACT: A single data item for classification
-our $VERSION = '3.00'; # VERSION;
 
-sub BUILD {
-    my ($self, $args) = @_;
-    if(!exists $args->{features} ||
-        'ARRAY' ne ref $args->{features}){
+# use to assign unique ids to new items; not meant to be secure
+# or anything, just unique.
+my $current_id = 'a';
+
+# ABSTRACT: A single data item for classification
+our $VERSION = '3.01'; # VERSION;
+
+sub new {
+    my ($class, %args) = @_;
+    if(!exists $args{features} ||
+        'ARRAY' ne ref $args{features}){
         croak q[Must provide 'features' parameter of type array ref];
     }
-    return;
+    my $self = {};
+    for(qw(features class comment)){
+        $self->{$_} = $args{$_};
+        delete $args{$_};
+    }
+    if(my $extra_keys = join ',', sort keys %args){
+        croak "Unknown parameters: $extra_keys";
+    }
+    $self->{id} = $current_id;
+    $current_id++;
+    bless $self, $class;
+    return $self;
 }
 
 sub new_item {
@@ -44,10 +49,35 @@ sub new_item {
     return __PACKAGE__->new(%args);
 }
 
+sub class {
+    my ($self) = @_;
+    return $self->{class};
+}
+
+sub features {
+    my ($self) = @_;
+    # make a safe copy
+    return [@{ $self->{features} }];
+}
+
+sub comment {
+    my ($self) = @_;
+    if(!defined $self->{comment}){
+        $self->{comment} = join ',', @{ $self->{features} };
+    }
+    return $self->{comment};
+}
+
 sub cardinality {
     my ($self) = @_;
     return scalar @{$self->features};
 }
+
+sub id {
+    my ($self) = @_;
+    return $self->{id};
+}
+
 1;
 
 __END__
@@ -60,7 +90,7 @@ Algorithm::AM::DataSet::Item - A single data item for classification
 
 =head1 VERSION
 
-version 3.00
+version 3.01
 
 =head1 SYNOPSIS
 
@@ -76,11 +106,9 @@ version 3.00
 
 This class represents a single item contained in a data set. Each
 item has a feature vector and possibly a class label and comment
-string.
+string. Once created, the item is immutable.
 
 =head1 METHODS
-
-=for Pod::Coverage BUILD
 
 =head2 C<new>
 
@@ -114,11 +142,17 @@ no value).
 
 =head2 C<comment>
 
-Returns the comment for this item.
+Returns the comment for this item. By default, the comment is
+just a comma-separated list of the feature values.
 
 =head2 C<cardinality>
 
 Returns the length of the feature vector for this item.
+
+=head2 C<id>
+
+Returns a unique string id for this item, for use as a hash key or
+similar situations.
 
 =head1 AUTHOR
 
