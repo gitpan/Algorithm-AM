@@ -123,44 +123,42 @@
             "Test::Exception" : "0",
             "Test::LongString" : "0",
             "Test::More" : "0.88",
-            "Test::NoWarnings" : "0",
-            "subs" : "0",
-            "vars" : "0"
+            "Test::NoWarnings" : "0"
          }
       }
    },
    "provides" : {
       "Algorithm::AM" : {
          "file" : "lib/Algorithm/AM.pm",
-         "version" : "3.01"
+         "version" : "3.02"
       },
       "Algorithm::AM::Batch" : {
          "file" : "lib/Algorithm/AM/Batch.pm",
-         "version" : "3.01"
+         "version" : "3.02"
       },
       "Algorithm::AM::BigInt" : {
          "file" : "lib/Algorithm/AM/BigInt.pm",
-         "version" : "3.01"
+         "version" : "3.02"
       },
       "Algorithm::AM::DataSet" : {
          "file" : "lib/Algorithm/AM/DataSet.pm",
-         "version" : "3.01"
+         "version" : "3.02"
       },
       "Algorithm::AM::DataSet::Item" : {
          "file" : "lib/Algorithm/AM/DataSet/Item.pm",
-         "version" : "3.01"
+         "version" : "3.02"
       },
       "Algorithm::AM::Result" : {
          "file" : "lib/Algorithm/AM/Result.pm",
-         "version" : "3.01"
+         "version" : "3.02"
       },
       "Algorithm::AM::algorithm" : {
          "file" : "lib/Algorithm/AM/algorithm.pod",
-         "version" : "3.01"
+         "version" : "3.02"
       },
       "Algorithm::AM::lattice" : {
          "file" : "lib/Algorithm/AM/lattice.pod",
-         "version" : "3.01"
+         "version" : "3.02"
       }
    },
    "release_status" : "stable",
@@ -179,7 +177,7 @@
          "web" : "https://github.com/garfieldnate/Algorithm-AM"
       }
    },
-   "version" : "3.01",
+   "version" : "3.02",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.26",
@@ -271,8 +269,6 @@
          "integer" : "1.00",
          "perl" : "NA(skipped: perl)",
          "strict" : "1.07",
-         "subs" : "1.01",
-         "vars" : "1.02",
          "version" : "0.9903",
          "warnings" : "1.13"
       },

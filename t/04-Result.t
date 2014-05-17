@@ -37,53 +37,52 @@ sub test_config_info {
             cardinality => 3,
             exclude_nulls => 1,
             count_method => 'linear',
-            # datacap => 50,
-            test_in_data => 1,
+            test_in_train => 1,
             training_set => $train
         );
         my $info = ${$result->config_info};
         my $expected = <<'END_INFO';
-+----------------------------+----------------+
-| Option                     | Setting        |
-+----------------------------+----------------+
-| Given context              | a b c, comment |
-| Nulls                      | exclude        |
-| Gang                       | linear         |
-| Test item in data          | yes            |
-| Test item excluded         | yes            |
-| Number of data items       |  5             |
-| Number of active variables |  3             |
-+----------------------------+----------------+
++---------------------------+----------------+
+| Option                    | Setting        |
++---------------------------+----------------+
+| Given context             | a b c, comment |
+| Nulls                     | exclude        |
+| Gang                      | linear         |
+| Test item in training set | yes            |
+| Test item excluded        | yes            |
+| Size of training set      | 5              |
+| Number of active features | 3              |
++---------------------------+----------------+
 END_INFO
         is_string_nows($info, $expected,
-            'given/nulls excluded, linear, item in data') or note $info;
+            'given/nulls excluded, linear, test in train')
+            or note $info;
         $result = Algorithm::AM::Result->new(
             given_excluded => 0,
             cardinality => 3,
             test_item => $item,
             exclude_nulls => 0,
             count_method => 'squared',
-            # datacap => 40,
-            test_in_data => 0,
+            test_in_train => 0,
             training_set => $train,
         );
 
         $info = ${$result->config_info};
         $expected = <<'END_INFO';
-+----------------------------+----------------+
-| Option                     | Setting        |
-+----------------------------+----------------+
-| Given context              | a b c, comment |
-| Nulls                      | include        |
-| Gang                       | squared        |
-| Test item in data          | no             |
-| Test item excluded         | no             |
-| Number of data items       |  5             |
-| Number of active variables |  3             |
-+----------------------------+----------------+
++---------------------------+----------------+
+| Option                    | Setting        |
++---------------------------+----------------+
+| Given context             | a b c, comment |
+| Nulls                     | include        |
+| Gang                      | squared        |
+| Test item in training set | no             |
+| Test item excluded        | no             |
+| Size of training set      | 5              |
+| Number of active features | 3              |
++---------------------------+----------------+
 END_INFO
         is_string_nows($info, $expected,
-            'given/nulls included, linear, item not in data')
+            'given/nulls included, linear, test not in train')
             or note $info;
     };
     return;

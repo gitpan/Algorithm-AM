@@ -136,8 +136,6 @@ eval { $v .= pmver('XSLoader','any version') };
 eval { $v .= pmver('feature','any version') };
 eval { $v .= pmver('integer','any version') };
 eval { $v .= pmver('strict','any version') };
-eval { $v .= pmver('subs','any version') };
-eval { $v .= pmver('vars','any version') };
 eval { $v .= pmver('version','0.9901') };
 eval { $v .= pmver('warnings','any version') };
 

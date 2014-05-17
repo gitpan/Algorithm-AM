@@ -23,7 +23,7 @@ my %hook_calls = (
 my $total_calls = 0;
 $total_calls += $_ for values %hook_calls;
 # +1 for test_defaults, run twice
-# +2 for test_data_hook
+# +2 for test_training_item_hook
 # +1 for Test::NoWarnings
 plan tests => $total_calls + 1*2 + 2 + 1;
 
@@ -60,7 +60,6 @@ $test->add_item(
 my $batch = Algorithm::AM::Batch->new(
 	training_set => $train,
 	repeat => 2,
-	probability => 1,
 	max_training_items => 10,
 	begin_hook => make_hook(
 		'begin_hook',
@@ -109,7 +108,7 @@ $batch->classify_all($test);
 test_defaults($batch);
 
 # test item exclusion via data hook
-test_data_hook();
+test_training_item_hook();
 
 # make a hook which runs the given test subs in a single subtest.
 # Pass on the arguments passed to the hook at classification time.
@@ -124,7 +123,7 @@ sub make_hook {
 			$test_subs{$_}->(@args) for @subs;
 		};
 		# true return value is needed by training_item_hook to signal
-		# that data should be considered during classification
+		# that item should be included in training set
 		return 1;
 	};
 }
@@ -139,11 +138,11 @@ sub test_beginning_vars {
 	is($batch->probability, 1,
 		'probability is 1 by default');
 	is($batch->max_training_items, 10,
-		'training data capped at 10 items');
+		'training set capped at 10 items');
 	return;
 }
 
-# Check variables provided before each test
+# Check variables set before each test
 # There are two items, 312 and 313, marked with
 # different comments and class labels. Check each one.
 sub test_item_vars {
@@ -159,7 +158,7 @@ sub test_item_vars {
 			qr/second test item$/,
 			'test comment'
 		);
-		is_deeply($test_item->features, [3,1,3], 'test variables')
+		is_deeply($test_item->features, [3,1,3], 'test item features')
 			or note explain $test_item->features;
 	}else{
 		like(
@@ -167,7 +166,7 @@ sub test_item_vars {
 			qr/test item comment$/,
 			'test comment'
 		);
-		is_deeply($test_item->features, [3,1,2], 'test variables')
+		is_deeply($test_item->features, [3,1,2], 'test item features')
 			or note explain $test_item->features;
 	}
 	return;
@@ -178,7 +177,7 @@ sub test_iter_vars {
 	my ($batch, $test_item, $iteration) = @_;
 	ok(
 		$iteration == 1 || $iteration == 2,
-		'only do 2 iteration of the data');
+		'only do 2 iteration of classification');
 	return;
 }
 
@@ -234,7 +233,7 @@ sub test_defaults {
 }
 
 # test that training_item_hook excludes items via false return value
-sub test_data_hook {
+sub test_training_item_hook {
 	my $batch = Algorithm::AM::Batch->new(
 		training_set => chapter_3_train(),
 		training_item_hook 	=> sub {

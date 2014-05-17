@@ -118,9 +118,9 @@ sub test_linear_classification {
     return;
 }
 
-# test with null variables, using both exclude_nulls
+# test with null features, using both exclude_nulls
 # and include_nulls
-# TODO: test for the correct number of active variables
+# TODO: test for the correct number of active features
 sub test_nulls {
     my $test = Algorithm::AM::DataSet::Item->new(
         features => ['', '1', '2'],
@@ -156,7 +156,7 @@ sub test_nulls {
     return;
 }
 
-# test case where test data is in given data
+# test case where test iitem is in training data
 sub test_given {
     my $train = chapter_3_train();
     $train->add_item(
@@ -166,7 +166,6 @@ sub test_given {
     );
     my $am = Algorithm::AM->new(
         training_set => $train,
-        exclude_given => 1
     );
 
     subtest 'exclude given' => sub {
@@ -194,72 +193,56 @@ sub test_given {
 
 sub test_analogical_set {
     my ($result) = @_;
-    subtest 'analogical set' => sub {
-        plan tests => 5;
-        my $set = $result->analogical_set();
+    my $set = $result->analogical_set();
 
-        cmp_deeply([values %$set],
-          # use bag() and values so we can ignore the keys, which
-          # are id strings that might change
-          bag({
-            'item' => all(
-              isa('Algorithm::AM::DataSet::Item'),
-              methods(
-                features => [qw(3 1 0)],
-                class => 'e',
-                comment => 'myFirstCommentHere'
-              )
-            ),
-            'score' => '4'
-          },
-          {
-            'item' => all(
-              isa('Algorithm::AM::DataSet::Item'),
-              methods(
-                features => [qw(0 3 2)],
-                class => 'r',
-                comment => 'myThirdCommentHere'
-              )
-            ),
-            'score' => '2'
-          },
-          {
-            'item' => all(
-              isa('Algorithm::AM::DataSet::Item'),
-              methods(
-                features => [qw(2 1 2)],
-                class => 'r',
-                comment => 'myFourthCommentHere'
-              )
-            ),
-            'score' => '3'
-          },
-          {
-            'item' => all(
-              isa('Algorithm::AM::DataSet::Item'),
-              methods(
-                features => [qw(3 1 1)],
-                class => 'r',
-                comment => 'myFifthCommentHere'
-              )
-            ),
-            'score' => '4'
-          }),
-          'data indices and pointer values') or note explain $set;
-        # now confirm that the referenced data really are what we think
-        is($train->get_item(0)->comment, 'myFirstCommentHere',
-            'confirm first item')
-            or note $train->get_item(0)->comment;
-        is($train->get_item(2)->comment, 'myThirdCommentHere',
-            'confirm third item')
-            or note $train->get_item(2)->comment;
-        is($train->get_item(3)->comment, 'myFourthCommentHere',
-            'confirm fourth item')
-            or note $train->get_item(3)->comment;
-        is($train->get_item(4)->comment, 'myFifthCommentHere',
-            'confirm fifth item')
-            or note $train->get_item(4)->comment;
-    };
+    cmp_deeply([values %$set],
+      # use bag() and values so we can ignore the keys, which
+      # are id strings that might change
+      bag({
+        'item' => all(
+          isa('Algorithm::AM::DataSet::Item'),
+          methods(
+            features => [qw(3 1 0)],
+            class => 'e',
+            comment => 'myFirstCommentHere'
+          )
+        ),
+        'score' => '4'
+      },
+      {
+        'item' => all(
+          isa('Algorithm::AM::DataSet::Item'),
+          methods(
+            features => [qw(0 3 2)],
+            class => 'r',
+            comment => 'myThirdCommentHere'
+          )
+        ),
+        'score' => '2'
+      },
+      {
+        'item' => all(
+          isa('Algorithm::AM::DataSet::Item'),
+          methods(
+            features => [qw(2 1 2)],
+            class => 'r',
+            comment => 'myFourthCommentHere'
+          )
+        ),
+        'score' => '3'
+      },
+      {
+        'item' => all(
+          isa('Algorithm::AM::DataSet::Item'),
+          methods(
+            features => [qw(3 1 1)],
+            class => 'r',
+            comment => 'myFifthCommentHere'
+          )
+        ),
+        'score' => '4'
+      }),
+      'analogical set') or note explain $set;
     return;
 }
 
@@ -290,7 +273,7 @@ sub test_gang_effects {
             },
             'score' => 2,
             'size' => 1,
-            'vars' => ['','','2']
+            'features' => ['','','2']
           },
           '- 1 2' => {
             'data' => {
@@ -315,7 +298,7 @@ sub test_gang_effects {
             },
             'score' => 3,
             'size' => 1,
-            'vars' => ['','1','2']
+            'features' => ['','1','2']
           },
           '3 1 -' => {
             'data' => {
@@ -354,7 +337,7 @@ sub test_gang_effects {
             },
             'score' => 8,
             'size' => 2,
-            'vars' => ['3','1', '']
+            'features' => ['3','1', '']
           }
         },
     'correct reported gang effects') or

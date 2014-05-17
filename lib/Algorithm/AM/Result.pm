@@ -12,20 +12,19 @@ use strict;
 use warnings;
 use Text::Table;
 # ABSTRACT: Store results of an AM classification
-our $VERSION = '3.01'; # VERSION;
+our $VERSION = '3.02'; # VERSION;
 
 
 ## TODO: variables consider exporting someday
 ## @itemcontextchain
 ## %itemcontextchainhead
-## @datatocontext
 ## %context_to_class
 ## %contextsize
 use Class::Tiny qw(
     exclude_nulls
     given_excluded
     cardinality
-    test_in_data
+    test_in_train
     test_item
     count_method
 
@@ -53,14 +52,12 @@ sub config_info {
     my @rows = (
         [ "Given context", (join ' ', @{$self->test_item->features}) .
             ', ' . $self->test_item->comment],
-        [ "Nulls", ($self->{exclude_nulls} ? 'exclude' : 'include')],
-        [ "Gang",  $self->{count_method}],
-        [ "Test item in data", ($self->{test_in_data} ? 'yes' : 'no')],
-        [ "Test item excluded", ($self->{given_excluded} ? 'yes' : 'no')],
-        # [ "Total excluded items", scalar @{$self->excluded_data} +
-        #     ($self->{given_excluded} ? 1 : 0)],
-        [ "Number of data items", $self->training_set->size ],
-        [ "Number of active variables", $self->{cardinality} ],
+        [ "Nulls", ($self->exclude_nulls ? 'exclude' : 'include')],
+        [ "Gang",  $self->count_method],
+        [ "Test item in training set", ($self->test_in_train ? 'yes' : 'no')],
+        [ "Test item excluded", ($self->given_excluded ? 'yes' : 'no')],
+        [ "Size of training set", $self->training_set->size ],
+        [ "Number of active features", $self->cardinality ],
     );
     my @table = _make_table(\@headers, \@rows);
     my $info = join '', @table;
@@ -77,7 +74,7 @@ sub config_info {
 sub _process_stats {
     my ($self, $sum, $pointers,
         $itemcontextchainhead, $itemcontextchain, $context_to_class,
-        $gang, $active_vars, $contextsize) = @_;
+        $gang, $active_feats, $contextsize) = @_;
     my $total_pointers = $pointers->{grandtotal};
     my $max = '';
     my @winners;
@@ -134,7 +131,7 @@ sub _process_stats {
     $self->{itemcontextchain} = $itemcontextchain;
     $self->{context_to_class} = $context_to_class;
     $self->{gang} = $gang;
-    $self->{active_vars} = $active_vars;
+    $self->{active_feats} = $active_feats;
     $self->{contextsize} = $contextsize;
     return;
 }
@@ -263,7 +260,7 @@ sub gang_summary {
     #   Num
     #   Class
     #   Features
-    #   (if $print_list is true) Data comment
+    #   item comment
     my @rows;
     # first row is a header with test item for easy reference
     push @rows, [
@@ -283,15 +280,15 @@ sub gang_summary {
     foreach my $gang (sort _sort_gangs values %$gangs){
         $current_row++;
         $gang_rows[$current_row]++;
-        my $variables = $gang->{vars};
+        my $features = $gang->{features};
         # add the gang supracontext, effect and score
         push @rows, [
             sprintf($percentage_format, 100 * $gang->{effect}),
             $gang->{score},
             undef,
             undef,
-            # print undefined variable slots as asterisks
-            map {$_ || '*'} @$variables
+            # print undefined feature slots as asterisks
+            map {$_ || '*'} @$features
         ];
         # add each class in the gang, along with the total number
         # and effect of the gang items supporting it
@@ -380,12 +377,12 @@ sub _calculate_gangs {
 
     foreach my $context (keys %{$raw_gang})
     {
-        my @variables = $self->_unpack_supracontext($context);
+        my @features = $self->_unpack_supracontext($context);
         # for now, store gangs by the supracontext printout
-        my $key = join ' ', map {$_ || '-'} @variables;
+        my $key = join ' ', map {$_ || '-'} @features;
         $gangs->{$key}->{score} = $raw_gang->{$context};
         $gangs->{$key}->{effect} = $raw_gang->{$context} / $total_pointers;
-        $gangs->{$key}->{vars} = \@variables;
+        $gangs->{$key}->{features} = \@features;
 
         my $p = $self->{pointers}->{$context};
         # if the supracontext is homogenous
@@ -443,28 +440,29 @@ sub _calculate_gangs {
     return;
 }
 
-# Unpack and return the supracontext variables.
+# Unpack and return the supracontext features.
 # Blank entries mean the variable may be anything, e.g.
 # ('a' 'b' '') means a supracontext containing items
 # wich have ('a' 'b' whatever) as variable values.
 sub _unpack_supracontext {
     my ($self, $context) = @_;
-    my (@variables) = @{ $self->test_item->features };
     my @context_list   = unpack "S!4", $context;
-    my @alist   = @{$self->{active_vars}};
+    my @alist   = @{$self->{active_feats}};
+    my (@features) = @{ $self->test_item->features };
+    my $exclude_nulls = $self->exclude_nulls;
     my $j       = 1;
     foreach my $a (reverse @alist) {
         my $partial_context = pop @context_list;
         for ( ; $a ; --$a ) {
-            if($self->{exclude_nulls}){
-                ++$j while !defined $variables[ -$j ];
+            if($exclude_nulls){
+                ++$j while !defined $features[ -$j ];
             }
-            $variables[ -$j ] = '' if $partial_context & 1;
+            $features[ -$j ] = '' if $partial_context & 1;
             $partial_context >>= 1;
             ++$j;
         }
     }
-    return @variables;
+    return @features;
 }
 
 # mostly by Ovid:
@@ -510,7 +508,7 @@ Algorithm::AM::Result - Store results of an AM classification
 
 =head1 VERSION
 
-version 3.01
+version 3.02
 
 =head2 SYNOPSIS
 
@@ -548,7 +546,7 @@ following accessors is included:
     exclude_nulls
     given_excluded
     cardinality
-    test_in_data
+    test_in_train
     test_item
     count_method
 
@@ -620,9 +618,9 @@ were null feature values and L</exclude_nulls> was set to true,
 then this number will be lower than the cardinality of the utilized
 data sets.
 
-=head2 C<test_in_data>
+=head2 C<test_in_train>
 
-True if the test item was present among the data items.
+True if the test item was present among the training items.
 
 =head2 C<test_item>
 

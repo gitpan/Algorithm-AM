@@ -19,8 +19,8 @@ use Exporter::Easy (
 # or anything, just unique.
 my $current_id = 'a';
 
-# ABSTRACT: A single data item for classification
-our $VERSION = '3.01'; # VERSION;
+# ABSTRACT: A single item for classification training and testing
+our $VERSION = '3.02'; # VERSION;
 
 sub new {
     my ($class, %args) = @_;
@@ -86,11 +86,11 @@ __END__
 
 =head1 NAME
 
-Algorithm::AM::DataSet::Item - A single data item for classification
+Algorithm::AM::DataSet::Item - A single item for classification training and testing
 
 =head1 VERSION
 
-version 3.01
+version 3.02
 
 =head1 SYNOPSIS
 

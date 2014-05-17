@@ -2,7 +2,7 @@ NAME
     Algorithm::AM - Classify data with Analogical Modeling
 
 VERSION
-    version 3.01
+    version 3.02
 
 SYNOPSIS
      use Algorithm::AM;
@@ -88,7 +88,7 @@ HISTORY
     accomplished by embedding a Perl interpreter into the C code.
 
     In 2004, the algorithm was again rewritten, this time in order to handle
-    more variables and large data sets. The algorithm breaks the
+    more features and large data sets. The algorithm breaks the
     supracontextual lattice into the direct product of four smaller ones,
     which the algorithm manipulates individually before recombining. These
     lattices can be manipulated in parallel when using the right hardware,
