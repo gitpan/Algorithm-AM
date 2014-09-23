@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.70.
+signed via the Module::Signature module, version 0.73.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,31 +14,31 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 195b3c248ac54f2f58daaa764e6b728ae1fc010c AM.xs
-SHA1 a11dbf959c25f36255a06860633835bde1823093 Changes
-SHA1 d6c57d8b2f151c8ba9b5ac0c69c825659742e4c8 INSTALL
-SHA1 984d6fd9c87297f3906143f8f27149fc381a77db LICENSE
-SHA1 24e999ebcb6840bea9a00c4542dfe6df04d6be8e MANIFEST
+SHA1 8e993eb11a027a29bb0c28ddafabd7f0b715383e AM.xs
+SHA1 6615fb946ac9623491da56919fdd34739541b9a5 Changes
+SHA1 13c85912a7f8bf6a7c5868c6c8b184eab73121d0 LICENSE
+SHA1 28efb17a46feaa134ac076a4d79304357c2c75ea MANIFEST
 SHA1 86e5d027db8b2a0c15d8b5d7739ab3fa35c27366 MANIFEST.SKIP
-SHA1 9d92a4996b21b9089ff06c088e82973837248f0d META.json
-SHA1 9c623bab38b1328e93a711751370902c1a3cb4a2 META.yml
-SHA1 ae07a98eb1a672fea88a3d212176b123da20162a Makefile.PL
-SHA1 066de55f4995c917f212f76af49c2bc689703c4d README
-SHA1 753924bdc86dd460eabc88cf8d4c6d8e9d2cfa3f cpanfile
-SHA1 1de2770b4c4c36fe414b7de0ae9db06f2be2ea5e dist.ini
-SHA1 b1552cad4a2e8b8a193f74dbade6a6471e54e917 lib/Algorithm/AM.pm
-SHA1 1f5fec24c9a38a8bf5e4c1f2ba440ab0c6fa0559 lib/Algorithm/AM/Batch.pm
-SHA1 aa67306fe900397d33dfe5f8bda220e239796bc7 lib/Algorithm/AM/BigInt.pm
-SHA1 69d3a5ec3d15d3a5787afc8bb16472dc578c07a8 lib/Algorithm/AM/DataSet.pm
-SHA1 1916af8e34dd92d7d05c0f37413ac2632e553a55 lib/Algorithm/AM/DataSet/Item.pm
-SHA1 f4fcd2dc066d63333d8d4e3bb013231efa7ae191 lib/Algorithm/AM/Result.pm
-SHA1 5c307157ee3cedc8398aca631927cc01ba56d6e8 lib/Algorithm/AM/algorithm.pod
-SHA1 1c1f83cea878228c8ef89825f4cd28db2f26528f lib/Algorithm/AM/lattice.pod
+SHA1 55e0fa4c7f99b04a1d69f3767750c33b6218bc49 META.json
+SHA1 078df7172cd9008a1f059d2723b04f150e037c20 META.yml
+SHA1 62bf9c2b986dc2776e309a3820c0ec4e77f0036b Makefile.PL
+SHA1 2153043fe72397b7aac3585bdb3c1b2be4bed892 README
+SHA1 1bb95914fe98b74725e377911d795002dd3ce44d cpanfile
+SHA1 6f991332478027a95533e97da33cadb33c2609be dist.ini
+SHA1 904ee31de2e5f7219bc3ebfea984f28ada784f05 distributed_alg
+SHA1 3eba8a62975744aa367231d3a755258bf567a92f lib/Algorithm/AM.pm
+SHA1 0654506478708a49de5cc3c7b33679f7bcd3271d lib/Algorithm/AM/Batch.pm
+SHA1 1f6b5d80b9bfb87a29e407fd7390b07c1041e495 lib/Algorithm/AM/BigInt.pm
+SHA1 43c6dcd0bb165873adb8f0abcd7f63dd16940932 lib/Algorithm/AM/DataSet.pm
+SHA1 8563de08c94fff49fd8605528e499586d06b9d09 lib/Algorithm/AM/DataSet/Item.pm
+SHA1 d28320ef1b3548dbd050374519922cb42280af54 lib/Algorithm/AM/Result.pm
+SHA1 e08f22fadaccfc34eee036299ece3baab93f00ad lib/Algorithm/AM/algorithm.pod
+SHA1 c7a8f73a528f6006059f38c5794150866a17a5ee lib/Algorithm/AM/lattice.pod
 SHA1 c054a2091499b95ffe8d55ac21f6d9637c2ca8e5 ppport.h
 SHA1 2a95d6298ffd445dcf3ad5872d3259c27683fc77 t/0-use_AM.t
 SHA1 94e700bdd9b3733cc0b5cd87fcfd103ba4fe481b t/0-use_Batch.t
-SHA1 98c4d822e259e84b02c0efff431a66ef05eaa0a0 t/00-compile.t
-SHA1 edeca7f4eb075e2a4f4a80c3f06ac2ad9b42fe03 t/000-report-versions-tiny.t
+SHA1 36bfda1a5f89aa21429eaef872f6ac7f9b56234d t/00-compile.t
+SHA1 e5c9b8a1e634db4af7b38faacfcbfd14749b390d t/000-report-versions-tiny.t
 SHA1 cc10faeb7b2e5b32e1129e41ccc8293e9d79ae45 t/01-Item.t
 SHA1 276173e5d6731c6764cab454c5e4aed774199b6a t/02-DataSet.t
 SHA1 8c050a38a3d4997c8461ead519ef50fcc66a9970 t/03-AM.t
@@ -56,28 +56,27 @@ SHA1 290880278bb24587a51337dbee544069e14f5e0e t/data/no_labels_custom.txt
 SHA1 b9081f549e96b33bb5ba071d26694f61bccf2251 t/data/no_labels_default.txt
 SHA1 fd6f73b19c082d7405817f174c1961924788b1be t/perlcriticrc
 SHA1 5eff83850ba9ce608c6f2ec6b10178d434defe26 xt/author/critic.t
-SHA1 12be2af6a628ad18bb92f81e9016f1e48670001c xt/release/cpan-changes.t
+SHA1 54fe1ac0ee1a4787c17dc799df8af71ab3ac3ce5 xt/release/cpan-changes.t
 SHA1 ee2b5f5f9628a23589bddecaf1f22fdbccf59d6c xt/release/dist-manifest.t
-SHA1 a7b0027fd138f6825986d23ad7bd5cb42290572b xt/release/distmeta.t
-SHA1 4d77b8c88f53bb17b9a86be13d510fa88b38c4f6 xt/release/kwalitee.t
+SHA1 4f4c1e8d2f7714c4098cf2b665c1c0430c6d7c1e xt/release/distmeta.t
+SHA1 3905457f2f0cde387d2200d19ad5cfddae6ee453 xt/release/kwalitee.t
 SHA1 043d590ebd6e1dee913c7c7be068909d4b9f5610 xt/release/meta-json.t
 SHA1 22eb7a192219ff0a24c76bd4c42706bd475ea729 xt/release/minimum-version.t
 SHA1 509c28bc14a7a73bf7ca938ce23a7d0531fb5473 xt/release/mojibake.t
-SHA1 0e054963894abb26c7198c3b16e13d07fb7cd12c xt/release/pod-coverage.t
+SHA1 91eb1b0058c4e27513690aff398cf15b06b56951 xt/release/pod-coverage.t
 SHA1 d3b121eba817c63cf48fe29a824635532cbf39bd xt/release/pod-linkcheck.t
-SHA1 49e659abba4bed4305f62f47e4d34afa74aa3dd3 xt/release/pod-syntax.t
-SHA1 5927de72512c1c118fdfb9e275ccaf82b4a6dbce xt/release/portability.t
-SHA1 29f1a6f41f73b956967b0915773861aa76cb8d0f xt/release/synopsis.t
+SHA1 3f0b96c9e910fc16a16d9b707bdc71429e1ee67b xt/release/pod-syntax.t
+SHA1 3d9082f90f09cc6f3d571f50139480fe36e6c387 xt/release/portability.t
+SHA1 3eb075c294856e054e145a560b1353c5a0caf55c xt/release/synopsis.t
 SHA1 bbcd59d081d9940af5d43337ae85458075933829 xt/release/test-version.t
-SHA1 78f94f50ec5c73e0c66ad2c7bd3ecce870d99c5b xt/release/unused-vars.t
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.17 (MingW32)
+Version: GnuPG v2.0.22 (MingW32)
 
-iQEcBAEBAgAGBQJTdw+IAAoJEF8b+BZrlpb0nsAH/jU27dCaBXZKOVVe3YeEv1+1
-e9u3JUlhbPM8N2iCjKWKQJAKFRWHRqh0njBWJJYfCSQ9ir8+gxz7lXRzemni//T5
-EGAhn0ACA4D8GbhqlQQGGn7OCyHagZYjALc1qKQZzHujJe+oBQpiVMUOZLTj65dF
-Z7FYFeQo4fnDrQCJcx4biB8Dp70H63sbXwQXhOLVXspVJO0gHHd5048KwaF9f/IF
-oyGJVzubFbteblkzhJJR/REUAtWZ8sbh4SY+T8TeT33yBc13Y09zV6VOViGoDpL7
-CGDZw3HXgOdPLxgCvGd6TvN9/a77W4pUomCOun5XCovS2N0Te5Wpx0j8gMGCNQY=
-=0ydK
+iQEcBAEBAgAGBQJUIWYdAAoJELgSRexW6zi9QNoIAJMuKQzoEoHI6K2pGbFnJyQp
+PzJzApXGAIBrgiSFxAS78b6F+iq6HfLmF7KR2RjMh7AOJALaR1be1vI+NGqgRpIk
+S3cr2a7pW9iMwGVbjQmx+FD1AZNcJYx0y5duJenaTCZsds1Zir5egf8yEhtwqjJu
+Yw32DE1P+jH8nQ3nUH3YUWBuwP/d2z0Y6506Sb2/Act95OCx2N8RAjhlzIjKXY9Y
+K9ksQdluqm6DmVTu+BvVerdxbOSRYkm2x8O2lZzplcJXwCIbqDwxtnR6GyTPowe1
+HwLOAk//VG6TqVhk7g68BbiH1xCy+a2hSCgNVxi2x+UFdGtkj9O+UHbnhF7xK8w=
+=dwKm
 -----END PGP SIGNATURE-----

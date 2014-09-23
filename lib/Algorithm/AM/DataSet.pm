@@ -16,7 +16,7 @@ use Exporter::Easy (
     OK => ['dataset_from_file']
 );
 # ABSTRACT: Manage data used by Algorithm::AM
-our $VERSION = '3.02'; # VERSION;
+our $VERSION = '3.03'; # TRIAL VERSION;
 
 sub new {
     my ($class, %opts) = @_;
@@ -262,13 +262,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Algorithm::AM::DataSet - Manage data used by Algorithm::AM
 
 =head1 VERSION
 
-version 3.02
+version 3.03
 
 =head1 SYNOPSIS
 

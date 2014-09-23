@@ -13,7 +13,7 @@ use Exporter::Easy (
     OK => ['bigcmp']
 );
 # ABSTRACT: Helper functions for AM big integers
-our $VERSION = '3.02'; # VERSION;
+our $VERSION = '3.03'; # TRIAL VERSION;
 
 sub bigcmp {
     my($a,$b) = @_;
@@ -26,13 +26,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Algorithm::AM::BigInt - Helper functions for AM big integers
 
 =head1 VERSION
 
-version 3.02
+version 3.03
 
 =head1 SYNOPSIS
 

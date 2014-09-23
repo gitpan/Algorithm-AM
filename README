@@ -2,7 +2,7 @@ NAME
     Algorithm::AM - Classify data with Analogical Modeling
 
 VERSION
-    version 3.02
+    version 3.03
 
 SYNOPSIS
      use Algorithm::AM;

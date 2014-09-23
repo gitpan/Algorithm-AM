@@ -20,7 +20,7 @@ use Exporter::Easy (
 my $current_id = 'a';
 
 # ABSTRACT: A single item for classification training and testing
-our $VERSION = '3.02'; # VERSION;
+our $VERSION = '3.03'; # TRIAL VERSION;
 
 sub new {
     my ($class, %args) = @_;
@@ -84,13 +84,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Algorithm::AM::DataSet::Item - A single item for classification training and testing
 
 =head1 VERSION
 
-version 3.02
+version 3.03
 
 =head1 SYNOPSIS
 

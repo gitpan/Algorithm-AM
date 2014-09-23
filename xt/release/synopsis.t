@@ -8,9 +8,6 @@
 # the same terms as the Perl 5 programming language system itself.
 #
 
-use Test::More;
+use Test::Synopsis;
 
-eval "use Test::Synopsis";
-plan skip_all => "Test::Synopsis required for testing synopses"
-  if $@;
-all_synopsis_ok('lib');
+all_synopsis_ok();

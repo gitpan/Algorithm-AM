@@ -12,7 +12,7 @@ use strict;
 use warnings;
 use Text::Table;
 # ABSTRACT: Store results of an AM classification
-our $VERSION = '3.02'; # VERSION;
+our $VERSION = '3.03'; # TRIAL VERSION;
 
 
 ## TODO: variables consider exporting someday
@@ -502,13 +502,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Algorithm::AM::Result - Store results of an AM classification
 
 =head1 VERSION
 
-version 3.02
+version 3.03
 
 =head2 SYNOPSIS
 

@@ -4,6 +4,8 @@
 
 #include "ppport.h"
 
+#define NUM_LATTICES 4
+
 /*
  * This program must deal with integers that are too big to be
  * represented by 32 bits.
@@ -161,13 +163,13 @@ typedef struct AM_guts {
    *
    */
 
-  AM_SHORT *lptr[4];
-  AM_SUPRA *sptr[4];
+  AM_SHORT *lptr[NUM_LATTICES];
+  AM_SUPRA *sptr[NUM_LATTICES];
 
   /* array ref containing number of active features in
    * each lattice (currently we us four lattices)
    */
-  SV **active_feats;
+  SV **lattice_sizes;
   /* array ref containing class labels for whole data set;
    * array index is data item index in data set.
    */
@@ -212,7 +214,7 @@ typedef struct AM_guts {
 static int AMguts_mgFree(pTHX_ SV *sv, MAGIC *mg) {
   int i;
   AM_GUTS *guts = (AM_GUTS *) SvPVX(mg->mg_obj);
-  for (i = 0; i < 4; ++i) {
+  for (i = 0; i < NUM_LATTICES; ++i) {
     Safefree(guts->lptr[i]);
     Safefree(guts->sptr[i][0].data);
     Safefree(guts->sptr[i]);
@@ -281,6 +283,7 @@ normalize(SV *s) {
   dividend = &dspace[0];
   quotient = &qspace[0];
   Copy(p, dividend, length, sizeof(AM_LONG));
+  /* Magic number here... */
   outptr = outspace + 54;
 
   while (1) {
@@ -297,11 +300,11 @@ normalize(SV *s) {
       *dptr += carry << 16;
       *qptr = 0;
       for (i = 16; i; ) {
-  --i;
-  if (tens[i] <= *dptr) {
-    *dptr -= tens[i];
-    *qptr += ones[i];
-  }
+        --i;
+        if (tens[i] <= *dptr) {
+          *dptr -= tens[i];
+          *qptr += ones[i];
+        }
       }
       carry = *dptr;
       --dptr;
@@ -317,6 +320,86 @@ normalize(SV *s) {
 
   SvNVX(s) = nn;
   SvNOK_on(s);
+}
+
+ /* Given 2 lists of training item indices sorted in descending order,
+  * fill a third list with the intersection of items in these lists.
+  * This is a simple intersection, and no check for heterogeneity is
+  * performed.
+  * Return the next empty (available) index address in the third list.
+  * If the two lists have no intersection, then the return value is
+  * just the same as the third input.
+  */
+unsigned short *intersect_supras(
+    AM_SHORT *i, AM_SHORT *j, AM_SHORT *k){
+  AM_SHORT *temp;
+  while (1) {
+    while (*i > *j)
+      --i;
+    if (*i == 0) break;
+    if (*i < *j) {
+      temp = i;
+      i = j;
+      j = temp;
+      continue;
+    }
+    *k = *i;
+    --i;
+    --j;
+    --k;
+  }
+  return k;
+}
+ /* The first three inputs are the same as for intersect_supra above,
+  * and the fourth paramater should be a list containing the class
+  * index for all of the training items. In addition to combining
+  * the first two lists into the third via intersection, the final
+  * list is checked for heterogeneity and the non-deterministic
+  * heterogeneous supracontexts are removed.
+  * The return value is the number of items contained in the resulting
+  * list.
+  */
+AM_SHORT intersect_supras_final(
+    AM_SHORT *i, AM_SHORT *j,
+    AM_SHORT *intersect, AM_SHORT *subcontext_class){
+  AM_SHORT class = 0;
+  AM_SHORT length = 0;
+  AM_SHORT *temp;
+  while (1) {
+    while (*i > *j)
+      --i;
+    if (*i == 0)
+      break;
+    if (*i < *j) {
+      temp = i;
+      i = j;
+      j = temp;
+      continue;
+    }
+    *intersect = *i;
+    ++intersect;
+    ++length;
+
+     /* is it heterogeneous? */
+    if (class == 0) {
+      /* is it not deterministic? */
+      if (length > 1) {
+        length = 0;
+        break;
+      } else {
+        class = subcontext_class[*i];
+      }
+    } else {
+      /* Do the classes not match? */
+      if (class != subcontext_class[*i]) {
+        length = 0;
+        break;
+      }
+    }
+    --i;
+    --j;
+  }
+  return length;
 }
 
 MODULE = Algorithm::AM		PACKAGE = Algorithm::AM
@@ -338,19 +421,20 @@ BOOT:
     }
   }
 
-  /*
-   * This function is called by from AM.pm right after creating
-   * a blessed reference to Algorithm::AM. It stores the necessary
-   * pointers in the AM_GUTS structure and attaches it to the magic
-   * part of thre reference.
-   *
-   */
+ /*
+  * This function is called by from AM.pm right after creating
+  * a blessed reference to Algorithm::AM. It stores the necessary
+  * pointers in the AM_GUTS structure and attaches it to the magic
+  * part of thre reference.
+  *
+  */
 
 void
 _xs_initialize(...)
  PREINIT:
   HV *project;
   AM_GUTS guts; /* NOT A POINTER THIS TIME! (let memory allocate automatically) */
+  SV **lattice_sizes;
   SV *svguts;
   MAGIC *mg;
   int i;
@@ -359,7 +443,7 @@ _xs_initialize(...)
   /* $self, the AM object */
   project = (HV *) SvRV(ST(0));
   /* For explanations on these, see the comments on AM_guts */
-  guts.active_feats = AvARRAY((AV *) SvRV(ST(1)));
+  lattice_sizes = AvARRAY((AV *) SvRV(ST(1)));
   guts.classes = AvARRAY((AV *) SvRV(ST(2)));
   guts.itemcontextchain = AvARRAY((AV *) SvRV(ST(3)));
   guts.itemcontextchainhead = (HV *) SvRV(ST(4));
@@ -378,8 +462,8 @@ _xs_initialize(...)
    *
    */
 
-  for (i = 0; i < 4; ++i) {
-    UV v = SvUVX(guts.active_feats[i]);
+  for (i = 0; i < NUM_LATTICES; ++i) {
+    UV v = SvUVX(lattice_sizes[i]);
     Newz(0, guts.lptr[i], 1 << v, AM_SHORT);
     Newz(0, guts.sptr[i], 1 << (v + 1), AM_SUPRA); /* CHANGED */
     Newz(0, guts.sptr[i][0].data, 2, AM_SHORT);
@@ -401,10 +485,11 @@ _fillandcount(...)
   UV linear_flag;
   AM_GUTS *guts;
   MAGIC *mg;
-  AM_SHORT active_feats[4];
+  SV **lattice_sizes_input;
+  AM_SHORT lattice_sizes[NUM_LATTICES];
   AM_SHORT **lptr;
   AM_SUPRA **sptr;
-  AM_SHORT nptr[4];/* this helps us manage the free list in sptr[i] */
+  AM_SHORT nptr[NUM_LATTICES];/* this helps us manage the free list in sptr[i] */
   AM_SHORT subcontextnumber;
   AM_SHORT *subcontext;
   AM_SHORT *subcontext_class;
@@ -419,12 +504,13 @@ _fillandcount(...)
   AM_SHORT *intersect, *intersectlist;
   AM_SHORT *intersectlist2, *intersectlist3, *ilist2top, *ilist3top;
  PPCODE:
-  /* Input args are the AM object ($self) and a flag
-   * to indicate whether to count pointers linearly or
-   * quadratically.
+  /* Input args are the AM object ($self), number of features
+   * perl lattice, and a flag to indicate whether to count occurrences
+   * (true) or pointers (false), also known as linear/quadratic.
    */
   project = (HV *) SvRV(ST(0));
-  linear_flag = SvUVX(ST(1));
+  lattice_sizes_input = AvARRAY((AV *) SvRV(ST(1)));
+  linear_flag = SvUVX(ST(2));
   mg = mg_find((SV *) project, PERL_MAGIC_ext);
   guts = (AM_GUTS *) SvPVX(mg->mg_obj);
 
@@ -436,12 +522,14 @@ _fillandcount(...)
 
   lptr = guts->lptr;
   sptr = guts->sptr;
-  for (chunk = 0; chunk < 4; ++chunk) {
-    active_feats[chunk] = (AM_SHORT) SvUVX(guts->active_feats[chunk]);
-    Zero(lptr[chunk], 1 << active_feats[chunk], AM_SHORT);
+  for (chunk = 0; chunk < NUM_LATTICES; ++chunk) {
+    /* Extract numeric values for the specified lattice_sizes */
+    lattice_sizes[chunk] = (AM_SHORT) SvUVX(lattice_sizes_input[chunk]);
+    /* TODO: explain the lines below */
+    Zero(lptr[chunk], 1 << lattice_sizes[chunk], AM_SHORT);
     sptr[chunk][0].next = 0;
     nptr[chunk] = 1;
-    for (i = 1; i < 1 << (active_feats[chunk] + 1); ++i) /* CHANGED */
+    for (i = 1; i < 1 << (lattice_sizes[chunk] + 1); ++i) /* CHANGED */
       sptr[chunk][i].next = (AM_SHORT) i + 1;
   }
 
@@ -461,8 +549,8 @@ _fillandcount(...)
 
   context_to_class = guts->context_to_class;
   subcontextnumber = (AM_SHORT) HvUSEDKEYS(context_to_class);
-  Newz(0, subcontext, 4 * (subcontextnumber + 1), AM_SHORT);
-  subcontext += 4 * subcontextnumber;
+  Newz(0, subcontext, NUM_LATTICES * (subcontextnumber + 1), AM_SHORT);
+  subcontext += NUM_LATTICES * subcontextnumber;
   Newz(0, subcontext_class, subcontextnumber + 1, AM_SHORT);
   subcontext_class += subcontextnumber;
   Newz(0, intersectlist, subcontextnumber + 1, AM_SHORT);
@@ -475,8 +563,8 @@ _fillandcount(...)
   while (he = hv_iternext(context_to_class)) {
     AM_SHORT *contextptr = (AM_SHORT *) HeKEY(he);
     AM_SHORT class = (AM_SHORT) SvUVX(HeVAL(he));
-    for (chunk = 0; chunk < 4; ++chunk, ++contextptr) {
-      AM_SHORT active = active_feats[chunk];
+    for (chunk = 0; chunk < NUM_LATTICES; ++chunk, ++contextptr) {
+      AM_SHORT active = lattice_sizes[chunk];
       AM_SHORT *lattice = lptr[chunk];
       AM_SUPRA *supralist = sptr[chunk];
       AM_SHORT nextsupra = nptr[chunk];
@@ -553,53 +641,54 @@ _fillandcount(...)
       subcontext[chunk] = context;
 
       if (context == 0) {
-	for (p = supralist + supralist->next;
-	     p != supralist; p = supralist + p->next) {
-	  AM_SHORT *data;
-	  Newz(0, data, p->data[0] + 3, AM_SHORT);
-	  Copy(p->data + 2, data + 3, p->data[0], AM_SHORT);
-	  data[2] = subcontextnumber;
-	  data[0] = p->data[0] + 1;
-	  Safefree(p->data);
-	  p->data = data;
-	}
-	if (lattice[context] == 0) {
+      	for (p = supralist + supralist->next;
+      	     p != supralist; p = supralist + p->next) {
+      	  AM_SHORT *data;
+      	  Newz(0, data, p->data[0] + 3, AM_SHORT);
+      	  Copy(p->data + 2, data + 3, p->data[0], AM_SHORT);
+      	  data[2] = subcontextnumber;
+      	  data[0] = p->data[0] + 1;
+      	  Safefree(p->data);
+      	  p->data = data;
+      	}
+	      if (lattice[context] == 0) {
 
-     /* in this case, the subcontext will be
-      * added to all supracontexts, so there's
-      * no need to hassle with a Gray code and
-      * move pointers
-      */
+          /* in this case, the subcontext will be
+           * added to all supracontexts, so there's
+           * no need to hassle with a Gray code and
+           * move pointers
+           */
 
-	  AM_SHORT count = 0;
-	  ci = nptr[chunk];
-	  nptr[chunk] = supralist[ci].next;
-	  c = supralist + ci;
-	  c->next = supralist->next;
-	  supralist->next = ci;
-	  Newz(0, c->data, 3, AM_SHORT);
-	  c->data[2] = subcontextnumber;
-	  c->data[0] = 1;
-	  for (i = 0; i < (1 << active); ++i) {
-	    if (lattice[i] == 0) {
-	      lattice[i] = ci;
-	      ++count;
-	    }
-	  }
-	  c->count = count;
-	}
-	continue;
+       	  AM_SHORT count = 0;
+      	  ci = nptr[chunk];
+      	  nptr[chunk] = supralist[ci].next;
+      	  c = supralist + ci;
+      	  c->next = supralist->next;
+      	  supralist->next = ci;
+      	  Newz(0, c->data, 3, AM_SHORT);
+      	  c->data[2] = subcontextnumber;
+      	  c->data[0] = 1;
+      	  for (i = 0; i < (1 << active); ++i) {
+      	    if (lattice[i] == 0) {
+      	      lattice[i] = ci;
+      	      ++count;
+      	    }
+      	  }
+      	  c->count = count;
+	      }
+	      continue;
       }
 
       /* set up traversal using Gray code */
       d = context;
       for (i = 1 << (active - 1); i; i >>= 1)
         if (!(i & context))
-	  gaps[numgaps++] = i;
+	        gaps[numgaps++] = i;
       t = 1 << numgaps;
 
       p = supralist + (pi = lattice[context]);
-      if (pi) --(p->count);
+      if (pi)
+        --(p->count);
       ci = nextsupra;
       nextsupra = supralist[ci].next;
       p->touched = 1;
@@ -616,31 +705,33 @@ _fillandcount(...)
 
       /* traverse */
       while (--t) {
-   /* find the rightmost 1 in t; from HAKMEM, I believe */
-  	for (i = 0, tt = ~t & (t - 1); tt; tt >>= 1, ++i);
-  	d ^= gaps[i];
+        /* find the rightmost 1 in t; from HAKMEM, I believe */
+      	for (i = 0, tt = ~t & (t - 1); tt; tt >>= 1, ++i)
+          ;
+      	d ^= gaps[i];
 
-	p = supralist + (pi = lattice[d]);
-  	if (pi) --(p->count);
-  	switch (p->touched) {
-  	case 1:
-  	  ++supralist[lattice[d] = p->next].count;
-  	  break;
-  	case 0:
-  	  ci = nextsupra;
-  	  nextsupra = supralist[ci].next;
-  	  p->touched = 1;
-  	  c = supralist + ci;
-  	  c->touched = 0;
-  	  c->next = p->next;
-  	  p->next = ci;
-  	  c->count = 1;
-  	  Newz(0, c->data, p->data[0] + 3, AM_SHORT);
-  	  Copy(p->data + 2, c->data + 3, p->data[0], AM_SHORT);
-  	  c->data[2] = subcontextnumber;
-  	  c->data[0] = p->data[0] + 1;
-  	  lattice[d] = ci;
-  	}
+	      p = supralist + (pi = lattice[d]);
+  	    if (pi)
+          --(p->count);
+      	switch (p->touched) {
+      	case 1:
+      	  ++supralist[lattice[d] = p->next].count;
+      	  break;
+      	case 0:
+      	  ci = nextsupra;
+      	  nextsupra = supralist[ci].next;
+      	  p->touched = 1;
+      	  c = supralist + ci;
+      	  c->touched = 0;
+      	  c->next = p->next;
+      	  p->next = ci;
+      	  c->count = 1;
+      	  Newz(0, c->data, p->data[0] + 3, AM_SHORT);
+      	  Copy(p->data + 2, c->data + 3, p->data[0], AM_SHORT);
+      	  c->data[2] = subcontextnumber;
+      	  c->data[0] = p->data[0] + 1;
+      	  lattice[d] = ci;
+      	}
       }
 
       /* Here we return all AM_SUPRA with count 0 back to the free
@@ -651,22 +742,22 @@ _fillandcount(...)
       p->touched = 0;
       do {
         if (supralist[i = p->next].count == 0) {
-	  Safefree(supralist[i].data);
-  	  p->next = supralist[i].next;
-  	  supralist[i].next = nextsupra;
-  	  nextsupra = (AM_SHORT) i;
-  	} else {
-  	  p = supralist + p->next;
-  	  p->touched = 0;
-  	}
+    	    Safefree(supralist[i].data);
+      	  p->next = supralist[i].next;
+      	  supralist[i].next = nextsupra;
+      	  nextsupra = (AM_SHORT) i;
+      	} else {
+      	  p = supralist + p->next;
+      	  p->touched = 0;
+      	}
       } while (p->next);
       nptr[chunk] = nextsupra;
-    }
-    subcontext -= 4;
+    }/*end for(chunk = 0...*/
+    subcontext -= NUM_LATTICES;
     *subcontext_class = class;
     --subcontext_class;
     --subcontextnumber;
-  }
+  }/*end while (he = hv_iternext(...*/
 
   contextsize = guts->contextsize;
   pointers = guts->pointers;
@@ -690,347 +781,146 @@ _fillandcount(...)
    *
    */
 
-  if (linear_flag) {
-    /* squared */
-    AM_SUPRA *p0, *p1, *p2, *p3;
-    AM_SHORT class;
-    AM_SHORT length;
-    unsigned short *temp, *i, *j, *k;
+  AM_SUPRA *p0, *p1, *p2, *p3;
+  AM_SHORT length;
+  AM_SHORT *k;
 
-    /* find intersections */
-    for (p0 = sptr[0] + sptr[0]->next; p0 != sptr[0]; p0 = sptr[0] + p0->next) {
-      for (p1 = sptr[1] + sptr[1]->next; p1 != sptr[1]; p1 = sptr[1] + p1->next) {
+  /* find intersections */
+  for (p0 = sptr[0] + sptr[0]->next; p0 != sptr[0]; p0 = sptr[0] + p0->next) {
+    for (p1 = sptr[1] + sptr[1]->next; p1 != sptr[1]; p1 = sptr[1] + p1->next) {
+    /*Find intersection between p0 and p2*/
+      k = intersect_supras(
+        p0->data + p0->data[0] + 1,
+        p1->data + p1->data[0] + 1,
+        ilist2top
+      );
+      /* If k has not been increased then intersection was empty */
+      if (k == ilist2top)
+        continue;
+      *k = 0;
 
-	i = p0->data + p0->data[0] + 1;
-	j = p1->data + p1->data[0] + 1;
-	k = ilist2top;
-	while (1) {
-	  while (*i > *j) --i;
-	  if (*i == 0) break;
-	  if (*i < *j) {
-	    temp = i;
-	    i = j;
-	    j = temp;
-	    continue;
-	  }
-	  *k = *i;
-	  --i;
-	  --j;
-	  --k;
-	}
-	if (k == ilist2top) continue; /* intersection is empty */
-	*k = 0;
+      for (p2 = sptr[2] + sptr[2]->next; p2 != sptr[2]; p2 = sptr[2] + p2->next) {
 
-	for (p2 = sptr[2] + sptr[2]->next; p2 != sptr[2]; p2 = sptr[2] + p2->next) {
+        /*Find intersection between previous intersection and p2*/
+        k = intersect_supras(
+          ilist2top,
+          p2->data + p2->data[0] + 1,
+          ilist3top
+        );
+        /* If k has not been increased then intersection was empty */
+        if (k == ilist3top)
+          continue;
+        *k = 0;
 
-	  i = ilist2top;
-	  j = p2->data + p2->data[0] + 1;
-	  k = ilist3top;
-	  while (1) {
-	    while (*i > *j) --i;
-	    if (*i == 0) break;
-	    if (*i < *j) {
-	      temp = i;
-	      i = j;
-	      j = temp;
-	      continue;
-	    }
-	    *k = *i;
-	    --i;
-	    --j;
-	    --k;
-	  }
-	  if (k == ilist3top) continue; /* intersection is empty */
-	  *k = 0;
+        for (p3 = sptr[3] + sptr[3]->next; p3 != sptr[3]; p3 = sptr[3] + p3->next) {
 
-	  for (p3 = sptr[3] + sptr[3]->next; p3 != sptr[3]; p3 = sptr[3] + p3->next) {
-	    class = 0;
-	    length = 0;
-	    intersect = intersectlist;
+          /* Find intersection between previous intersection and p3;
+           * check for disqualified supras this time.
+           */
+          length = intersect_supras_final(
+            ilist3top,
+            p3->data + p3->data[0] + 1,
+            intersectlist,
+            subcontext_class
+          );
 
-	    i = ilist3top;
-	    j = p3->data + p3->data[0] + 1;
-	    while (1) {
-	      while (*i > *j) --i;
-	      if (*i == 0) break;
-	      if (*i < *j) {
-		temp = i;
-		i = j;
-		j = temp;
-		continue;
-	      }
-	      *intersect = *i;
-	      ++intersect;
-	      ++length;
+          /* count occurrences */
+          if (length) {
+            AM_SHORT i;
+            AM_BIG_INT count = {0, 0, 0, 0, 0, 0, 0, 0};
+            AM_LONG mask = 0xffff;
 
-         /* determine heterogeneity */
-	      if (class == 0) {
-		if (length > 1) {
-		  length = 0;
-		  break;
-		} else {
-		  class = subcontext_class[*i];
-		}
-	      } else {
-		if (class != subcontext_class[*i]) {
-		  length = 0;
-		  break;
-		}
-	      }
-	      --i;
-	      --j;
-	    }
+            count[0]  = p0->count;
 
-       /* count pointers */
-	    if (length) {
-	      AM_SHORT i;
-	      AM_LONG pointercount = 0;
-	      AM_BIG_INT count = {0, 0, 0, 0, 0, 0, 0, 0};
-	      AM_LONG mask = 0xffff;
+            count[0] *= p1->count;
+            carry(count, 0);
 
-	      count[0]  = p0->count;
+            count[0] *= p2->count;
+            count[1] *= p2->count;
+            carry(count, 0);
+            carry(count, 1);
 
-	      count[0] *= p1->count;
-        carry(count, 0);
+            count[0] *= p3->count;
+            count[1] *= p3->count;
+            count[2] *= p3->count;
+            carry(count, 0);
+            carry(count, 1);
+            carry(count, 2);
+            if(!linear_flag){
+              /* If scoring is pointers (quadratic) instead of linear*/
+              AM_LONG pointercount = 0;
+              for (i = 0; i < length; ++i)
+                pointercount += (AM_LONG) SvUV(*hv_fetch(contextsize,
+                    (char *) (subcontext + (NUM_LATTICES * intersectlist[i])), 8, 0));
+              if (pointercount & 0xffff0000) {
+                AM_SHORT pchi = (AM_SHORT) (high_bits(pointercount));
+                AM_SHORT pclo = (AM_SHORT) (low_bits(pointercount));
+                AM_LONG hiprod[6];
+                hiprod[1] = pchi * count[0];
+                hiprod[2] = pchi * count[1];
+                hiprod[3] = pchi * count[2];
+                hiprod[4] = pchi * count[3];
+                count[0] *= pclo;
+                count[1] *= pclo;
+                count[2] *= pclo;
+                count[3] *= pclo;
+                carry(count, 0);
+                carry(count, 1);
+                carry(count, 2);
+                carry(count, 3);
 
-	      count[0] *= p2->count;
-	      count[1] *= p2->count;
-        carry(count, 0);
-        carry(count, 1);
-
-	      count[0] *= p3->count;
-	      count[1] *= p3->count;
-	      count[2] *= p3->count;
-        carry(count, 0);
-        carry(count, 1);
-        carry(count, 2);
-
-	      for (i = 0; i < length; ++i)
-		pointercount += (AM_LONG)
-		  SvUV(*hv_fetch(contextsize,
-				 (char *) (subcontext + (4 * intersectlist[i])),
-				 8, 0));
-	      if (pointercount & 0xffff0000) {
-		AM_SHORT pchi = (AM_SHORT) (high_bits(pointercount));
-		AM_SHORT pclo = (AM_SHORT) (low_bits(pointercount));
-		AM_LONG hiprod[6];
-		hiprod[1] = pchi * count[0];
-		hiprod[2] = pchi * count[1];
-		hiprod[3] = pchi * count[2];
-		hiprod[4] = pchi * count[3];
-		count[0] *= pclo;
-		count[1] *= pclo;
-		count[2] *= pclo;
-		count[3] *= pclo;
-    carry(count, 0);
-    carry(count, 1);
-    carry(count, 2);
-    carry(count, 3);
-
-		count[1] += hiprod[1];
-		count[2] += hiprod[2];
-		count[3] += hiprod[3];
-		count[4] += hiprod[4];
-    carry(count, 1);
-    carry(count, 2);
-    carry(count, 3);
-    carry(count, 4);
-	      } else {
-		count[0] *= pointercount;
-		count[1] *= pointercount;
-		count[2] *= pointercount;
-		count[3] *= pointercount;
-    carry(count, 0);
-    carry(count, 1);
-    carry(count, 2);
-    carry(count, 3);
-	      }
-	      for (i = 0; i < length; ++i) {
-		int j;
-		SV *tempsv;
-		AM_LONG *p;
-    /* TODO: explain this */
-		tempsv = *hv_fetch(pointers,
-				   (char *) (subcontext + (4 * intersectlist[i])),
-				   8, 1);
-		if (!SvPOK(tempsv)) {
-		  SvUPGRADE(tempsv, SVt_PVNV);
-		  SvGROW(tempsv, 8 * sizeof(AM_LONG) + 1);
-		  Zero(SvPVX(tempsv), 8, AM_LONG);
-		  SvCUR_set(tempsv, 8 * sizeof(AM_LONG));
-		  SvPOK_on(tempsv);
-		}
-		p = (AM_LONG *) SvPVX(tempsv);
-		for (j = 0; j < 7; ++j) {
-		  *(p + j) += count[j];
-      carry_pointer(p + j);
-		}
-	      }
-	    }
-	  }
-	}
-      }
-    }
-    /* clear out the supracontexts */
-    for (p0 = sptr[0] + sptr[0]->next; p0 != sptr[0]; p0 = sptr[0] + p0->next)
-      Safefree(p0->data);
-    for (p1 = sptr[1] + sptr[1]->next; p1 != sptr[1]; p1 = sptr[1] + p1->next)
-      Safefree(p1->data);
-    for (p2 = sptr[2] + sptr[2]->next; p2 != sptr[2]; p2 = sptr[2] + p2->next)
-      Safefree(p2->data);
-    for (p3 = sptr[3] + sptr[3]->next; p3 != sptr[3]; p3 = sptr[3] + p3->next)
-      Safefree(p3->data);
-  }
-  else
-  {
-    /* linear */
-    AM_SUPRA *p0, *p1, *p2, *p3;
-    AM_SHORT class;
-    AM_SHORT length;
-    unsigned short *temp, *i, *j, *k;
-
-    /* find intersections */
-    for (p0 = sptr[0] + sptr[0]->next; p0 != sptr[0]; p0 = sptr[0] + p0->next) {
-      for (p1 = sptr[1] + sptr[1]->next; p1 != sptr[1]; p1 = sptr[1] + p1->next) {
-
-	i = p0->data + p0->data[0] + 1;
-	j = p1->data + p1->data[0] + 1;
-	k = ilist2top;
-	while (1) {
-	  while (*i > *j) --i;
-	  if (*i == 0) break;
-	  if (*i < *j) {
-	    temp = i;
-	    i = j;
-	    j = temp;
-	    continue;
-	  }
-	  *k = *i;
-	  --i;
-	  --j;
-	  --k;
-	}
-	if (k == ilist2top) continue; /* intersection is empty */
-	*k = 0;
-
-	for (p2 = sptr[2] + sptr[2]->next; p2 != sptr[2]; p2 = sptr[2] + p2->next) {
-
-	  i = ilist2top;
-	  j = p2->data + p2->data[0] + 1;
-	  k = ilist3top;
-	  while (1) {
-	    while (*i > *j) --i;
-	    if (*i == 0) break;
-	    if (*i < *j) {
-	      temp = i;
-	      i = j;
-	      j = temp;
-	      continue;
-	    }
-	    *k = *i;
-	    --i;
-	    --j;
-	    --k;
-	  }
-	  if (k == ilist3top) continue; /* intersection is empty */
-	  *k = 0;
-
-	  for (p3 = sptr[3] + sptr[3]->next; p3 != sptr[3]; p3 = sptr[3] + p3->next) {
-	    class = 0;
-	    length = 0;
-	    intersect = intersectlist;
-
-	    i = ilist3top;
-	    j = p3->data + p3->data[0] + 1;
-	    while (1) {
-	      while (*i > *j) --i;
-	      if (*i == 0) break;
-	      if (*i < *j) {
-		temp = i;
-		i = j;
-		j = temp;
-		continue;
-	      }
-	      *intersect = *i;
-	      ++intersect;
-	      ++length;
-
-         /* determine heterogeneity */
-	      if (class == 0) {
-		if (length > 1) {
-		  length = 0;
-		  break;
-		} else {
-		  class = subcontext_class[*i];
-		}
-	      } else {
-		if (class != subcontext_class[*i]) {
-		  length = 0;
-		  break;
-		}
-	      }
-	      --i;
-	      --j;
-	    }
-
-       /* count occurrences */
-	    if (length) {
-	      AM_SHORT i;
-	      AM_BIG_INT count = {0, 0, 0, 0, 0, 0, 0, 0};
-	      AM_LONG mask = 0xffff;
-
-	      count[0]  = p0->count;
-
-	      count[0] *= p1->count;
-        carry(count, 0);
-
-	      count[0] *= p2->count;
-	      count[1] *= p2->count;
-        carry(count, 0);
-        carry(count, 1);
-
-	      count[0] *= p3->count;
-	      count[1] *= p3->count;
-	      count[2] *= p3->count;
-        carry(count, 0);
-        carry(count, 1);
-        carry(count, 2);
-
-	      for (i = 0; i < length; ++i) {
-		int j;
-		SV *tempsv;
-		AM_LONG *p;
-		tempsv = *hv_fetch(pointers,
-				   (char *) (subcontext + (4 * intersectlist[i])),
-				   8, 1);
-		if (!SvPOK(tempsv)) {
-		  SvUPGRADE(tempsv, SVt_PVNV);
-		  SvGROW(tempsv, 8 * sizeof(AM_LONG) + 1);
-		  Zero(SvPVX(tempsv), 8, AM_LONG);
-		  SvCUR_set(tempsv, 8 * sizeof(AM_LONG));
-		  SvPOK_on(tempsv);
-		}
-		p = (AM_LONG *) SvPVX(tempsv);
-		for (j = 0; j < 7; ++j) {
-		  *(p + j) += count[j];
-      carry_pointer(p + j);
-		}
-	      }
-	    }
-	  }
-	}
-      }
-    }
-    /* clear out the supracontexts */
-    for (p0 = sptr[0] + sptr[0]->next; p0 != sptr[0]; p0 = sptr[0] + p0->next)
-      Safefree(p0->data);
-    for (p1 = sptr[1] + sptr[1]->next; p1 != sptr[1]; p1 = sptr[1] + p1->next)
-      Safefree(p1->data);
-    for (p2 = sptr[2] + sptr[2]->next; p2 != sptr[2]; p2 = sptr[2] + p2->next)
-      Safefree(p2->data);
-    for (p3 = sptr[3] + sptr[3]->next; p3 != sptr[3]; p3 = sptr[3] + p3->next)
-      Safefree(p3->data);
-  }
+                count[1] += hiprod[1];
+                count[2] += hiprod[2];
+                count[3] += hiprod[3];
+                count[4] += hiprod[4];
+                carry(count, 1);
+                carry(count, 2);
+                carry(count, 3);
+                carry(count, 4);
+                } else {
+                  count[0] *= pointercount;
+                  count[1] *= pointercount;
+                  count[2] *= pointercount;
+                  count[3] *= pointercount;
+                  carry(count, 0);
+                  carry(count, 1);
+                  carry(count, 2);
+                  carry(count, 3);
+              }
+            }
+            for (i = 0; i < length; ++i) {
+              int j;
+              SV *tempsv;
+              AM_LONG *p;
+              tempsv = *hv_fetch(pointers,
+                  (char *) (subcontext + (NUM_LATTICES * intersectlist[i])), 8, 1);
+              if (!SvPOK(tempsv)) {
+                SvUPGRADE(tempsv, SVt_PVNV);
+                SvGROW(tempsv, 8 * sizeof(AM_LONG) + 1);
+                Zero(SvPVX(tempsv), 8, AM_LONG);
+                SvCUR_set(tempsv, 8 * sizeof(AM_LONG));
+                SvPOK_on(tempsv);
+              }
+              p = (AM_LONG *) SvPVX(tempsv);
+              for (j = 0; j < 7; ++j) {
+                *(p + j) += count[j];
+                carry_pointer(p + j);
+              }
+            }/* end for (i = 0;... */
+          }/* end if (length) */
+        }/* end for (p3 = sptr[3]... */
+      }/* end  for (p2 = sptr[2]... */
+    }/* end  for (p1 = sptr[1]... */
+  }/* end  for (p0 = sptr[0]... */
+  /* clear out the supracontexts */
+  for (p0 = sptr[0] + sptr[0]->next; p0 != sptr[0]; p0 = sptr[0] + p0->next)
+    Safefree(p0->data);
+  for (p1 = sptr[1] + sptr[1]->next; p1 != sptr[1]; p1 = sptr[1] + p1->next)
+    Safefree(p1->data);
+  for (p2 = sptr[2] + sptr[2]->next; p2 != sptr[2]; p2 = sptr[2] + p2->next)
+    Safefree(p2->data);
+  for (p3 = sptr[3] + sptr[3]->next; p3 != sptr[3]; p3 = sptr[3] + p3->next)
+    Safefree(p3->data);
 
   /*
    * compute analogical set and gang effects
@@ -1063,7 +953,7 @@ _fillandcount(...)
     SV *dataitem;
     Copy(SvPVX(HeVAL(he)), p, 8, AM_LONG);
 
-    tempsv = *hv_fetch(contextsize, HeKEY(he), 4 * sizeof(AM_SHORT), 0);
+    tempsv = *hv_fetch(contextsize, HeKEY(he), NUM_LATTICES * sizeof(AM_SHORT), 0);
     count = (AM_LONG) SvUVX(tempsv);
     counthi = (AM_SHORT) (high_bits(count));
     countlo = (AM_SHORT) (low_bits(count));
@@ -1093,13 +983,13 @@ _fillandcount(...)
     }
     grandtotal[7] += gangcount[7];
 
-    tempsv = *hv_fetch(gang, HeKEY(he), 4 * sizeof(AM_SHORT), 1);
+    tempsv = *hv_fetch(gang, HeKEY(he), NUM_LATTICES * sizeof(AM_SHORT), 1);
     SvUPGRADE(tempsv, SVt_PVNV);
     sv_setpvn(tempsv, (char *) gangcount, 8 * sizeof(AM_LONG));
     normalize(tempsv);
     normalize(HeVAL(he));
 
-    tempsv = *hv_fetch(context_to_class, HeKEY(he), 4 * sizeof(AM_SHORT), 0);
+    tempsv = *hv_fetch(context_to_class, HeKEY(he), NUM_LATTICES * sizeof(AM_SHORT), 0);
     this_class = (AM_SHORT) SvUVX(tempsv);
     if (this_class) {
       AM_LONG *s = (AM_LONG *) SvPVX(sum[this_class]);
@@ -1108,7 +998,7 @@ _fillandcount(...)
         carry_pointer(s + i);
       }
     } else {
-      dataitem = *hv_fetch(itemcontextchainhead, HeKEY(he), 4 * sizeof(AM_SHORT), 0);
+      dataitem = *hv_fetch(itemcontextchainhead, HeKEY(he), NUM_LATTICES * sizeof(AM_SHORT), 0);
       while (SvIOK(dataitem)) {
       	IV datanum = SvIVX(dataitem);
       	IV ocnum = SvIVX(classes[datanum]);
@@ -1121,7 +1011,8 @@ _fillandcount(...)
       }
     }
   }
-  for (i = 1; i <= num_classes; ++i) normalize(sum[i]);
+  for (i = 1; i <= num_classes; ++i) normalize(sum[i])
+    ;
   tempsv = *hv_fetch(pointers, "grandtotal", 10, 1);
   SvUPGRADE(tempsv, SVt_PVNV);
   sv_setpvn(tempsv, (char *) grandtotal, 8 * sizeof(AM_LONG));
