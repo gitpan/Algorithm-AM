@@ -11,8 +11,9 @@ package Algorithm::AM::Result;
 use strict;
 use warnings;
 use Text::Table;
+use Crypt::PRNG qw(rand);
 # ABSTRACT: Store results of an AM classification
-our $VERSION = '3.03'; # TRIAL VERSION;
+our $VERSION = '3.04'; # VERSION;
 
 
 ## TODO: variables consider exporting someday
@@ -39,7 +40,42 @@ use Class::Tiny qw(
     winners
     is_tie
     result
-);
+
+    scores_normalized
+    random_outcome
+), {
+    'scores_normalized' => sub {
+        my ($self) = @_;
+        my $total_points = $self->total_points;
+        my $scores = $self->scores;
+        my $normalized = {};
+        for my $class (keys %$scores){
+            $normalized->{$class} = $scores->{$class} / $total_points
+        }
+        return $normalized;
+    },
+    'random_outcome' => sub {
+        my ($self) = @_;
+        my $score_map = $self->scores_normalized;
+        my @classes = sort keys %$score_map;
+        my @scores = @{$score_map}{@classes};
+        # this portion taken from List::Util::WeightedChoice
+        # create ranges for each of the classes, and pick
+        # a class by choosing a random number in the range.
+        my @ranges = ();
+        my $left = 0;
+        for my $score(@scores){
+            my $right = $left+$score;
+            push @ranges, $right;
+            $left = $right;
+        }
+        my $scoreIndex = rand $left;
+        for( my $i =0; $i< @scores; $i++){
+            my $range = $ranges[$i];
+            return $classes[$i] if $scoreIndex < $range;
+        }
+    }
+};
 use Carp 'croak';
 use Algorithm::AM::BigInt 'bigcmp';
 
@@ -70,12 +106,12 @@ sub config_info {
 # store information needed for computing analogical sets.
 # Set result to tie/correct/incorrect and also is_tie if
 # expected class is provided, and high_score, scores, winners, and
-# total_pointers.
+# total_points.
 sub _process_stats {
     my ($self, $sum, $pointers,
         $itemcontextchainhead, $itemcontextchain, $context_to_class,
         $gang, $active_feats, $contextsize) = @_;
-    my $total_pointers = $pointers->{grandtotal};
+    my $total_points = $pointers->{grandtotal};
     my $max = '';
     my @winners;
     my %scores;
@@ -125,7 +161,7 @@ sub _process_stats {
     $self->high_score($max);
     $self->scores(\%scores);
     $self->winners(\@winners);
-    $self->total_points($total_pointers);
+    $self->total_points($total_points);
     $self->{pointers} = $pointers;
     $self->{itemcontextchainhead} = $itemcontextchainhead;
     $self->{itemcontextchain} = $itemcontextchain;
@@ -139,7 +175,7 @@ sub _process_stats {
 sub statistical_summary {
     my ($self) = @_;
     my %scores = %{$self->scores};
-    my $grand_total = $self->total_points;
+    my $total_points = $self->total_points;
 
     # Make a table with information about predictions for different
     # classes. Each row contains a class name, the score,
@@ -148,10 +184,10 @@ sub statistical_summary {
     for my $class (sort keys %scores){
         push @rows, [ $class, $scores{$class},
             sprintf($percentage_format,
-                100 * $scores{$class} / $grand_total) ];
+                100 * $scores{$class} / $total_points) ];
     }
     # add a Total row
-    push @rows, [ 'Total', $grand_total ];
+    push @rows, [ 'Total', $total_points ];
 
     my @table = _make_table(['Class', 'Score', 'Percentage'],
         \@rows);
@@ -192,7 +228,7 @@ sub analogical_set {
 sub analogical_set_summary {
     my ($self) = @_;
     my $set = $self->analogical_set;
-    my $total_pointers = $self->total_points;
+    my $total_points = $self->total_points;
 
     # Make a table for the analogical set. Each row contains an
     # item with its class, comment, score, and the percentage
@@ -205,12 +241,12 @@ sub analogical_set_summary {
             $entry->{item}->class,
             $entry->{item}->comment,
             $score,
-            sprintf($percentage_format, 100 * $score / $total_pointers)
+            sprintf($percentage_format, 100 * $score / $total_points)
         ];
     }
     my @table = _make_table(
         ['Class', 'Item', 'Score', 'Percentage'], \@rows);
-    my $info = "Analogical Set\nTotal Frequency = $total_pointers\n";
+    my $info = "Analogical Set\nTotal Frequency = $total_points\n";
     $info .= join '', @table;
     return \$info;
 }
@@ -371,7 +407,7 @@ sub _sort_gangs {## no critic (RequireArgUnpacking)
 sub _calculate_gangs {
     my ($self) = @_;
     my $train = $self->training_set;
-    my $total_pointers = $self->total_points;
+    my $total_points = $self->total_points;
     my $raw_gang = $self->{gang};
     my $gangs = {};
 
@@ -381,7 +417,7 @@ sub _calculate_gangs {
         # for now, store gangs by the supracontext printout
         my $key = join ' ', map {$_ || '-'} @features;
         $gangs->{$key}->{score} = $raw_gang->{$context};
-        $gangs->{$key}->{effect} = $raw_gang->{$context} / $total_pointers;
+        $gangs->{$key}->{effect} = $raw_gang->{$context} / $total_points;
         $gangs->{$key}->{features} = \@features;
 
         my $p = $self->{pointers}->{$context};
@@ -432,7 +468,7 @@ sub _calculate_gangs {
                 $gangs->{$key}->{class}->{$class}->{score} = $p;
                 $gangs->{$key}->{class}->{$class}->{effect} =
                     # score*num_data/total
-                    @{ $data{$class} } * $p / $total_pointers;
+                    @{ $data{$class} } * $p / $total_points;
             }
         }
     }
@@ -510,7 +546,7 @@ Algorithm::AM::Result - Store results of an AM classification
 
 =head1 VERSION
 
-version 3.03
+version 3.04
 
 =head2 SYNOPSIS
 
@@ -539,6 +575,14 @@ special PV and NV values. You should excercise caution when doing
 calculations with them. See L<Algorithm::AM::BigInt> for more
 information.
 
+=head1 REPORT METHODS
+
+The methods below return human eye-friendly reports about the
+classification. The return value is a reference, so it must be
+dereferenced for printing like so:
+
+ print ${ $result->statistical_summary };
+
 =head2 C<config_info>
 
 Returns a scalar (string) ref containing information about the
@@ -563,14 +607,22 @@ test item had a known class.
 
 =head2 C<analogical_set>
 
-Returns the analogical set in the form of a hash ref containing
-its items and the scores contributed by each towards a classification
-matching its own class label. The hash structure is like so:
+The analogical set is the set of items from the training set that
+had some effect on the item classification. The analogical effect of
+an item in the analogical set is the score it contributed towards
+a classification matching its own class label.
+
+This method returns the items in the analogical set along with their
+analogical effects, in the following structure:
 
  { 'item_id' => {'item' => item, 'score' => score}
 
-where C<item> is the actual item object. The item_id is used so that
-the analogical effect of a particular item can be found quickly.
+C<item> above is the actual item object. The item_id is used so that
+the analogical effect of a particular item can be found quickly:
+
+ my $set = $result->analogical_set;
+ print 'the item's analogical effect was '
+     . $set->{$item->id}->score;
 
 =head2 C<analogical_set_summary>
 
@@ -638,7 +690,7 @@ for computing analogical sets. See L<Algorithm::AM/linear>.
 Returns the L<data set|Algorithm::AM::DataSet> which was the
 source of classification data.
 
-=head1 CLASSIFICATION INFORMATION
+=head1 RESULT DETAILS
 
 The following methods provide information about the results of
 the classification.
@@ -649,6 +701,15 @@ If the class of the test item was known before classification, this
 returns "tie", "correct", or "incorrect", depending on the label
 assigned by the classification. Otherwise this returns C<undef>.
 
+=head2 C<random_outcome>
+
+This returns one of the class labels predicted for the test item.
+The choice is done probabilistically, with the probability of each
+value given by its L<normalized score|/scores_normalized>.
+
+For a given result object, the return value of this method never
+changes; the value is only chosen once.
+
 =head2 C<high_score>
 
 Returns the highest score assigned to any of the class labels.
@@ -656,6 +717,19 @@ Returns the highest score assigned to any of the class labels.
 =head2 C<scores>
 
 Returns a hash mapping all predicted classes to their scores.
+
+=head2 C<scores_normalized>
+
+Returns a hash mapping all predicted classes to their score,
+divided by the total score for all classes. For example,
+if the L</scores> method returns the following:
+
+ {'e' => 4, 'r' => 9}
+
+then this method would return the following (values below are
+rounded):
+
+ {'e' => 0.3076923, 'r' => 0.6923077}
 
 =head2 C<winners>
 

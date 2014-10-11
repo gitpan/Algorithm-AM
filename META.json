@@ -101,6 +101,7 @@
          "requires" : {
             "Carp" : "0",
             "Class::Tiny" : "0",
+            "Crypt::PRNG" : "0",
             "Exporter::Easy" : "0",
             "Import::Into" : "0",
             "Log::Any" : "0",
@@ -133,30 +134,30 @@
    "provides" : {
       "Algorithm::AM" : {
          "file" : "lib/Algorithm/AM.pm",
-         "version" : "3.03"
+         "version" : "3.04"
       },
       "Algorithm::AM::Batch" : {
          "file" : "lib/Algorithm/AM/Batch.pm",
-         "version" : "3.03"
+         "version" : "3.04"
       },
       "Algorithm::AM::BigInt" : {
          "file" : "lib/Algorithm/AM/BigInt.pm",
-         "version" : "3.03"
+         "version" : "3.04"
       },
       "Algorithm::AM::DataSet" : {
          "file" : "lib/Algorithm/AM/DataSet.pm",
-         "version" : "3.03"
+         "version" : "3.04"
       },
       "Algorithm::AM::DataSet::Item" : {
          "file" : "lib/Algorithm/AM/DataSet/Item.pm",
-         "version" : "3.03"
+         "version" : "3.04"
       },
       "Algorithm::AM::Result" : {
          "file" : "lib/Algorithm/AM/Result.pm",
-         "version" : "3.03"
+         "version" : "3.04"
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "mailto" : "bug-algorithm-am at rt.cpan.org",
@@ -172,7 +173,7 @@
          "web" : "https://github.com/garfieldnate/Algorithm-AM"
       }
    },
-   "version" : "3.03",
+   "version" : "3.04",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.020001"
@@ -651,7 +652,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "v3.03",
+                  "tag" : "v3.04",
                   "tag_format" : "v%v",
                   "tag_message" : "Tagged release %v",
                   "time_zone" : "local"
@@ -738,7 +739,7 @@
       "zilla" : {
          "class" : "Dist::Zilla::Dist::Builder",
          "config" : {
-            "is_trial" : "1"
+            "is_trial" : "0"
          },
          "version" : "5.020"
       }

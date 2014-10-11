@@ -50,6 +50,7 @@ sub pmver {
 
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('Class::Tiny','any version') };
+eval { $v .= pmver('Crypt::PRNG','any version') };
 eval { $v .= pmver('Exporter::Easy','any version') };
 eval { $v .= pmver('ExtUtils::MakeMaker','any version') };
 eval { $v .= pmver('File::Spec','any version') };

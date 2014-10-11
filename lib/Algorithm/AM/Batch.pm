@@ -10,7 +10,7 @@ package Algorithm::AM::Batch;
 use strict;
 use warnings;
 # ABSTRACT: Classify items in batch mode
-our $VERSION = '3.03'; # TRIAL VERSION
+our $VERSION = '3.04'; # VERSION
 use feature 'state';
 use Carp;
 use Log::Any qw($log);
@@ -64,15 +64,17 @@ sub import {
     return;
 }
 
-my %valid_attrs = map {$_ => 1}
-    Class::Tiny->get_all_attributes_for('Algorithm::AM::Batch');
 sub BUILD {
     my ($self, $args) = @_;
 
     # check for invalid arguments
+    my $class = ref $self;
+    my %valid_attrs = map {$_ => 1}
+        Class::Tiny->get_all_attributes_for($class);
     my @invalids = grep {!$valid_attrs{$_}} sort keys %$args;
     if(@invalids){
-        croak 'Invalid attributes for Algorithm::AM::Batch: ' . join ' ', sort @invalids;
+        croak "Invalid attributes for $class: " . join ' ',
+            sort @invalids;
     }
 
     if(!exists $args->{training_set}){
@@ -295,7 +297,7 @@ Algorithm::AM::Batch - Classify items in batch mode
 
 =head1 VERSION
 
-version 3.03
+version 3.04
 
 =head1 C<SYNOPSIS>
 
