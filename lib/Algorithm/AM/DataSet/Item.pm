@@ -1,14 +1,8 @@
-#
-# This file is part of Algorithm-AM
-#
-# This software is copyright (c) 2013 by Royal Skousen.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 package Algorithm::AM::DataSet::Item;
 use strict;
 use warnings;
+our $VERSION = '3.05';
+# ABSTRACT: A single item for classification training and testing
 use Carp;
 our @CARP_NOT = qw(Algorithm::AM::DataSet);
 use Exporter::Easy (
@@ -19,9 +13,38 @@ use Exporter::Easy (
 # or anything, just unique.
 my $current_id = 'a';
 
-# ABSTRACT: A single item for classification training and testing
-our $VERSION = '3.04'; # VERSION;
 
+#pod =head1 SYNOPSIS
+#pod
+#pod   use Algorithm::AM::DataSet::Item 'new_item';
+#pod
+#pod   my $item = new_item(
+#pod     features => ['a', 'b', 'c'],
+#pod     class => 'x',
+#pod     comment => 'a sample, meaningless item'
+#pod   );
+#pod
+#pod =head1 DESCRIPTION
+#pod
+#pod This class represents a single item contained in a data set. Each
+#pod item has a feature vector and possibly a class label and comment
+#pod string. Once created, the item is immutable.
+#pod
+#pod =head1 METHODS
+#pod
+#pod =head2 C<new>
+#pod
+#pod Creates a new Item object. The only required argument is
+#pod 'features', which should be an array ref containing the feature
+#pod vector. Each element of this array should be a string indicating the
+#pod value of the feature at the given index. 'class' and 'comment'
+#pod arguments are also accepted, where 'class' is the classification
+#pod label and 'comment' can be any string to be associated with the item.
+#pod A missing or undefined 'class' value is assumed to mean that the item
+#pod classification is unknown. For the feature vector, empty strings are
+#pod taken to indicate null values.
+#pod
+#pod =cut
 sub new {
     my ($class, %args) = @_;
     if(!exists $args{features} ||
@@ -42,6 +65,13 @@ sub new {
     return $self;
 }
 
+#pod =head2 C<new_item>
+#pod
+#pod This is an exportable shortcut for the new method. If exported, then
+#pod instead of calling C<<Algorithm::AM::DataSet::Item->new>>, you may
+#pod simply call C<new_item>.
+#pod
+#pod =cut
 sub new_item {
     # unpack here so that warnings about odd numbers of elements are
     # reported for this function, not for the new method
@@ -49,17 +79,37 @@ sub new_item {
     return __PACKAGE__->new(%args);
 }
 
+#pod =head2 C<class>
+#pod
+#pod Returns the classification label for this item, or undef if the class
+#pod is unknown.
+#pod
+#pod =cut
 sub class {
     my ($self) = @_;
     return $self->{class};
 }
 
+#pod =head2 C<features>
+#pod
+#pod Returns the feature vector for this item. This is an arrayref
+#pod containing the string value for each feature. An empty string
+#pod indicates that the feature value is null (meaning that it has
+#pod no value).
+#pod
+#pod =cut
 sub features {
     my ($self) = @_;
     # make a safe copy
     return [@{ $self->{features} }];
 }
 
+#pod =head2 C<comment>
+#pod
+#pod Returns the comment for this item. By default, the comment is
+#pod just a comma-separated list of the feature values.
+#pod
+#pod =cut
 sub comment {
     my ($self) = @_;
     if(!defined $self->{comment}){
@@ -68,11 +118,22 @@ sub comment {
     return $self->{comment};
 }
 
+#pod =head2 C<cardinality>
+#pod
+#pod Returns the length of the feature vector for this item.
+#pod
+#pod =cut
 sub cardinality {
     my ($self) = @_;
     return scalar @{$self->features};
 }
 
+#pod =head2 C<id>
+#pod
+#pod Returns a unique string id for this item, for use as a hash key or
+#pod similar situations.
+#pod
+#pod =cut
 sub id {
     my ($self) = @_;
     return $self->{id};
@@ -92,7 +153,7 @@ Algorithm::AM::DataSet::Item - A single item for classification training and tes
 
 =head1 VERSION
 
-version 3.04
+version 3.05
 
 =head1 SYNOPSIS
 

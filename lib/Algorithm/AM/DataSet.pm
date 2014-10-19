@@ -1,23 +1,42 @@
-#
-# This file is part of Algorithm-AM
-#
-# This software is copyright (c) 2013 by Royal Skousen.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 package Algorithm::AM::DataSet;
 use strict;
 use warnings;
+our $VERSION = '3.05';
+# ABSTRACT: Manage data used by Algorithm::AM
 use Carp;
 use Algorithm::AM::DataSet::Item;
 use Path::Tiny;
 use Exporter::Easy (
     OK => ['dataset_from_file']
 );
-# ABSTRACT: Manage data used by Algorithm::AM
-our $VERSION = '3.04'; # VERSION;
 
+#pod =head1 SYNOPSIS
+#pod
+#pod  use Algorithm::AM::DataSet 'dataset_from_file';
+#pod  use Algorithm::AM::DataSet::Item 'new_item';
+#pod  my $dataset = Algorithm::AM::DataSet->new(cardinality => 10);
+#pod  # or
+#pod  $dataset = dataset_from_file('finnverb');
+#pod  $dataset->add_item(
+#pod    new_item(features => [qw(a b c d e f g h i)]));
+#pod  my $item = $dataset->get_item(2);
+#pod
+#pod =head1 DESCRIPTION
+#pod
+#pod This package contains a list of items that can be used by
+#pod L<Algorithm::AM> or L<Algorithm::AM::Batch> for classification.
+#pod DataSets can be made one item at a time via the L</add_item> method,
+#pod or they can be read from files via the L</dataset_from_file> function.
+#pod
+#pod =head2 C<new>
+#pod
+#pod Creates a new DataSet object. You must provide a C<cardinality> argument
+#pod indicating the number of features to be contained in each data vector.
+#pod You can then add items via the add_item method. Each item will contain
+#pod a feature vector, and also optionally a class label and a comment
+#pod (also called a "spec").
+#pod
+#pod =cut
 sub new {
     my ($class, %opts) = @_;
 
@@ -72,21 +91,45 @@ sub _init {
     return;
 }
 
+#pod =head2 C<cardinality>
+#pod
+#pod Returns the number of features contained in the feature vector of a
+#pod single item.
+#pod
+#pod =cut
 sub cardinality {
     my ($self) = @_;
     return $self->{cardinality};
 }
 
+#pod =head2 C<size>
+#pod
+#pod Returns the number of items in the data set.
+#pod
+#pod =cut
 sub size {
     my ($self) = @_;
     return scalar @{$self->{items}};
 }
 
+#pod =head2 C<classes>
+#pod
+#pod Returns the list of all unique class labels in the data set.
+#pod
+#pod =cut
 sub classes {
     my ($self) = @_;
     return @{ $self->{class_list} };
 }
 
+#pod =head2 C<add_item>
+#pod
+#pod Adds a new item to the data set. The input may be either an
+#pod L<Algorithm::AM::DataSet::Item> object, or the arguments to create
+#pod one via its constructor (features, class, comment). This method will
+#pod croak if the cardinality of the item does not match L</cardinality>.
+#pod
+#pod =cut
 sub add_item {
     my ($self, @args) = @_;
     my $item;
@@ -124,11 +167,23 @@ sub _update_class_vars {
     return;
 }
 
+#pod =head2 C<get_item>
+#pod
+#pod Return the item at the given index. This will be a
+#pod L<Algorithm::AM::DataSet::Item> object.
+#pod
+#pod =cut
 sub get_item {
     my ($self, $index) = @_;
     return $self->{items}->[$index];
 }
 
+#pod =head2 C<num_classes>
+#pod
+#pod Returns the number of different classification labels contained in
+#pod the data set.
+#pod
+#pod =cut
 sub num_classes {
     my ($self) = @_;
     return $self->{num_classes};
@@ -159,6 +214,35 @@ sub _class_for_index {
     return $self->{class_list}->[$index - 1];
 }
 
+#pod =head2 C<dataset_from_file>
+#pod
+#pod This function may be exported. Given 'path' and 'format' arguments,
+#pod it reads a file containing a dataset and returns a new DataSet object
+#pod with the given data. The 'path' argument should be the path to the
+#pod file. The 'format' argument should be 'commas' or 'nocommas',
+#pod indicating one of the following formats. You may also specify 'unknown'
+#pod and 'null' arguments to indicate the strings meant to represent an
+#pod unknown class value and null feature values. By default these are
+#pod 'UNK' and '='.
+#pod
+#pod The 'commas' file format is shown below:
+#pod
+#pod  class , f eat u re s , your comment here
+#pod
+#pod The commas separate the class label, feature values, and comments,
+#pod and the whitespace around the commas is optional. Each feature value
+#pod is separated with whitespace.
+#pod
+#pod The 'nocommas' file format is shown below:
+#pod
+#pod  class   features  your comment here
+#pod
+#pod Here the class, feature values, and comments are separated by
+#pod whitespace. Each feature value must be a single character with no
+#pod separating characters, so here the features are f, e, a, t, u, r,
+#pod e, and s.
+#pod
+#pod =cut
 sub dataset_from_file {## no critic (RequireArgUnpacking)
     my (%opts) = (
         unknown => 'UNK',
@@ -270,7 +354,7 @@ Algorithm::AM::DataSet - Manage data used by Algorithm::AM
 
 =head1 VERSION
 
-version 3.04
+version 3.05
 
 =head1 SYNOPSIS
 

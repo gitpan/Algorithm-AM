@@ -1,22 +1,14 @@
-#
-# This file is part of Algorithm-AM
-#
-# This software is copyright (c) 2013 by Royal Skousen.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 package Algorithm::AM::Batch;
 use strict;
 use warnings;
+our $VERSION = '3.05';
 # ABSTRACT: Classify items in batch mode
-our $VERSION = '3.04'; # VERSION
 use feature 'state';
 use Carp;
 use Log::Any qw($log);
 our @CARP_NOT = qw(Algorithm::AM::Batch);
 
-# Place this accessor here so that Class::Tiny doesn't generate 
+# Place this accessor here so that Class::Tiny doesn't generate
 # a getter/setter pair.
 sub test_set {
     my ($self) = @_;
@@ -297,7 +289,7 @@ Algorithm::AM::Batch - Classify items in batch mode
 
 =head1 VERSION
 
-version 3.04
+version 3.05
 
 =head1 C<SYNOPSIS>
 

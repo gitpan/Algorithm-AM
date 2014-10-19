@@ -2,7 +2,7 @@ NAME
     Algorithm::AM - Classify data with Analogical Modeling
 
 VERSION
-    version 3.04
+    version 3.05
 
 SYNOPSIS
      use Algorithm::AM;
@@ -151,9 +151,30 @@ SEE ALSO
     The Wikipedia article <http://en.wikipedia.org/wiki/Analogical_modeling>
     has details and even illustrations on analogical modeling.
 
+SUPPORT
+  Bugs / Feature Requests
+    Please report any bugs or feature requests through the issue tracker at
+    <https://github.com/garfieldnate/Algorithm-AM/issues>. You will be
+    notified automatically of any progress on your issue.
+
+  Source Code
+    This is open source software. The code repository is available for
+    public review and contribution under the terms of the license.
+
+    <https://github.com/garfieldnate/Algorithm-AM>
+
+      git clone https://github.com/garfieldnate/Algorithm-AM.git
+
 AUTHOR
     Theron Stanford <shixilun@yahoo.com>, Nathan Glenn
     <garfieldnate@gmail.com>
+
+CONTRIBUTORS
+    *   garfieldnate <garfieldnate@gmail.com>
+
+    *   Nathan Glenn <garfieldnate@gmail.com>
+
+    *   Nick <nlogan@gmail.com>
 
 COPYRIGHT AND LICENSE
     This software is copyright (c) 2013 by Royal Skousen.

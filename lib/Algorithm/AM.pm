@@ -1,16 +1,8 @@
-#
-# This file is part of Algorithm-AM
-#
-# This software is copyright (c) 2013 by Royal Skousen.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 package Algorithm::AM;
 use strict;
 use warnings;
+our $VERSION = '3.05';
 # ABSTRACT: Classify data with Analogical Modeling
-our $VERSION = '3.04'; # VERSION
 use feature 'state';
 use Carp;
 our @CARP_NOT = qw(Algorithm::AM);
@@ -334,7 +326,7 @@ Algorithm::AM - Classify data with Analogical Modeling
 
 =head1 VERSION
 
-version 3.04
+version 3.05
 
 =head1 SYNOPSIS
 
@@ -521,9 +513,48 @@ sample data sets.
 The L<Wikipedia article|http://en.wikipedia.org/wiki/Analogical_modeling>
 has details and even illustrations on analogical modeling.
 
+=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders metacpan
+
+=head1 SUPPORT
+
+=head2 Bugs / Feature Requests
+
+Please report any bugs or feature requests through the issue tracker
+at L<https://github.com/garfieldnate/Algorithm-AM/issues>.
+You will be notified automatically of any progress on your issue.
+
+=head2 Source Code
+
+This is open source software.  The code repository is available for
+public review and contribution under the terms of the license.
+
+L<https://github.com/garfieldnate/Algorithm-AM>
+
+  git clone https://github.com/garfieldnate/Algorithm-AM.git
+
 =head1 AUTHOR
 
 Theron Stanford <shixilun@yahoo.com>, Nathan Glenn <garfieldnate@gmail.com>
+
+=head1 CONTRIBUTORS
+
+=for stopwords garfieldnate Nathan Glenn Nick
+
+=over 4
+
+=item *
+
+garfieldnate <garfieldnate@gmail.com>
+
+=item *
+
+Nathan Glenn <garfieldnate@gmail.com>
+
+=item *
+
+Nick <nlogan@gmail.com>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
